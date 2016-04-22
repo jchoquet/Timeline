@@ -1,0 +1,43 @@
+#clefPrimaire:type
+*clefEtrangere:type
+*clefEtrangere <- tableDOrigine.clefDOrigine
+
+
+commentaire (#idcom:int, *idphoto:int, *idauteur:char[12], date_post:date, contenu:char[255])
+WITH *idphoto <- photo.idphoto
+     *idauteur <- utilisateur.identifiant
+
+
+compteur (*idphoto:int, *idconcours:int, nbre_votes:int)
+WITH *idphoto <- photo.idphoto
+     *idconcours <- concours.idconcours
+
+
+concours (#idconcours:int, nom:char[20], description:char[300], *winner:int, encours:boolean)
+WITH *winner <- utilisateur.identifiant 
+
+
+
+identification (*idphoto:int, *idutilisateur:char[12])
+WITH *idphoto <- photo.idphoto
+     *idutilisateur <- utilisateur.identifiant
+
+
+photo (#idphoto:int, *idsoiree:int, date_mel:date, heure:time, composter:char[255], nblike:int, *idposteur:char[12])
+WITH *idsoiree <- soiree.idsoiree
+     *idposteur <- utilisateur.identifiant
+
+
+
+soiree (#idsoiree:int, theme:char[20], annee:date, description:char[300])
+
+
+
+utilisateur (#identifiant:char[12], mdp:char[20], nom:char[20], prenom:char[20], promo:int, surnom:char[20], quote:char[255])
+
+
+
+vote (*idphoto:int, *idutilisateur:char[12], *idconcours:int)
+WITH *idphoto <- photo.idphoto
+     *idutilisateur <- utilisateur.identifiant
+     *idconcours <- concours.idconcours
