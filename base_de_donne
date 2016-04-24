@@ -34,9 +34,9 @@ EnCours BOOLEAN);
 CREATE TABLE Photo (
 IdPhoto INTEGER PRIMARY KEY,
 IdSoiree INTEGER,
-Datee_MeL DATE,
+Date_MeL DATE,
 Heure TIME,
-ComPoster VARCHAR (255),
+ComPosteur VARCHAR (255),
 NbLike INTEGER,
 IdPosteur VARCHAR(12),
 
