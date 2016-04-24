@@ -23,7 +23,7 @@ WITH *idphoto <- photo.idphoto
      *idutilisateur <- utilisateur.identifiant
 
 
-photo (#idphoto:int, *idsoiree:int, date_mel:date, heure:time, composter:char[255], nblike:int, *idposteur:char[12])
+photo (#idphoto:int, *idsoiree:int, date_mel:date, heure:time, composteur:char[255], nblike:int, *idposteur:char[12])
 WITH *idsoiree <- soiree.idsoiree
      *idposteur <- utilisateur.identifiant
 
