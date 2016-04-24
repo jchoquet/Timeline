@@ -28,7 +28,7 @@
 <html>
 <body>
 
- <?php include 'menu.php'; ?>
+ <?php include 'header.php'; ?>
 
 	 	<h1 class="page-header"> Acceuil </h1>
 

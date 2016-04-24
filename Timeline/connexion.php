@@ -1,54 +1,55 @@
-<?php
-session_start();
+<!DOCTYPE html >
+<html lang="fr">
+  <head>
+    <meta charset="utf-8"/>
+    <title>TIMELINE</title>
 
-try{
-  $db = new PDO('mysql:host=localhost;dbname=test', 'root', '');
-}
-catch (Exception $e){
-        die('Erreur : ' . $e->getMessage());
-}
+    <!-- pour les moteurs de recherche -->
+    <metaname="description" lang="fr" content="plateforme de timeline photo pour soirÃ©e et Ã©vÃ¨nement" />
+    <metaname="keywords" lang="fr" content="photos, soirÃ©e, timeline, ENSIIE, iiens" />
 
+     <!-- icone du titre de la page -->
+  <link rel="shortcut icon" href="fonts/icone2.jpg">
+     
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="css/bootstrap.css">
 
-$titre="Connexion à votre compte ";
+	<!-- jquery -->
+	<script src="js/jquery_library.js"></script>
 
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="js/bootstrap.js"></script>
 
+	<!-- fichier css perso -->
+	<link rel="stylesheet" href="css/co2.css">
 
-  $_SESSION['Identifiant'] = '';
-	$_SESSION['Mot de passe'] = '';
+	<!-- fichier JS validation formulaire -->
+	<script src="js/validate_co.js"></script>
 
-	if (isset($_POST['Se connecter'])){
+</head>
+<body>
 
-  include("debut.php");
+    <div class="container-fluid">
 
+    <!-- formulaire de connexion -->
+			<form id="co" class="col-md-offset-4 col-md-4" role="form">
+				
+				<div class="form-group">
+					<label for="identifiantc">Identifiant</label>
+    				<input class="form-control" id="identifiantc" name="identifiantc" type="text" value="" required/> 
+    				<span class="errors" id="idcerror"></span> 
+    			</div>
+    			
+    			<div class="form-group">
+   				 	<label for="mdp">Mot de passe</label>
+    				<input class="form-control" id="mdpc" type="password" name="Mot de passe" value="" required/>
+    				<span class="errors" id="mdperrorc"></span>
+    			</div>
+    		
+    			<button class="btn btn-default btn-block" type="submit" name="connexion">Se connecter</button>
 
-if ($login!='') erreur(ERR_IS_CO);
+			</form>
 
-else
-{
-    $message='';
-    if (empty($_POST['Identifiant']) || empty($_POST['Mot de passe']) )   //cas : oublier de remplir un champ
-    {
-        $message = '<p> veuillez remplir tous les champs</p>
-	                  <p>Cliquez <a href="connexion.php">ici</a> pour réessayer</p>';
-    }
-    else //On vérifie le mot de passe
-    {
-        $query=$db->prepare('SELECT Mdp, Identifiant FROM Utilisateur WHERE Identifiant = :login');    // login ou Identifiant ! not suure 
-        $query->bindValue(':login',$_POST['Identifiant'], PDO::PARAM_STR);                             // login ou Identifiant ! not suure 
-        $query->execute();
-        $data=$query->fetch();
-	if ($data['Mdp'] == md5($_POST['Mot de passe'])){       
-	    $_SESSION['Identifiant'] = $data['Identifiant'];
-	    $message = '<p>Bienvenue '.$data['Identifiant'].', vous êtes maintenant connecté!</p>' ;
-	}
-	else // Acces failed !
-	{
-	    $message = '<p style="color:#FF0000; font-weight:bold;">Une erreur s\'est produite pendant votre identification.<br /> Le mot de passe ou le pseudo entré n\'est pas correcte.</p><p>Cliquez <a href="connexion.php">ici</a> pour reessayer </p>';
-	}
-    $query->CloseCursor();
-    }
-    echo $message.'</div></body></html>';
-
-}
-}
-?>
+</div>
+</body>
+</html>

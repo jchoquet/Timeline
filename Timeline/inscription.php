@@ -1,38 +1,84 @@
-<?php
+<!DOCTYPE html >
+<html lang="fr">
+  <head>
+    <meta charset="utf-8"/>
+    <title>TIMELINE</title>
 
-    //On récupère les variables
-    $i = 0;
-    $temps = time(); 
-    $nom=$_POST['Nom'];
-    $prenom=$_POST['Prénom'];
-    $promo = $_POST['Promo'];
-    $identifiant = $_POST['Identifiant'];
-    $pass = md5($_POST['Mot de passe']);
-    $confirmpass = md5($_POST['Confirmer mot de passe']);
-	
-    //Vérification de l'identifiant
-    $query=$db->prepare('SELECT COUNT(*) AS nbr FROM Utilisateur WHERE Identifiant =:Identifiant');
-    $query->bindValue(':Identifiant',$identifiant, PDO::PARAM_STR);
-    $query->execute();
-    $identifiant_free=($query->fetchColumn()==0)?1:0;
-    $query->CloseCursor();
-    
-    if(!$identifiant)
-    {
-        $identifiant_erreur1 = "Votre identifiant est déjà utilisé par un membre";
-        $i++;
-    }
+    <!-- pour les moteurs de recherche -->
+    <metaname="description" lang="fr" content="plateforme de timeline photo pour soirÃ©e et Ã©vÃ¨nement" />
+    <metaname="keywords" lang="fr" content="photos, soirÃ©e, timeline, ENSIIE, iiens" />
+     
+  <!-- icone du titre de la page -->
+  <link rel="shortcut icon" href="fonts/icone2.jpg">
 
-    if (strlen($identifiant) < 3 || strlen($identifiant) > 15)
-    {
-        $identifiant_erreur2 = "Votre identifiant doit contenir entre 3 et 15 caracteres ";
-        $i++;
-    }
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="css/bootstrap.css">
 
-    //Vérification du mdp
-    if ($pass != $confirmpass || empty($confirmpass) || empty($pass))
-    {
-        $mdp_erreur = "Votre mot de passe et votre confirmation diffèrent, ou sont vides";
-        $i++;
-    }
-?>
+	<!-- jquery -->
+	<script src="js/jquery_library.js"></script>
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="js/bootstrap.js"></script>
+
+	<!-- fichier css perso -->
+	<link rel="stylesheet" href="css/ins2.css">
+
+	<!-- fichier JS validation formulaire -->
+	<script src="js/validate_ins.js"></script>
+
+</head>
+<body>
+
+	<div class="container-fluid">
+	<!-- formulaire d'inscription -->
+
+			<form id="ins" class="col-md-offset-4 col-md-4" role="form">
+				
+				<div class="form-group">
+					<label for="nom">Nom</label> 
+    				<input class="form-control" id="nom" name="nom" type="text"/>
+    				<span class="errors" id="nomerror"></span>
+    			</div>
+
+    			<div class="form-group">
+   				 	 <label for="prenom">PrÃ©nom</label>
+    				<input class="form-control" id="prenom" name="prÃ©nom" type="text"/>
+    				<span class="errors" id="prenerror"></span>
+    			</div>
+
+    			<div class="form-group">
+   				 	<label for="promo">Promo</label> 
+    				<input class="form-control" id="promo" name="promo" type="number" value="2010"/>
+    				<span class="errors" id="promoerror"></span>
+    			</div> 
+
+    			<div class="form-group">
+					<label for="identifiant">Identifiant</label>
+    				<input class="form-control" id="identifiant" name="identifiant" type="text" value="" />
+    				<span class="errors" id="iderror"></span>
+    				<span class="correct" id="idcorrect"></span>
+    			</div>
+
+    			<div class="form-group">
+   				 	<label for="mdp">Mot de passe</label>
+    				<input class="form-control" id="mdp" type="password" name="Mot de passe" value="" />
+    				<span class="errors" id="mdperror"></span>
+    			</div>
+
+    			<div class="form-groupe">
+   				 	<label for="cmdp">Confirmer mot de passe</label>
+    				<input class="form-control" id="cmdp" type="password" name="Mot de passe" value="" />
+    				<span class="errors" id="cmdperror"></span>
+    			</div>
+
+    			<button class="btn btn-default btn-block" type="submit" id="inscription" name="inscription">S'inscrire</button>
+    			<span class="errors" id="formerror"></span>
+
+    			
+
+			</form>
+
+
+</div>
+</body>
+</html>

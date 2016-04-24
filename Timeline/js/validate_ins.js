@@ -93,7 +93,7 @@ $(document).ready(function(){
 			$.ajax({
 
 				type:'POST',
-				url:'script2.php',
+				url:'scripti.php',
 				data:"identifiant="+tmp,
 				success:function(msg){
 
