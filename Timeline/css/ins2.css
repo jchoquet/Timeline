@@ -1,0 +1,38 @@
+
+/* -------------- Formulaire inscription ----------------- */
+
+#ins {
+
+	margin-top: 5%;
+	border-radius: 5px;
+}
+
+#ins>button[type="submit"] {
+
+	margin-top: 6%;
+	background-color: #52b3da;
+    color: white;
+}
+
+#ins>button[type="submit"]:hover
+{
+	color : white;
+	background-color:#66CC33;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* -------------- Erreurs ----------------- */
+
+.errors{
+  float:right;
+  margin-left: 20px;
+  color : #a94442;
+}
+
+/* -------------- Erreurs ----------------- */
+
+.correct{
+  float:right;
+  margin-left: 20px;
+  color : #66CC33;
+}
