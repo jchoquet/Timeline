@@ -73,9 +73,9 @@
         
         
         <div class="form-group">
-        <label class="control-label col-sm-3" for="mdp" >Ancien mot de passe : </label>
+        <label class="control-label col-sm-3" for="omdp" >Ancien mot de passe : </label>
         <div class="col-sm-5">
-          <input class="form-control" type="password" name="Mot de passe" value="" />
+          <input class="form-control" type="password" name="Mot de passe" id="omdp" />
         </div>
         <div class="col-sm-4 errors" id="oldMdperror"></div>
         </div>
@@ -83,7 +83,7 @@
         <div class="form-group">
         <label class="control-label col-sm-3" for="Nmdp" >Nouveau mot de passe : </label>
         <div class="col-sm-5">
-          <input class="form-control" id="mdpc" type="password" name="New mot de passe" value="" />
+          <input class="form-control" id="nmdp" type="password" name="New mot de passe" />
         </div>
         <div class="col-sm-4 errors" id="newMdperror"></div>
         </div>
@@ -92,7 +92,7 @@
         <div class="form-group">
         <label class="control-label col-sm-3" for="mdpc" >Confirmez nouveau mot de passe : </label>
         <div class="col-sm-5">
-          <input class="form-control" id="mdpc" type="password" name="Conf new mot de passe" value=""  />
+          <input class="form-control" id="mdpc" type="password" name="Conf new mot de passe"  />
         </div>
          <div class="col-sm-4 errors" id="cnewMdperror"></div>
         </div>
