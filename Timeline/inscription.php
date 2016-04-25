@@ -21,7 +21,7 @@
 	<script src="js/bootstrap.js"></script>
 
 	<!-- fichier css perso -->
-	<link rel="stylesheet" href="css/ins2.css">
+	<link rel="stylesheet" href="css/inscription.css">
 
 	<!-- fichier JS validation formulaire -->
 	<script src="js/validate_ins.js"></script>

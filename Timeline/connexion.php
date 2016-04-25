@@ -9,7 +9,7 @@
     <metaname="keywords" lang="fr" content="photos, soirée, timeline, ENSIIE, iiens" />
 
      <!-- icone du titre de la page -->
-  <link rel="shortcut icon" href="fonts/icone2.jpg">
+    <link rel="shortcut icon" href="fonts/icone2.jpg">
      
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="css/bootstrap.css">
@@ -21,7 +21,7 @@
 	<script src="js/bootstrap.js"></script>
 
 	<!-- fichier css perso -->
-	<link rel="stylesheet" href="css/co2.css">
+	<link rel="stylesheet" href="css/connexion.css">
 
 	<!-- fichier JS validation formulaire -->
 	<script src="js/validate_co.js"></script>
@@ -46,7 +46,8 @@
     				<span class="errors" id="mdperrorc"></span>
     			</div>
     		
-    			<button class="btn btn-default btn-block" type="submit" name="connexion">Se connecter</button>
+    			<button class="btn btn-default btn-block" type="submit" id="connexion" name="connexion">Se connecter</button>
+    			<span class="errors" id="formerror"></span>
 
 			</div>
 
