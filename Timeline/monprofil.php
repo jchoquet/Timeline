@@ -19,7 +19,7 @@
 	 <link rel="stylesheet" href="css/bootstrap.css">
 
 	 <!-- jquery -->
-	 <script src="jquery_library.js"></script>
+	 <script src="js/jquery_library.js"></script>
 
 	 <!-- Latest compiled and minified JavaScript -->
 	 <script src="js/bootstrap.js"></script>
@@ -27,6 +27,9 @@
 	 <!-- fichier css perso -->
 	 <link rel="stylesheet" href="css/menu.css">
    <link rel="stylesheet" href="css/monprofil.css">
+
+   <!-- fichier JS validation formulaire -->
+   <script src="js/validate_modif.js"></script>
 
 </head>
 
@@ -52,11 +55,12 @@
           </div>
 
         <div class="form-group">
-        <label class="control-label col-sm-3" for="photo" > Modifier ma photo : </label>
+        <label class="control-label col-sm-3" for="avatar" > Modifier ma photo : </label>
             <div class="col-sm-5">
-             <input type="file" class="form-control" id="photo" />
+            <span class="btn btn-default btn-file"> Parcourir <input type="file" id="avatar" />
+             </span>
             </div>
-            <div class="col-sm-4 errors" id="photoerror"></div>
+            <div class="col-sm-4 errors" id="avatarerror"></div>
         </div>
         
         <div class="form-group">
