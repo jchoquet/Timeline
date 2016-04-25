@@ -1,67 +1,57 @@
-<!--http://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_carousel&stacked=h-->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Carousel</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <style>
-  .carousel-inner > .item > img,
-  .carousel-inner > .item > a > img {
-      width: 70%;
-      margin: auto;
-  }
-  </style>
-</head>
+ <?php
 
-<body>
+     function carousel($db, $sqlQuery) {
+     
+     $first = 0;     
+     $dbConnected = pg_connect($db);
+     $result = pg_query($dbConnected, $sqlQuery);
+     $photos = pg_fetch_all ($result);
+     
 
-<?php
+     echo '<div class="container">';
+     echo '<br>';
+     echo '<div id="myCarousel" class="carousel slide" data-ride="carousel">';
 
-function carousel($photos,$n) { 
-   print('<div class="container">');
-   print('<br>');
-   print('<div id="myCarousel" class="carousel slide" data-ride="carousel">');
+    #Indicators
+     $n = count($photos); #number of pictures to show
+     echo '<ol class="carousel-indicators">';
+     echo '<li data-target="#myCarousel" data-slide-to="0" class="active"></li>';
+     for ($i = 1; $i < $n; $i++){
+	echo "<li data-target='#myCarousel' data-slide-to='$i'></li>";
+     }
+     echo '</ol>';
+      
+    #Wrapper for slides
+     echo '<div class="carousel-inner" role="listbox">';
+	
+	
 
-  
-   #Images
-   
-   print('<div class="carousel-inner" role="listbox">');
-   foreach($photos as $pic)
-   {
-      print('<div class="item">');
-      print("<img src=$pic alt='img'>");
-      print('</div>');
-   }
-   print('</div>');
-  
+     foreach ($photos as $pic){
+      if ($first == 0){ echo '<div class="item active">'; }
+      else { echo '<div class="item">';}
+      echo "<img src='$pic' alt='Chania' width='460' height='345'>";
+      echo '</div>';
+      $first = 1;
+     }
 
+     echo '</div>';
+     
+     #Left and right controls
+     echo '<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">';
+     echo '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>';
+     echo '<span class="sr-only">Previous</span>';
+     echo'</a>';
+     echo'<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">';
+     echo'<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>';
+     echo'<span class="sr-only">Next</span>';
+     echo'</a>';
+     echo'</div>';
+     echo'</div>';
+     
+     pg_close($dbConnected);
+	
+     }#endfunction
 
-  #Left and right controls
-  
-  print('<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">');
-  print('<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>');
-  print('<span class="sr-only">Previous</span>');
-  print('</a>');
-  print('<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">');
-  print('<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>');
-  print('<span class="sr-only">Next</span>');
-  print('</a>');
-
-
-  print('</div>');
-  print('</div>');
-}
-
-#For testing
-#$pics = array("Img/1.png","Img/2.png","Img/3.gif","Img/4.jpeg","Img/5png","Img/6.jpeg");
-#carousel($pics,6);
-
-
+#usage : carousel("dbname=projet_web_h user=moi password=monsupermotdepasse", "SELECT idphoto FROM photos WHERE poster='Jean';");
 
 ?>
-
-</body>
