@@ -45,7 +45,7 @@
             <li><a href="#">Mes wins</a></li>
           </ul>
           <ul class="nav nav-sidebar navbar-static-bottom" id="d">
-            <li><a href="#">Déconnexion</a></li>
+            <li><a href="logout.php">Déconnexion</a></li>
           </ul>
         </div>
 

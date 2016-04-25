@@ -1,3 +1,7 @@
+<?php
+  session_start();
+?>
+
 <!DOCTYPE html >
 <html lang="fr">
   <head>
@@ -32,6 +36,7 @@
 
 	 	<h1 class="page-header"> Acceuil </h1>
 
+    <?php echo 'Login : '.$_SESSION['login'] ?>
 
  <?php include 'footer.php'; ?>
 

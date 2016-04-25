@@ -163,7 +163,13 @@ $(document).ready(function(){
 				url:'scripti.php',
 				data:"nom="+nom+"&prenom="+prenom+"&mdp="+mdp+"&id="+id+"&promo="+promo,
 				success:function(msg) {
-					$("#formerror").html(msg);
+
+					if(msg != "OK"){
+						$("#formerror").html(msg);
+					}
+					else{
+						window.location.replace("acceuil.php");
+					}
 				}
 			});
 		}

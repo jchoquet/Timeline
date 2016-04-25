@@ -65,7 +65,14 @@ try{
 
 		if($result)
 		{
-			echo "";
+
+			/* L'inscription est réussi, on démarre la session utilisateur, on garde en mem l'id */
+
+			session_start();
+			$_SESSION['login']=$id;
+			$_SESSION['pwd']=$mdp;
+
+			echo "OK";
 		}
         else{
             echo "Erreur inscription";
