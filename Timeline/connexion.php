@@ -32,7 +32,7 @@
     <div class="container-fluid">
 
     <!-- formulaire de connexion -->
-			<form id="co" class="col-md-offset-4 col-md-4" role="form">
+			<div id="co" class="col-md-offset-4 col-md-4">
 				
 				<div class="form-group">
 					<label for="identifiantc">Identifiant</label>
@@ -48,7 +48,7 @@
     		
     			<button class="btn btn-default btn-block" type="submit" name="connexion">Se connecter</button>
 
-			</form>
+			</div>
 
 </div>
 </body>

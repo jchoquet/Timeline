@@ -13,6 +13,18 @@ function checkIdentifiant($db,$id){
 	return $stmt->fetchColumn();
 }
 
+/* Fonction qui se charge de l'inscription */
+
+function inscriptionDB($db,$id,$nom,$promo,$mdp,$prenom){
+
+	$stmt = $db->prepare("INSERT INTO utilisateur(identifiant, mdp, nom, prenom, promo, surnom, quote) VALUES (:id, :mdp, :nom, :prenom, :promo, '', '')");
+	$stmt->bindParam(':id', $id);
+	$stmt->bindParam(':mdp', $mdp);
+	$stmt->bindParam(':nom', $nom);
+	$stmt->bindParam(':prenom', $prenom);
+	$stmt->bindParam(':promo', $promo);
+	return $stmt->execute();
+}
 
 try{
 
@@ -20,9 +32,9 @@ try{
 
 	$DB = new PDO("pgsql:host=localhost;dbname=projet_web", "postgres", "root");
 	
-	/* Si identifiant renseigné */
+	/* Si identifiant renseigné, on verifie s'il n'est pas déjà pris */
 
-	if(isset($_POST['identifiant']))
+	if(isset($_POST['identifiant']) && !(isset($_POST['mdp'])))
 	{
 
 		$id=$_POST['identifiant'];
@@ -38,6 +50,27 @@ try{
         }
 	}
 
+	/* Si tous les champs sont renseignés, on fait l'inscription */
+
+	if(isset($_POST['id']) && isset($_POST['nom']) && isset($_POST['promo']) && isset($_POST['mdp']) && isset($_POST['prenom']))
+	{
+		
+		$id=$_POST['id'];
+		$nom=$_POST['nom'];
+		$promo=$_POST['promo'];
+		$mdp=$_POST['mdp'];
+		$prenom=$_POST['prenom'];
+
+		$result=inscriptionDB($DB,$id,$nom,$promo,$mdp,$prenom);
+
+		if($result)
+		{
+			echo "";
+		}
+        else{
+            echo "Erreur inscription";
+        }
+	}
 	/* On ferme la connexion */
 
 	$DB = null;

@@ -32,7 +32,7 @@
 	<div class="container-fluid">
 	<!-- formulaire d'inscription -->
 
-			<form id="ins" class="col-md-offset-4 col-md-4" role="form">
+			<div id="ins" class="col-md-offset-4 col-md-4">
 				
 				<div class="form-group">
 					<label for="nom">Nom</label> 
@@ -76,7 +76,7 @@
 
     			
 
-			</form>
+			</div>
 
 
 </div>

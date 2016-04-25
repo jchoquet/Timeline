@@ -4,7 +4,7 @@ $(document).ready(function(){
 
 	var nom = "";
 	var prenom = "";
-	var promo = "";
+	var promo = 0;
 	var id = "";
 	var mdp = "";
 	var cmdp = "";
@@ -59,12 +59,12 @@ $(document).ready(function(){
 		else if (tmp.length != 4)
 		{
 			$("#promoerror").html("Format : YYYY");
-			promo = "";
+			promo = 0;
 		}
 		else if (tmp > 2018 || tmp < 1990)
 		{
 			$("#promoerror").html("Promo entre 1990 et 2018");
-			promo = "";
+			promo = 0;
 		}
 		else
 		{
@@ -148,4 +148,27 @@ $(document).ready(function(){
 		}
 	});
 
+
+	$("#inscription").click(function() {
+
+		if ( cmdp == "" || mdp == "" || id == "" || promo == 0 || nom == "" || prenom == "")
+		{
+			$("#formerror").html("Informations incorrectes");
+		}
+		else{
+			$("#formerror").html("");
+			$.ajax({
+
+				type:'POST',
+				url:'scripti.php',
+				data:"nom="+nom+"&prenom="+prenom+"&mdp="+mdp+"&id="+id+"&promo="+promo,
+				success:function(msg) {
+					$("#formerror").html(msg);
+				}
+			});
+		}
+	});
+
+
 });
+

@@ -14,6 +14,11 @@
     color: white;
 }
 
+#ins>button[type="submit"]>a{
+	color : white;
+	text-decoration: none;
+}
+
 #ins>button[type="submit"]:hover
 {
 	color : white;
@@ -36,3 +41,4 @@
   margin-left: 20px;
   color : #66CC33;
 }
+
