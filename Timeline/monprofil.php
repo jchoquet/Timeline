@@ -1,3 +1,9 @@
+<?php
+
+  session_start();
+
+?>
+
 <!DOCTYPE html >
 <html lang="fr">
   <head>
@@ -9,78 +15,95 @@
     <meta name="keywords" lang="fr" content="photos, soirée, timeline, ENSIIE, iiens" />
 
 
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="css/bootstrap.css">
+	 <!-- Latest compiled and minified CSS -->
+	 <link rel="stylesheet" href="css/bootstrap.css">
 
-	<!-- jquery -->
-	<script src="jquery_library.js"></script>
+	 <!-- jquery -->
+	 <script src="jquery_library.js"></script>
 
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="js/bootstrap.js"></script>
+	 <!-- Latest compiled and minified JavaScript -->
+	 <script src="js/bootstrap.js"></script>
 
-	<!-- fichier css perso -->
-	<link rel="stylesheet" href="css/index.css">
-
-	<!-- fichier JS validation formulaire -->
-	<script src="js/validate.js"></script>
+	 <!-- fichier css perso -->
+	 <link rel="stylesheet" href="css/menu.css">
+   <link rel="stylesheet" href="css/monprofil.css">
 
 </head>
 
 <body>
-<h1 class="page-header text-center"> Mon profil </h1>
- <?php include ("base.php"); ?>
 
-<div class="container-fluid">
-    <div class="tab-content">
-       <form class="col-md-offset-4 col-md-4">
-    	   
+
+ <?php include 'header.php'; ?>
+
+    <h1 class="page-header">Mon Profil</h1>
+
+     <div class="container-fluid">
+
+     <!-- formulaire de modification -->
+      <form id="modif" class="form-horizontal" role="form">
+      
  
-              <div class="form-group">
-              <label for="surnom" > Modifier mon Surnom : </label>
-                  <input type="text" class="form-control" id="text">
-                  <span class="errors" id="iderror"></span> 
-              </div>
-
-            <div class="form-group">
-            <label for="photo" > Modifier ma photo : </label>
-                 <input type="textarea" class="form-control" id="textarea">
-                 <span class="errors" id="iderror"></span> 
-            </div>
-            
-            <div class="form-group">
-            <label for="quote" class >Modifier ma quote : </label>
-              <textarea class="form-control" id="textarea"></textarea>
-              <span class="errors" id="iderror"></span> 
-            </div>
-            
-            <div class="form-group">
-      <label for="mdp" >Ancien Mot de Passe : </label>
-        <input class="form-control" type="password" name="Mot de passe" value="" required/>
-        <span class="errors" id="iderror"></span>
-    </div>
-
-
-    <div class="form-group">
-    <label for="Nmdp" >Nouveau Mot de Passe : </label>
-        <input class="form-control" id="mdpc" type="password" name="Mot de passe" value="" required/>
-        <span class="errors" id="iderror"></span>
-    </div>
-
-    <div class="form-group">
-    <label for="mdp" >Confirmez votre nouveau Mot de Passe : </label>
-        <input class="form-control" id="mdpc" type="password" name="Mot de passe" value="" required/>
-        <span class="errors" id="iderror"></span>
-    </div>
-                   
         <div class="form-group">
-            <button class="btn btn-lg btn-success pull-right">Balance!</button>
-        </div>
-        </br>	
-        </br>	
-        </br>	
-</form>
-		</div>
-   </div>
+          <label class="control-label col-sm-3" for="surnom" > Modifier mon surnom : </label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control" id="surnom" />
+              </div>
+              <div class="col-sm-4 errors" id="surerror"></div>
+          </div>
 
-</body>
-</html>
+        <div class="form-group">
+        <label class="control-label col-sm-3" for="photo" > Modifier ma photo : </label>
+            <div class="col-sm-5">
+             <input type="file" class="form-control" id="photo" />
+            </div>
+            <div class="col-sm-4 errors" id="photoerror"></div>
+        </div>
+        
+        <div class="form-group">
+        <label class="control-label col-sm-3" for="quote" class >Modifier ma quote : </label>
+        <div class="col-sm-5">
+          <textarea class="form-control" id="quote"></textarea>
+        </div>
+        <div class="col-sm-4 errors" id="quoteerror"></div> 
+        </div>
+        
+        
+        <div class="form-group">
+        <label class="control-label col-sm-3" for="mdp" >Ancien mot de passe : </label>
+        <div class="col-sm-5">
+          <input class="form-control" type="password" name="Mot de passe" value="" />
+        </div>
+        <div class="col-sm-4 errors" id="oldMdperror"></div>
+        </div>
+        
+        <div class="form-group">
+        <label class="control-label col-sm-3" for="Nmdp" >Nouveau mot de passe : </label>
+        <div class="col-sm-5">
+          <input class="form-control" id="mdpc" type="password" name="New mot de passe" value="" />
+        </div>
+        <div class="col-sm-4 errors" id="newMdperror"></div>
+        </div>
+        
+
+        <div class="form-group">
+        <label class="control-label col-sm-3" for="mdpc" >Confirmez nouveau mot de passe : </label>
+        <div class="col-sm-5">
+          <input class="form-control" id="mdpc" type="password" name="Conf new mot de passe" value=""  />
+        </div>
+         <div class="col-sm-4 errors" id="cnewMdperror"></div>
+        </div>
+
+      <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-5">          
+        <button class="btn btn-default btn-block" type="submit" id="modifB" name="modifB">Changer !</button>
+        <span class="errors" id="formerror"></span>
+      </div>
+      </div>
+
+
+  </form>
+
+	</div>
+
+
+ <?php include 'footer.php'; ?>

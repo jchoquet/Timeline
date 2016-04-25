@@ -13,7 +13,7 @@
     <metaname="keywords" lang="fr" content="photos, soirée, timeline, ENSIIE, iiens" />
 
      <!-- icone du titre de la page -->
-  <link rel="shortcut icon" href="fonts/icone2.jpg">
+   <link rel="shortcut icon" href="fonts/icone2.jpg">
      
 	 <!-- jquery -->
 	 <script src="js/jquery_library.js"></script>
@@ -34,9 +34,9 @@
 
  <?php include 'header.php'; ?>
 
-	 	<h1 class="page-header"> Acceuil </h1>
+	 	<h3 class="page-header"> Accueil </h3>
 
-    <?php echo 'Login : '.$_SESSION['login'] ?>
+   
 
  <?php include 'footer.php'; ?>
 

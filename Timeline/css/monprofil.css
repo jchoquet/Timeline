@@ -1,0 +1,41 @@
+
+/*
+ * Main content
+ */
+
+.main {
+  padding: 20px;
+}
+@media (min-width: 768px) {
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+.main .page-header {
+  margin-top: 0;
+  font-size: 1.2em;
+}
+
+/* -------------- Formulaire connexion----------------- */
+
+
+#modifB{
+	
+	background-color: #52b3da;
+    color: white;
+}
+
+#modifB:hover
+{
+	color : white;
+	background-color:#66CC33;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* -------------- Erreurs ----------------- */
+
+.col-sm-4 errors{
+  margin-left: 20px;
+  color : #a94442;
+}

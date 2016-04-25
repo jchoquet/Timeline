@@ -39,7 +39,7 @@
             </div>
           </div>
           <ul class="nav nav-sidebar">
-            <li><a href="#">Mon profil</a></li>
+            <li><a href="monprofil.php">Mon profil</a></li>
             <li><a href="#">Mes posts</a></li>
             <li><a href="#">Mes identifications</a></li>
             <li><a href="#">Mes wins</a></li>
