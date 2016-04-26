@@ -43,7 +43,7 @@
      <div class="container-fluid">
 
      <!-- formulaire de modification -->
-      <form id="modif" class="form-horizontal" role="form">
+      <div id="modif" class="form-horizontal">
       
  
         <div class="form-group">
@@ -81,7 +81,7 @@
         </div>
         
         <div class="form-group">
-        <label class="control-label col-sm-3" for="Nmdp" >Nouveau mot de passe : </label>
+        <label class="control-label col-sm-3" for="nmdp" >Nouveau mot de passe : </label>
         <div class="col-sm-5">
           <input class="form-control" id="nmdp" type="password" name="New mot de passe" />
         </div>
@@ -101,11 +101,12 @@
       <div class="col-sm-offset-3 col-sm-5">          
         <button class="btn btn-default btn-block" type="submit" id="modifB" name="modifB">Changer !</button>
         <span class="errors" id="formerror"></span>
+        <span class="correct" id="formcorrect"></span>
       </div>
       </div>
 
 
-  </form>
+  </div>
 
 	</div>
 

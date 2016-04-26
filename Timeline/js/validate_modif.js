@@ -9,7 +9,8 @@ $(document).ready(function(){
 	var cnmdp = "";
 	var quote = "";
 
-	/* Vérification format formulaire modification */
+	/* Vérification format formulaire avant modification */
+	
 	$("#surnom").keyup(function() {
 		
 		var tmp = $(this).val();
@@ -89,5 +90,68 @@ $(document).ready(function(){
 			quote = tmp;
 		}
 	});
+
+	$("#omdp").keyup(function() {
+
+		var tmp = $(this).val();
+
+		if(tmp == "" || (tmp.length < 8)) 
+		{
+			$("#oldMdperror").html("Rappel format : Taille >= 8 caractères");
+			omdp = "";
+		}
+		else
+		{
+			$("#oldMdperror").html("");
+			$.ajax({
+
+				type:'POST',
+				url:'scriptm.php',
+				data:"oldmdp="+tmp,
+				success:function(msg){
+
+				    if(msg == "OK")
+				    {
+					$("#oldMdperror").html("");
+					omdp = tmp;
+				    }
+				    else
+				    {
+					$("#oldMdperror").html(msg);
+					omdp = "";
+				    }
+				}
+			});
+		}
+	});
+
+	$("#modifB").click(function() {
+
+		if ( surnom == "" || avatar == "" || omdp == "" || nmdp == "" || cnmdp == "" || quote == "")
+		{
+			$("#formerror").html("Informations incorrectes");
+		}
+		else{
+			$("#formerror").html("");
+			$.ajax({
+
+				type:'POST',
+				url:'scriptm.php',
+				data:"surnom="+surnom+"&avatar="+avatar+"&nmdp="+nmdp+"&quote="+quote,
+				success:function(msg) {
+
+					if(msg != "OK"){
+						$("#formerror").html(msg);
+					}
+					else{
+						$("#formcorrect").html("Modifications prises en compte !");
+					}
+				}
+			});
+		}
+	});
+	
+
+
 
 });
