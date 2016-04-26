@@ -3,7 +3,7 @@
 
 /* Fonction qui vérifie si l'identifiant n'est pas déjà pris (renvoie 1) sinon 0 */
 
-function checkIdentifiant($db,$id){
+function checkIdentifiantUser($db,$id){
 
 	/* On prépare la requête pour éviter les injections SQL */
 	
@@ -15,7 +15,7 @@ function checkIdentifiant($db,$id){
 
 /* Fonction qui se charge de l'inscription */
 
-function inscriptionDB($db,$id,$nom,$promo,$mdp,$prenom){
+function inscriptionUser($db,$id,$nom,$promo,$mdp,$prenom){
 
 	$stmt = $db->prepare("INSERT INTO utilisateur(identifiant, mdp, nom, prenom, promo, surnom, quote, avatar) VALUES (:id, :mdp, :nom, :prenom, :promo, '', '', '')");
 	$stmt->bindParam(':id', $id);
@@ -39,7 +39,7 @@ try{
 
 		$id=$_POST['identifiant'];
 
-		$result=checkIdentifiant($DB, $id);
+		$result=checkIdentifiantUser($DB, $id);
 
 		if($result == 1)
 		{
@@ -61,7 +61,7 @@ try{
 		$mdp=$_POST['mdp'];
 		$prenom=$_POST['prenom'];
 
-		$result=inscriptionDB($DB,$id,$nom,$promo,$mdp,$prenom);
+		$result=inscriptionUser($DB,$id,$nom,$promo,$mdp,$prenom);
 
 		if($result)
 		{

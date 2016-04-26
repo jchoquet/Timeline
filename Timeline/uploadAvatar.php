@@ -7,7 +7,7 @@ session_start();
     retourne un array(message d'erreur ou OK, extension de l'avatar)
 */
 
-function validateUpload() {
+function validateAvatar() {
 
   $msg="";
   $id=$_SESSION['login'];
@@ -55,7 +55,7 @@ function validateUpload() {
 
 /* Fonction qui insère dans la base de données l'extension de l'avatar de l'user d'identifiant $id */
 
-function uploadAvatarDB($db,$id,$extension){
+function uploadAvatarUser($db,$id,$extension){
 
   $stmt = $db->prepare("UPDATE utilisateur SET avatar=:ext WHERE identifiant=:id");
   $stmt->bindParam(':id', $id);
@@ -69,7 +69,7 @@ function uploadAvatarDB($db,$id,$extension){
 
 /* On récupère le résultat de validateUpload() */
 
-  $reponse=validateUpload();
+  $reponse=validateAvatar();
   $msg=$reponse[0];
   $extension=$reponse[1];
   $affichage="";
@@ -91,7 +91,7 @@ function uploadAvatarDB($db,$id,$extension){
         $DB = new PDO("pgsql:host=localhost;dbname=projet_web", "postgres", "root");
         
         
-        $result=uploadAvatarDB($DB,$id,$extension);
+        $result=uploadAvatarUser($DB,$id,$extension);
 
         if($result)
         {

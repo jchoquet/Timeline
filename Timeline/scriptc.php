@@ -2,7 +2,7 @@
 
 /* Fonction qui se charge de l'inscription */
 
-function connexionDB($db,$id,$mdp){
+function connexionUser($db,$id,$mdp){
 
 	/* On prépare la requête pour éviter les injections SQL */
 	
@@ -30,7 +30,7 @@ try{
 		$id=$_POST['id'];
 		$mdp=$_POST['mdp'];
 
-		$result=connexionDB($DB,$id,$mdp);
+		$result=connexionUser($DB,$id,$mdp);
 
 		/* On arrive jusque ici */	
 

@@ -3,7 +3,6 @@ $(document).ready(function(){
 	/* variables modification */
 
 	var surnom = "";
-	var avatar = "";
 	var omdp = "";
 	var nmdp = "";
 	var cnmdp = "";
@@ -67,8 +66,6 @@ $(document).ready(function(){
 	});
 
 
-
-
 	$("#quote").keyup(function() {
 		
 		var tmp = $(this).val();
@@ -128,7 +125,7 @@ $(document).ready(function(){
 
 	$("#modifB").click(function() {
 
-		if ( surnom == "" || avatar == "" || omdp == "" || nmdp == "" || cnmdp == "" || quote == "")
+		if ( surnom == "" || omdp == "" || nmdp == "" || cnmdp == "" || quote == "")
 		{
 			$("#formerror").html("Informations incorrectes");
 		}
@@ -138,7 +135,7 @@ $(document).ready(function(){
 
 				type:'POST',
 				url:'scriptm.php',
-				data:"surnom="+surnom+"&avatar="+avatar+"&nmdp="+nmdp+"&quote="+quote,
+				data:"surnom="+surnom+"&oldmdp="+omdp+"&nmdp="+nmdp+"&quote="+quote,
 				success:function(msg) {
 
 					if(msg != "OK"){
