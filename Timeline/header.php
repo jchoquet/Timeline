@@ -40,7 +40,7 @@
       }
       else
       {
-        $msg="erreur";
+        $msg="Tanche";
       }
 
       if($extension != "")
@@ -49,7 +49,7 @@
       }
       else
       {
-        $avatar="font/im_pro";
+        $avatar="fonts/im_pro.jpg";
       }
       
       $DB = null;
@@ -61,6 +61,12 @@
       $msg="Database Error";
     }
 
+    /* Rubriques qui n'apparaissent que si on est connecté avec le compte administrateur */
+    $admin="";
+
+    if($id ="administrat"){
+      $admin="<li><a href=\"admin_gestion.php\">Gestion</a></li>";
+    }
     
 ?>
 
@@ -88,6 +94,7 @@
             <li><a href="concours.php">Concours</a></li>
             <li><a href="ajout.php">Ajout</a></li>
             <li><a href="contact.php">Contact</a></li>
+            <?php echo $admin; ?>
           </ul>
         </div>
 
