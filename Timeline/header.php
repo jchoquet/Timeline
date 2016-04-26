@@ -1,3 +1,51 @@
+<?php 
+    
+    $id=$_SESSION['login'];
+    $surnom="";
+    $msg="";
+
+    function surnomUserLeftBar($db, $id) {
+
+      /* On ne prépare pas la requête car l'id est déjà safe */
+
+      $stmt = $db->query("SELECT surnom FROM utilisateur WHERE identifiant='$id'");
+      $stmt->setFetchMode(PDO::FETCH_OBJ);
+      $stmt = $stmt->fetch();
+      return $stmt->surnom;
+
+    }
+
+
+    try{
+
+      /* Connexion à la base de données avec PDO */
+
+       $DB = new PDO("pgsql:host=localhost;dbname=projet_web", "postgres", "root");
+
+      $surnom=surnomUserLeftBar($DB,$id);
+
+      if($surnom != "")
+      {
+        $msg=$surnom;
+      }
+      else
+      {
+        $msg="erreur";
+      }
+
+      
+      $DB = null;
+    
+
+    }
+
+    catch(PDOException $e){
+      $msg="Database Error";
+    }
+
+    
+?>
+
 
   <!-- barre de navigation -->
      <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -35,7 +83,7 @@
           <div class="thumbnail">
             <img alt="profil" src="fonts/im_pro.jpg"/>
             <div class="caption">
-              <p>Surnom</p>
+              <p> <?php echo $msg; ?></p>
             </div>
           </div>
           <ul class="nav nav-sidebar">
