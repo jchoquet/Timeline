@@ -1,5 +1,14 @@
 <?php
+
   session_start();
+/* On traite le cas où user lambda accède à la partie admin */
+
+  $id=$_SESSION['login'];
+
+  if($id != "administrat")
+  {
+  	header('location: connexion.php');
+  }
 ?>
 
 <!DOCTYPE html >

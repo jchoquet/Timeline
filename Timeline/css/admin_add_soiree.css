@@ -1,0 +1,20 @@
+#submit 
+{
+	background-color: #52b3da;
+  color: white;
+}
+
+#submit:hover
+{
+	color : white;
+	background-color:#66CC33;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+.form-group{
+margin-top: 30px;
+}
+
+form {
+	margin-top: 50px;
+}
