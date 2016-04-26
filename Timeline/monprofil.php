@@ -99,7 +99,7 @@
 
   </div>
 
-  <form method="post" action="test.php" enctype="multipart/form-data" id="modifPhoto" class="form-horizontal" >
+  <form method="post" action="uploadAvatar.php" enctype="multipart/form-data" id="modifPhoto" class="form-horizontal" >
 
    <div class="form-group">
         <label class="control-label col-sm-3" for="avatar" > Modifier ma photo : </label>
