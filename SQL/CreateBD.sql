@@ -97,3 +97,10 @@ CONSTRAINT lien_photo FOREIGN KEY (IdPhoto) REFERENCES Photo(IdPhoto),
 CONSTRAINT lien_utilisateur FOREIGN KEY (IdUtilisateur) REFERENCES Utilisateur(Identifiant)
 
 );
+
+
+CREATE SEQUENCE photo_id_seq;
+ALTER TABLE photo ALTER idphoto SET DEFAULT NEXTVAL('photo_id_seq');
+
+CREATE SEQUENCE soiree_id_seq;
+ALTER TABLE soiree ALTER idsoiree SET DEFAULT NEXTVAL('soiree_id_seq');
