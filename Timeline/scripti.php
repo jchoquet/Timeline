@@ -17,7 +17,7 @@ function checkIdentifiant($db,$id){
 
 function inscriptionDB($db,$id,$nom,$promo,$mdp,$prenom){
 
-	$stmt = $db->prepare("INSERT INTO utilisateur(identifiant, mdp, nom, prenom, promo, surnom, quote) VALUES (:id, :mdp, :nom, :prenom, :promo, '', '')");
+	$stmt = $db->prepare("INSERT INTO utilisateur(identifiant, mdp, nom, prenom, promo, surnom, quote, avatar) VALUES (:id, :mdp, :nom, :prenom, :promo, '', '', '')");
 	$stmt->bindParam(':id', $id);
 	$stmt->bindParam(':mdp', $mdp);
 	$stmt->bindParam(':nom', $nom);

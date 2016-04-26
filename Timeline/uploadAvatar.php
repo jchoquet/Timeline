@@ -3,6 +3,9 @@
 session_start();
 
 
+/* Fonction qui va déterminer si l'avatar est au bon format avant de le télécharger dans users/avatar/id.extension
+    retourne un array(message d'erreur ou OK, extension de l'avatar)
+*/
 
 function validateUpload() {
 
@@ -35,7 +38,7 @@ function validateUpload() {
         $resultat= move_uploaded_file($_FILES['avatar']['tmp_name'], $chemin);
         if($resultat)
         {
-          $msg="Votre avatar a bien été modifié !";
+          $msg="OK";
         }
         else
         {
@@ -46,8 +49,67 @@ function validateUpload() {
     }
   } 
 
-  return $msg;
+  $reponse=array($msg, $extension_upload);
+  return $reponse;
 }
+
+/* Fonction qui insère dans la base de données l'extension de l'avatar de l'user d'identifiant $id */
+
+function uploadAvatarDB($db,$id,$extension){
+
+  $stmt = $db->prepare("UPDATE utilisateur SET avatar=:ext WHERE identifiant=:id");
+  $stmt->bindParam(':id', $id);
+  $stmt->bindParam(':ext', $extension);
+  return $stmt->execute();
+}
+
+/* Corps du fichier */
+
+  $id=$_SESSION['login'];
+
+/* On récupère le résultat de validateUpload() */
+
+  $reponse=validateUpload();
+  $msg=$reponse[0];
+  $extension=$reponse[1];
+  $affichage="";
+
+  if($msg != "OK") 
+  {
+    
+    /* Cas où le format n'était pas correct, affichage du message d'erreur */
+
+    $affichage=$msg;
+  }
+  else 
+  {
+
+    try{
+
+        /* Connexion */
+
+        $DB = new PDO("pgsql:host=localhost;dbname=projet_web", "postgres", "root");
+        
+        
+        $result=uploadAvatarDB($DB,$id,$extension);
+
+        if($result)
+        {
+          $affichage="Votre avatar a été modifié avec succès !";
+        }
+        else
+        {
+          $affichage="Erreur, retentez l'upload en cliquant sur Mon profil !";
+        }
+        
+        /* On ferme la connexion */
+
+        $DB = null;
+      }
+      catch(PDOException $e){
+        echo "Database Error";
+      }
+  }
 
 ?>
 
@@ -85,7 +147,7 @@ function validateUpload() {
     <h3 class="page-header">Mon profil</h3>
 
     <div class="container-fluid">
-        <h2> <?php echo validateUpload(); ?> </h2>
+        <h2> <?php echo $affichage; ?> </h2>
     </div>   
 
  <?php include 'footer.php'; ?>
