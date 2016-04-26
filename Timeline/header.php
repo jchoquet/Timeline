@@ -3,6 +3,7 @@
     $id=$_SESSION['login'];
     $surnom="";
     $msg="";
+    $extension="";
 
     function surnomUserLeftBar($db, $id) {
 
@@ -15,6 +16,14 @@
 
     }
 
+    function avatarUserLeftBar($db, $id) {
+
+      $stmt = $db->query("SELECT avatar FROM utilisateur WHERE identifiant='$id'");
+      $stmt->setFetchMode(PDO::FETCH_OBJ);
+      $stmt = $stmt->fetch();
+      return $stmt->avatar;
+
+    }
 
     try{
 
@@ -23,6 +32,7 @@
        $DB = new PDO("pgsql:host=localhost;dbname=projet_web", "postgres", "root");
 
       $surnom=surnomUserLeftBar($DB,$id);
+      $extension=avatarUserLeftBar($DB,$id);
 
       if($surnom != "")
       {
@@ -33,6 +43,14 @@
         $msg="erreur";
       }
 
+      if($extension != "")
+      {
+        $avatar="users/avatar/{$id}.{$extension}";
+      }
+      else
+      {
+        $avatar="font/im_pro";
+      }
       
       $DB = null;
     
@@ -81,7 +99,7 @@
   <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <div class="thumbnail">
-            <img alt="profil" src="fonts/im_pro.jpg"/>
+            <img alt="profil" src=<?php echo $avatar; ?> />
             <div class="caption">
               <p> <?php echo $msg; ?></p>
             </div>
