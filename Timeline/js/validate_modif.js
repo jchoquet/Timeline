@@ -125,6 +125,7 @@ $(document).ready(function(){
 		}
 	});
 
+
 	$("#modifB").click(function() {
 
 		if ( surnom == "" || avatar == "" || omdp == "" || nmdp == "" || cnmdp == "" || quote == "")

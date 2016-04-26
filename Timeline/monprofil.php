@@ -42,10 +42,9 @@
 
      <div class="container-fluid">
 
-     <!-- formulaire de modification -->
+     <!-- formulaire de modification des infos autres que photo-->
       <div id="modif" class="form-horizontal">
       
- 
         <div class="form-group">
           <label class="control-label col-sm-3" for="surnom" > Modifier mon surnom : </label>
               <div class="col-sm-5">
@@ -54,14 +53,6 @@
               <div class="col-sm-4 errors" id="surerror"></div>
           </div>
 
-        <div class="form-group">
-        <label class="control-label col-sm-3" for="avatar" > Modifier ma photo : </label>
-            <div class="col-sm-5">
-            <span class="btn btn-default btn-file"> Parcourir <input type="file" id="avatar" />
-             </span>
-            </div>
-            <div class="col-sm-4 errors" id="avatarerror"></div>
-        </div>
         
         <div class="form-group">
         <label class="control-label col-sm-3" for="quote" class >Modifier ma quote : </label>
@@ -108,7 +99,26 @@
 
   </div>
 
-	</div>
+  <form method="post" action="test.php" enctype="multipart/form-data" id="modifPhoto" class="form-horizontal" >
+
+   <div class="form-group">
+        <label class="control-label col-sm-3" for="avatar" > Modifier ma photo : </label>
+            <div class="col-sm-5">
+            <input type="hidden" name="MAX_FILE_SIZE" value="2097152" />
+            <span class="btn btn-default btn-file"> Parcourir <input type="file" id="avatar" name="avatar" />
+             </span>
+            </div>
+            <div class="col-sm-4 errors" id="avatarerror">
+            </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-5">          
+        <button class="btn btn-default btn-block" type="submit" id="modifBP" name="modifBP">Changer !</button>
+      </div>
+    </div>
+
+	</form>
 
 
  <?php include 'footer.php'; ?>

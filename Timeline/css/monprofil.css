@@ -1,8 +1,5 @@
 
-/*
- * Main content
- */
-
+/* -------------- Main ----------------- */
 .main {
   padding: 20px;
 }
@@ -17,21 +14,22 @@
   font-size: 1.2em;
 }
 
-/* -------------- Formulaire connexion----------------- */
+/* -------------- Formulaires MODIFICATION ----------------- */
 
 
-#modifB{
-	
+#modifB, #modifBP 
+{
 	background-color: #52b3da;
     color: white;
 }
 
-#modifB:hover
+#modifB:hover, #modifBP:hover
 {
 	color : white;
 	background-color:#66CC33;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
 }
+
 
 /* Bouton file nested */
 
@@ -73,3 +71,5 @@ margin-top: 30px;
   padding-top: 10px;
   color : #66CC33;
 }
+
+
