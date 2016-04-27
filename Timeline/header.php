@@ -1,5 +1,7 @@
 <?php 
     
+    session_start();
+    
     $id=$_SESSION['login'];
     $surnom="";
     $msg="";
@@ -62,10 +64,13 @@
     }
 
     /* Rubriques qui n'apparaissent que si on est connecté avec le compte administrateur */
-    $admin="";
+  
 
-    if($id ="administrat"){
+    if($id == "administrat"){
       $admin="<li><a href=\"admin_gestion.php\">Gestion</a></li>";
+    }
+    else{
+      $admin="";
     }
     
 ?>

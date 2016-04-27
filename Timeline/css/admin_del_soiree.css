@@ -22,11 +22,3 @@ margin-top: 30px;
 form {
 	margin-top: 50px;
 }
-
-
-/* -------------- Erreurs ----------------- */
-
-.errors{
-  color : #a94442;
-  padding-top: 10px;
-}

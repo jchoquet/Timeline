@@ -10,8 +10,6 @@
   	header('location: connexion.php');
   }
 
-  
-
 ?>
 
 <!DOCTYPE html >
@@ -33,14 +31,11 @@
 	 <!-- Latest compiled and minified JavaScript -->
 	 <script src="js/bootstrap.js"></script>
 
-	 <!-- JS validation formulaire -->
-	 <script src="js/validate_add_soiree.js"></script>
-
-   	 <!-- Latest compiled and minified CSS -->
-   	 <link rel="stylesheet" href="css/bootstrap.css">
+   <!-- Latest compiled and minified CSS -->
+   	<link rel="stylesheet" href="css/bootstrap.css">
 	 <!-- fichier css menu -->
 	 <link rel="stylesheet" href="css/menu.css">
-	 <link rel="stylesheet" href="css/admin_add_soiree.css">
+	 <link rel="stylesheet" href="css/admin_del_soiree.css">
 
 </head>
 
@@ -49,47 +44,41 @@
 
  <?php include 'header.php'; ?>
 
-	 	<h3 class="page-header"> Gestion administrateur - Ajout d'une soirée</h3>
+	 	<h3 class="page-header"> Gestion administrateur - Suppression d'une soirée</h3>
 
-	 	<div id="addSoiree" class="form-horizontal" >
+	 	<form method="post" action="" enctype="multipart/form-data" id="addSoiree" class="form-horizontal" >
 
+	 	<!-- faire un menu déroulant -->
 		   <div class="form-group">
-		        <label class="control-label col-sm-3" for="date" > Date : </label>
+		        <label class="control-label col-sm-3" for="annee" > Année : </label>
 		            <div class="col-sm-5">
-		   				<input class="form-control" id="date" type="date" name="date"  />
+		   				<input class="form-control" id="annee" type="number" name="annee"  />
         			</div>
-        			<div class="col-sm-4 errors" id="dateerror"></div> 
 		   </div>
+
+		<!-- faire un menu déroulant -->
 			<div class="form-group">
 		        <label class="control-label col-sm-3" for="theme" > Thème : </label>
 		            <div class="col-sm-5">
-		   				<input class="form-control" id="theme" type="text" name="theme"  />
+		   				<input class="form-control" id="theme" type="text" name="annee"  />
         			</div>
-        			<div class="col-sm-4 errors" id="themeerror"></div> 
-		   </div>
-		   <div class="form-group">
-		        <label class="control-label col-sm-3" for="description" > Description : </label>
-		            <div class="col-sm-5">
-		   				<textarea class="form-control" id="description" name="description"  ></textarea>
-        			</div>
-        			<div class="col-sm-4 errors" id="descrierror"></div> 
 		   </div>
 
+		<!-- Confirmation identité administrateur  -->
 		   <div class="form-group">
 		        <label class="control-label col-sm-3" for="mdp" > Mot de passe : </label>
 		            <div class="col-sm-5">
 		   				<input type="password" class="form-control" id="mdp" name="mdp" />
         			</div>
-        			<div class="col-sm-4 errors" id="mdperror"></div> 
 		   </div>
-		   
+
 		    <div class="form-group">
 		      <div class="col-sm-offset-3 col-sm-5">          
-		        <button class="btn btn-default btn-block" type="submit" id="submit" name="submit">Ajouter</button>
+		        <button class="btn btn-default btn-block" type="submit" id="submit" name="submit">Supprimer</button>
 		      </div>
 		    </div>
 
-		</div>
+		</form>
 
 
    

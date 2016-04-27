@@ -49,7 +49,6 @@
 	 		<ul>
 	 			<li><a href="admin_add_soiree.php">Ajout d'une soirée</a></li>
 	 			<li><a href="admin_del_soiree.php">Suppression d'une soirée</a></li>
-	 			<li><a href="admin_del_photo.php">Suppression d'une photo</a></li>
 	 		</ul>
 	 	</div>
    
