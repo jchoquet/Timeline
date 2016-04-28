@@ -10,6 +10,45 @@
   	header('location: connexion.php');
   }
 
+  /* Fonction qui renvoie un tableau contenant les années présentes dans soiree */
+
+  function getAnnee($db){
+
+      $stmt = $db->prepare("SELECT DISTINCT annee FROM soiree ORDER BY annee DESC");
+      $stmt->execute();
+      $stmt->setFetchMode(PDO::FETCH_NUM);
+      $result = $stmt->fetchAll();
+      return $result;
+  }
+
+  /* Fonction qui crée le bouton select année */
+
+  function printAnnee($tab){
+
+  	foreach($tab as $a)
+  	{
+  		foreach ($a as $b) 
+  		{
+  			echo "<option value='$b'>$b</option>" . PHP_EOL;
+  		}
+  	}
+  }
+
+
+  try{
+
+
+		$DB = new PDO("pgsql:host=localhost;dbname=projet_web", "postgres", "root");
+
+		$tab=getAnnee($DB);
+
+		$DB = null;
+	}
+	catch(PDOException $e){
+		echo "Database Error";
+	}
+
+
 ?>
 
 <!DOCTYPE html >
@@ -31,8 +70,8 @@
 	 <!-- Latest compiled and minified JavaScript -->
 	 <script src="js/bootstrap.js"></script>
 
-   <!-- Latest compiled and minified CSS -->
-   	<link rel="stylesheet" href="css/bootstrap.css">
+   	 <!-- Latest compiled and minified CSS -->
+     <link rel="stylesheet" href="css/bootstrap.css">
 	 <!-- fichier css menu -->
 	 <link rel="stylesheet" href="css/menu.css">
 	 <link rel="stylesheet" href="css/admin_del_soiree.css">
@@ -46,13 +85,15 @@
 
 	 	<h3 class="page-header"> Gestion administrateur - Suppression d'une soirée</h3>
 
-	 	<form method="post" action="" enctype="multipart/form-data" id="addSoiree" class="form-horizontal" >
+	 	<form method="post" action="" enctype="multipart/form-data" id="delSoiree" class="form-horizontal" >
 
-	 	<!-- faire un menu déroulant -->
+	 	
 		   <div class="form-group">
 		        <label class="control-label col-sm-3" for="annee" > Année : </label>
 		            <div class="col-sm-5">
-		   				<input class="form-control" id="annee" type="number" name="annee"  />
+		   				<select name="annee">
+		   					<?php printAnnee($tab); ?>
+		   				</select>
         			</div>
 		   </div>
 
