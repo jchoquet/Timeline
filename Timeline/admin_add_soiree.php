@@ -86,6 +86,8 @@
 		    <div class="form-group">
 		      <div class="col-sm-offset-3 col-sm-5">          
 		        <button class="btn btn-default btn-block" type="submit" id="submit" name="submit">Ajouter</button>
+		        <span class="errors" id="formerror"></span>
+        		<span class="correct" id="formcorrect"></span>
 		      </div>
 		    </div>
 

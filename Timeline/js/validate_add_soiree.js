@@ -137,5 +137,31 @@ function getYear(date) {
 	});
 
 
+	$("#submit").click(function() {
+
+		if ( date == "" || theme == "" || description == "" || annee == 0 || mdp == "")
+		{
+			$("#formerror").html("Informations incorrectes");
+		}
+		else{
+			$("#formerror").html("");
+			$.ajax({
+
+				type:'POST',
+				url:'script_add_soiree.php',
+				data:"d="+date+"&theme="+theme+"&mdp="+mdp+"&annee="+annee+"&description="+description,
+				success:function(msg) {
+
+					if(msg != "OK"){
+						$("#formerror").html(msg);
+					}
+					else{
+						$("#formcorrect").html("Soirée ajoutée !");
+					}
+				}
+			});
+		}
+	});
+
 });
 
