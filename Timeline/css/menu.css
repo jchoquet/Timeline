@@ -81,6 +81,12 @@ body {
 	text-align: center;
 }
 
+/* Icones */
+.glyphicon{
+
+  color : #52b3da;
+  padding-right: 8px;
+}
 
 /* -------------- Main ----------------- */
 .main {
