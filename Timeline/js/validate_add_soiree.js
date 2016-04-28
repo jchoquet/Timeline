@@ -1,10 +1,29 @@
 $(document).ready(function(){
 
+function validateDate(date) {
+    var test = /^(\d{4})[-\/](\d{2})[-\/](\d{2})$/.exec(date);
+    if (test == null) return false;
+    var d = test[3];
+    var m = test[2] - 1;
+    var y = test[1] ;
+    var nDate = new Date(y, m, d);
+    return nDate.getDate() == d &&
+            nDate.getMonth() == m &&
+            nDate.getFullYear() == y;
+}
+
+function getYear(date) {
+	var test = /^(\d{4})[-\/](\d{2})[-\/](\d{2})$/.exec(date);
+	var y = test[1] ;
+	return y;
+}
 
 	var date = "";
 	var theme = "";
 	var description = "";
 	var mdp = "";
+	var annee = 0;
+
 	
 	$("#description").keyup(function() {
 		
@@ -89,35 +108,33 @@ $(document).ready(function(){
 	});
 
 
-	/* Le code marche jusque ici, problème sur la validation de la date */
-
-	/*$("#date").keyup(function() {
+	$("#date").keyup(function() {
 		
 		
 		var tmp = $(this).val();
-
-		if(tmp == "")
-		{
-			$("#dateerror").html("Entrez la date de la soiree");
-			date = "";
-		}
-		else
-		{
-			$("#dateerror").html("la");
-			var reg = /^(((0[1-9]|[12]\d|3[01])\/(0[13578]|1[02])\/((19|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)\/(0[13456789]|1[012])\/((19|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])\/02\/((19|[2-9]\d)\d{2}))|(29\/02\/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))$/g;
-			var rep = tmp.match(reg);
-			if(rep){
-				$("#dateerror").html("oui");
-				date=tmp;
-			}
-			else{
-			    $("#dateerror").html("NOfiE");
-				date="";
-			}
-			
-		}
+		date="";
+		annee=0;
 		
-	});*/
+		$("#dateerror").html("");
+		
+		
+		/* On vérifie si la date est au bon format */
+
+		var possible = validateDate(tmp);
+	
+		if(possible){
+			$("#dateerror").html("");
+			date=tmp;
+			annee=getYear(tmp);
+		}
+		else{
+			$("#dateerror").html("Format incorrect");	
+			date ="";
+			annee=0;
+		}
+	
+		
+	});
 
 
 });
