@@ -15,7 +15,7 @@
 
 	function printSelectTheme($tab){
 
-		echo "<option>Sélectionnez un thème</option>";
+		echo "<option>Sélectionne un thème</option>";
 	  	foreach($tab as $a)
 	  	{
 	  		foreach ($a as $b) 

@@ -15,6 +15,15 @@ function addSoireeDB($db,$annee,$theme,$description,$date){
 	return $stmt->execute();
 }
 
+function checkSoireeDB($db,$annee,$theme){
+	
+	$stmt = $db->prepare("SELECT COUNT(*) FROM soiree WHERE annee=:annee AND theme=:theme");
+	$stmt->bindParam(':annee', $annee);
+	$stmt->bindParam(':theme', $theme);
+	$stmt->execute();
+	return $stmt->fetchColumn();
+}
+
 if(isset($_POST['mdp']) && !isset($_POST['description']) )
 {
 
@@ -41,24 +50,35 @@ if(isset($_POST['mdp']) && isset($_POST['annee']) && isset($_POST['theme']) && i
 		$description=$_POST['description'];
 		$date=$_POST['d'];
 
-		$result=addSoireeDB($DB,$annee,$theme,$description,$date);
+		/* WARNING : check avant si la soirée n'existe pas !!! */
 
-		if($result){
+		$existe=checkSoireeDB($DB,$annee,$theme);
 
-			/* On a réussi à inserer la soirée dans la base de données, on crée maintenant le sous-dossier */
+		if($existe ==1)
+		{
+			echo "La soirée existe déjà !";
+		}
+		else
+		{
+			$result=addSoireeDB($DB,$annee,$theme,$description,$date);
 
-			$nameDir = "photos/".$annee."/".$theme;
+			if($result){
 
-			if(!is_dir($nameDir))
-			{
-				mkdir($nameDir, 0777, true);
+				/* On a réussi à inserer la soirée dans la base de données, on crée maintenant le sous-dossier */
+
+				$nameDir = "photos/".$annee."/".$theme;
+
+				if(!is_dir($nameDir))
+				{
+					mkdir($nameDir, 0777, true);
+				}
+				echo "OK";
 			}
-			echo "OK";
+			else{
+				echo "Problème d'insertion dans la base de données";
+			}
 		}
-		else{
-			echo "Problème d'insertion dans la base de données";
-		}
-
+		
 		$DB = null;
 	}
 	catch(PDOException $e){
