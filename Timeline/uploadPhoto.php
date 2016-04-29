@@ -12,7 +12,8 @@ function validatePhoto() {
   $msg="";
   $id=$_SESSION['login'];
   $extensions_valides=array('jpg','jpeg','gif','png');
-  $tailleMax= 4194304;
+  /* Taille max 12 MO */
+  $tailleMax=  12582912;
 
   if ($_FILES['photo']['error'] > 0){
     $msg="Erreur, retentez l'upload en cliquant sur Ajout !";
@@ -22,7 +23,7 @@ function validatePhoto() {
 
     if ($_FILES['photo']['size'] > $tailleMax)
     {
-      $msg="Fichier trop volumineux (taille maximale : 4MO), retentez l'upload en cliquant sur Ajout !";
+      $msg="Fichier trop volumineux (taille maximale : 12MO), retentez l'upload en cliquant sur Ajout !";
     }
     else
     {
@@ -48,22 +49,23 @@ function getIdSoiree($db,$annee,$theme)
 {
 	$stmt = $db->query("SELECT idsoiree FROM soiree WHERE annee='$annee' AND theme='$theme'");
 	$stmt->setFetchMode(PDO::FETCH_OBJ);
-    $stmt = $stmt->fetch();
-    return $stmt->idsoiree;
+  $stmt = $stmt->fetch();
+  return $stmt->idsoiree;
 }
 
 function uploadPhotoDB($db,$idPosteur,$idSoiree,$heure,$commentaire,$extension){
 
-	$dateMEL=date("Y-m-d");
-	$heureMEL=date("H:i");
 	$nbLike=0;
 
-	$stmt = $db->prepare("INSERT INTO photo(idsoiree, date_mel, heure, composteur, nblike, idposteur, extension, heure_mel) VALUES ('$idSoiree', '$dateMEL', :heure, :commentaire, '$nbLike', :idposteur, '$extension', '$heureMEL')");
+	$stmt = $db->prepare("INSERT INTO photo(idsoiree, date_mel, heure, composteur, nblike, idposteur, extension, heure_mel) VALUES ('$idSoiree', NOW(), :heure, :commentaire, '$nbLike', :idposteur, '$extension', NOW())");
 	$stmt->bindParam(':heure', $heure);
 	$stmt->bindParam(':commentaire', $commentaire);
 	$stmt->bindParam(':idposteur', $idPosteur);
-	return $stmt->execute();
+	$stmt->execute();
+  return $db->lastInsertId('photo_idphoto_seq');
 }
+
+
 
 
 /* Corps du fichier */
@@ -84,7 +86,7 @@ function uploadPhotoDB($db,$idPosteur,$idSoiree,$heure,$commentaire,$extension){
   $extension=$reponse[1];
 
   $affichage="";
-  $idSoiree="";
+  
 
 
   if($msg != "OK") 
@@ -99,22 +101,34 @@ function uploadPhotoDB($db,$idPosteur,$idSoiree,$heure,$commentaire,$extension){
 
     try{
 
-    	/* Si le format est correct : on ajoute la photo dans la bd, ca marche on recupere l'identifiant et on dwl la photo */
+    	
         /* Connexion */
 
         $DB = new PDO("pgsql:host=localhost;dbname=projet_web", "postgres", "root");
         
-        /* On récupère l'id de la soirée */
+        /* On récupère l'id de la soirée et l'id de la photo ajoutée*/
 
         $idSoiree=getIdSoiree($DB,$annee,$theme);
 
-        $result=uploadPhotoDB($DB,$idPosteur,$idSoiree,$heure,$commentaire,$extension);
+        $idPhoto=uploadPhotoDB($DB,$idPosteur,$idSoiree,$heure,$commentaire,$extension);
 
-        if($result)
+
+        if($idPhoto != 0)
         {
-          $affichage="Votre photo a été ajoutée avec succès !";
+          
+          $chemin ="photos/{$annee}/{$theme}/{$idPhoto}.{$extension}";
+          $resultat= move_uploaded_file($_FILES['photo']['tmp_name'], $chemin);
+            if($resultat)
+            {
+              $affichage="Votre photo a bien été ajoutée !";
+            }
+            else
+            {
+              $affichage="Erreur, retentez l'upload en cliquant sur Ajout !";
+            }
 
-          	/* TODO : ajout dans les fichiers */
+
+          
         }
         else
         {
@@ -163,7 +177,7 @@ function uploadPhotoDB($db,$idPosteur,$idSoiree,$heure,$commentaire,$extension){
 
  <?php include 'header.php'; ?>
 
-    <h3 class="page-header">Mon profil</h3>
+    <h3 class="page-header">Participe aux timelines !</h3>
 
     <div class="container-fluid">
         <h2> <?php echo $affichage; ?> </h2>

@@ -45,6 +45,8 @@ if(isset($_POST['mdp']) && isset($_POST['annee']) && isset($_POST['theme']) )
 
 		if($result){
 
+			/* WARNING LES ACCENTS DANS THEME POSENT PROBLEME */
+			
 			/* TODO quand la page ajout est faite : supprimer les photos du dossier (on recup l'id on va dans table photos) dans la BD + supprimer les photos manuellement + puis supprimer le dossier manuellement */
 			
 			/*$nameDir = "photos/".$annee."/".$theme;

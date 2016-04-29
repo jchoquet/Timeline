@@ -12,7 +12,10 @@ function validateAvatar() {
   $msg="";
   $id=$_SESSION['login'];
   $extensions_valides=array('jpg','jpeg','gif','png');
-  $tailleMax= 2097152;
+
+  /* Taille de 6 MO */
+
+  $tailleMax=  6291456;
 
   if ($_FILES['avatar']['error'] > 0){
     $msg="Erreur, retentez l'upload en cliquant sur Mon profil !";
@@ -22,7 +25,7 @@ function validateAvatar() {
 
     if ($_FILES['avatar']['size'] > $tailleMax)
     {
-      $msg="Fichier trop volumineux (taille maximale : 2MO), retentez l'upload en cliquant sur Mon profil !";
+      $msg="Fichier trop volumineux (taille maximale : 6MO), retentez l'upload en cliquant sur Mon profil !";
     }
     else
     {

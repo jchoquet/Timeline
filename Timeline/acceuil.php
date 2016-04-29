@@ -1,5 +1,6 @@
 <?php
   session_start();
+
 ?>
 
 <!DOCTYPE html >
@@ -36,7 +37,7 @@
 
 	 	<h3 class="page-header"> Accueil </h3>
 
-   
+
 
  <?php include 'footer.php'; ?>
 
