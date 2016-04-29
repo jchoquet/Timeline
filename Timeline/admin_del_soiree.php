@@ -71,26 +71,11 @@
 	 <!-- Latest compiled and minified JavaScript -->
 	 <script src="js/bootstrap.js"></script>
 
-	 <!-- script du select theme -->
+	 <!-- JS validation formulaire -->
+	 <script src="js/validate_del_soiree.js"></script>
 
-	 <script type="text/javascript">
-
-		  function fetch_select_theme(val)
-		  {
-		  	
-		  	$.ajax({
-		  		type:'POST',
-		  		url:'fetch_data_del_soiree.php',
-		  		data:"get_option="+val,
-		  		success:function(msg){
-
-		  			$("#theme").html(msg);
-		  		}
-
-		  	});
-		  }
-
-	 </script>
+	 <!-- JS bouton select -->
+	 <script src="js/fetch_select.js"></script>
 
    	 <!-- Latest compiled and minified CSS -->
      <link rel="stylesheet" href="css/bootstrap.css">
@@ -109,13 +94,14 @@
 	 	<h3 class="page-header"> Gestion administrateur - Suppression d'une soirée</h3>
 
 	 	
-	 	<form method="post" action="" enctype="multipart/form-data" id="delSoiree" class="form-horizontal" >
+	 	<div method="post" class="form-horizontal" >
 
 	 	
 		   <div class="form-group">
 		        <label class="control-label col-sm-3" for="annee" > Année : </label>
 		            <div class="col-sm-5">
-		   				<select name="annee" onchange="fetch_select_theme(this.value);">
+		   				<select name="annee" id="annee" onchange="fetch_select_theme(this.value);">
+		   				<option>Sélectionnez une année</option>
 		   					<?php printSelect($tab); ?>
 		   				</select>
         			</div>
@@ -129,21 +115,23 @@
         			</div>
 		   </div>
 
-		<!-- Confirmation identité administrateur  -->
 		   <div class="form-group">
 		        <label class="control-label col-sm-3" for="mdp" > Mot de passe : </label>
 		            <div class="col-sm-5">
 		   				<input type="password" class="form-control" id="mdp" name="mdp" />
         			</div>
+        			<div class="col-sm-4 errors" id="mdperror"></div>
 		   </div>
 
 		    <div class="form-group">
 		      <div class="col-sm-offset-3 col-sm-5">          
 		        <button class="btn btn-default btn-block" type="submit" id="submit" name="submit">Supprimer</button>
+		      	<span class="errors" id="formerror"></span>
+        		<span class="correct" id="formcorrect"></span>
 		      </div>
 		    </div>
 
-		</form>
+		</div>
 
 
    

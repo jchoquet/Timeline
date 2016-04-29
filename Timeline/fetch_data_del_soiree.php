@@ -1,6 +1,7 @@
 <?php
-
+	
 	/* On va récupérer les thèmes correspondant à l'année sélectionnée */
+	
 	function selectThemeAnnee($db,$annee){
 
 		$stmt = $db->prepare("SELECT theme FROM soiree WHERE annee=:a ORDER BY theme");
@@ -12,15 +13,16 @@
 
 	}
 
-	function printSelect($tab){
+	function printSelectTheme($tab){
 
-  	foreach($tab as $a)
-  	{
-  		foreach ($a as $b) 
-  		{
-  			echo "<option value='$b'>$b</option>" . PHP_EOL;
-  		}
-  	}
+		echo "<option>Sélectionnez un thème</option>";
+	  	foreach($tab as $a)
+	  	{
+	  		foreach ($a as $b) 
+	  		{
+	  			echo "<option value='$b'>$b</option>" . PHP_EOL;
+	  		}
+	  	}
   	}
 
 	if(isset($_POST['get_option']))
@@ -33,7 +35,7 @@
 
 			$tabTheme=selectThemeAnnee($DB,$annee);
 
-			printSelect($tabTheme);
+			printSelectTheme($tabTheme);
 
 			$DB = null;
 
@@ -43,5 +45,6 @@
 			echo "Database Error";
 		}
 	}
+
 
 ?>

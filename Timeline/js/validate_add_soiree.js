@@ -45,6 +45,8 @@ function getYear(date) {
 			$("#descrierror").html("");
 			description = tmp;
 		}
+
+		$("#formcorrect").html("");
 	});
 
 
@@ -68,6 +70,9 @@ function getYear(date) {
 			$("#themeerror").html("");
 			theme = tmp;
 		}
+
+		$("#formcorrect").html("");
+		
 	});
 
 	
@@ -105,6 +110,8 @@ function getYear(date) {
 				}
 			});
 		}
+
+		$("#formcorrect").html("");
 	});
 
 
@@ -133,6 +140,7 @@ function getYear(date) {
 			annee=0;
 		}
 	
+		$("#formcorrect").html("");
 		
 	});
 

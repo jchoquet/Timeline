@@ -26,3 +26,17 @@ form {
 select{
 	margin-top: 5px;
 }
+
+/* -------------- Erreurs ----------------- */
+
+.errors{
+  color : #a94442;
+  float: right;
+  padding-top: 10px;
+}
+
+.correct{
+  float: right;
+  padding-top: 10px;
+  color : #66CC33;
+}
