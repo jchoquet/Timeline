@@ -70,6 +70,9 @@
    <link rel="stylesheet" href="css/menu.css">
    <link rel="stylesheet" href="css/ajout.css">
 
+   <!-- fichier JS validation formulaire -->
+   <script src="js/validate_ajout.js"></script>
+
 </head>
 
 <html>

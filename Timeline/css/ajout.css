@@ -67,3 +67,11 @@ input{
     cursor: inherit;
     display: block;
 }
+
+/* -------------- Erreurs ----------------- */
+
+.errors{
+  padding-top: 10px;
+  float:right;
+  color : #a94442;
+}
