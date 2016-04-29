@@ -8,6 +8,9 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8"/>
+
+    
+    <link rel="shortcut icon" href="fonts/icone.ico">
     <title>TIMELINE</title>
 
     <!-- pour les moteurs de recherche -->

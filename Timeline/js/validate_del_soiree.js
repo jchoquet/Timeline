@@ -36,6 +36,7 @@ $(document).ready(function(){
 				}
 			});
 		}
+		$("#formcorrect").html("");	
 	});
 
 
@@ -51,7 +52,7 @@ $(document).ready(function(){
 		{
 			theme=tmp;
 		}
-
+		$("#formcorrect").html("");	
 	});
 
 
@@ -68,6 +69,7 @@ $(document).ready(function(){
 			annee=tmp;
 		}
 
+		$("#formcorrect").html("");		
 	});
 
 
