@@ -21,9 +21,10 @@
       return $result;
   }
 
-  /* Fonction qui crée le bouton select année */
+  
+  /* Fonction qui crée un bouton select à partir d'un tableau */
 
-  function printAnnee($tab){
+  function printSelect($tab){
 
   	foreach($tab as $a)
   	{
@@ -70,8 +71,30 @@
 	 <!-- Latest compiled and minified JavaScript -->
 	 <script src="js/bootstrap.js"></script>
 
+	 <!-- script du select theme -->
+
+	 <script type="text/javascript">
+
+		  function fetch_select_theme(val)
+		  {
+		  	
+		  	$.ajax({
+		  		type:'POST',
+		  		url:'fetch_data_del_soiree.php',
+		  		data:"get_option="+val,
+		  		success:function(msg){
+
+		  			$("#theme").html(msg);
+		  		}
+
+		  	});
+		  }
+
+	 </script>
+
    	 <!-- Latest compiled and minified CSS -->
      <link rel="stylesheet" href="css/bootstrap.css">
+
 	 <!-- fichier css menu -->
 	 <link rel="stylesheet" href="css/menu.css">
 	 <link rel="stylesheet" href="css/admin_del_soiree.css">
@@ -85,23 +108,24 @@
 
 	 	<h3 class="page-header"> Gestion administrateur - Suppression d'une soirée</h3>
 
+	 	
 	 	<form method="post" action="" enctype="multipart/form-data" id="delSoiree" class="form-horizontal" >
 
 	 	
 		   <div class="form-group">
 		        <label class="control-label col-sm-3" for="annee" > Année : </label>
 		            <div class="col-sm-5">
-		   				<select name="annee">
-		   					<?php printAnnee($tab); ?>
+		   				<select name="annee" onchange="fetch_select_theme(this.value);">
+		   					<?php printSelect($tab); ?>
 		   				</select>
         			</div>
 		   </div>
 
-		<!-- faire un menu déroulant -->
 			<div class="form-group">
 		        <label class="control-label col-sm-3" for="theme" > Thème : </label>
 		            <div class="col-sm-5">
-		   				<input class="form-control" id="theme" type="text" name="annee"  />
+		   				<select name="theme" id="theme">
+		   				</select>
         			</div>
 		   </div>
 
