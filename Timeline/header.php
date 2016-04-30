@@ -95,7 +95,7 @@
         <div class="navbar-collapse collapse" id="navbar">
           <ul class="nav navbar-nav" >
             <li class="m"><a href="acceuil.php">Accueil</a></li>
-            <li><a href="soirees.php">Soirées</a></li>
+            <li><a href="soiree.php">Soirées</a></li>
             <li><a href="concours.php">Concours</a></li>
             <li><a href="ajout.php">Ajout</a></li>
             <li><a href="contact.php">Contact</a></li>
