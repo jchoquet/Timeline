@@ -13,8 +13,8 @@ if(isset($_POST['mailform'])){
   	<body>
   		<div align="center">
   			<br />
-  			<u> Nom de l\'exp�diteur : </u>'.$_POST['nom'].'<br/>
-        <u> mail de l\'exp�diteur : </u>'.$_POST['mail'].'<br/>
+  			<u> Nom de l\'expéditeur : </u>'.$_POST['nom'].'<br/>
+        <u> mail de l\'expéditeur : </u>'.$_POST['mail'].'<br/>
   			<br />
         '.$_POST['message'].'
         <br />
@@ -24,7 +24,7 @@ if(isset($_POST['mailform'])){
   ';
 
   mail("adm.timeline@gmail.com", "CONTACT - TIMELINE", $message, $header);
-  $res="votre message a bien été envoyé !";
+  $res="votre message a bien Ã©tÃ© envoyÃ© !";
 
   }
   else
@@ -43,8 +43,8 @@ if(isset($_POST['mailform'])){
     <title>TIMELINE</title>
 
     <!-- pour les moteurs de recherche -->
-    <meta name="description" lang="fr" content="plateforme de timeline photo pour soirée et évènement" />
-    <meta name="keywords" lang="fr" content="photos, soirée, timeline, ENSIIE, iiens" />
+    <meta name="description" lang="fr" content="plateforme de timeline photo pour soirÃ©e et Ã©vÃ¨nement" />
+    <meta name="keywords" lang="fr" content="photos, soirÃ©e, timeline, ENSIIE, iiens" />
 
      <!-- icone du titre de la page -->
    <link rel="shortcut icon" href="fonts/icone2.jpg">
@@ -92,7 +92,7 @@ if(isset($_POST['mailform'])){
    			</div>
         
         <div class="form-group">
-            <label class="control-label col-sm-3" for="year" > Ajouter votre nom : </label>
+            <label class="control-label col-sm-3" for="year" > Ajouter votre message : </label>
             <div class="col-sm-5">
                 <textarea class="form-control" name="message" placeholder="votre message" ></textarea>
             </div>
