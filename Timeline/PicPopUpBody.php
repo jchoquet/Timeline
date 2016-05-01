@@ -122,8 +122,6 @@
         echo '<div style="overflow:scroll; height:340px" >';
 	  foreach ($commentaire as $com){
 	      echo "<p>[$com[heure_post]] $com[surnom] : $com[contenu]</p>";
-	      echo "<p>[$com[heure_post]] $com[surnom] : $com[contenu]</p>";
-	      echo "<p>[$com[heure_post]] $com[surnom] : $com[contenu]</p>";
 	  };
 	echo '</div>';
 
