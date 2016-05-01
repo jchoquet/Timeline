@@ -5,13 +5,14 @@ session_start();
 $id=$_SESSION['login'];
 $pwd=$_SESSION['pwd'];
 
-function addSoireeDB($db,$annee,$theme,$description,$date){
+function addSoireeDB($db,$annee,$theme,$description,$date,$name){
 
-	$stmt = $db->prepare("INSERT INTO soiree(theme, annee, description, d) VALUES (:theme, :annee, :description, :d)");
+	$stmt = $db->prepare("INSERT INTO soiree(theme, annee, description, d, name) VALUES (:theme, :annee, :description, :d, :name)");
 	$stmt->bindParam(':theme', $theme);
 	$stmt->bindParam(':annee', $annee);
 	$stmt->bindParam(':description', $description);
 	$stmt->bindParam(':d', $date);
+	$stmt->bindParam(':name', $name);
 	return $stmt->execute();
 }
 
@@ -24,67 +25,60 @@ function checkSoireeDB($db,$annee,$theme){
 	return $stmt->fetchColumn();
 }
 
-if(isset($_POST['mdp']) && !isset($_POST['description']) )
+
+if(isset($_POST['mdp']) && isset($_POST['annee']) && isset($_POST['theme']) && isset($_POST['description']) && isset($_POST['d']) && isset($_POST['name']))
 {
 
-	if($_POST['mdp'] == $pwd)
-	{
-		echo "OK";
-	}
-	else
+	if($_POST['mdp'] != $pwd)
 	{
 		echo "Mot de passe incorrect";
 	}
-}
+	else{
+		try{
 
-if(isset($_POST['mdp']) && isset($_POST['annee']) && isset($_POST['theme']) && isset($_POST['description']) && isset($_POST['d']))
-{
-	try{
+			/* Connexion à la base de données avec PDO */
 
-		/* Connexion à la base de données avec PDO */
+			$DB = new PDO("pgsql:host=localhost;dbname=projet_web", "postgres", "root");
+			
+			$annee=$_POST['annee'];
+			$theme=strtolower($_POST['theme']);
+			$description=$_POST['description'];
+			$date=$_POST['d'];
+			$name=strtolower($_POST['name']); 
 
-		$DB = new PDO("pgsql:host=localhost;dbname=projet_web", "postgres", "root");
-		
-		$annee=$_POST['annee'];
-		$theme=strtolower($_POST['theme']);
-		$description=$_POST['description'];
-		$date=$_POST['d'];
+			$existe=checkSoireeDB($DB,$annee,$theme);
 
-		/* WARNING : check avant si la soirée n'existe pas !!! */
+			if($existe ==1)
+			{
+				echo "La soirée existe déjà !";
+			}
+			else
+			{
+				$result=addSoireeDB($DB,$annee,$theme,$description,$date,$name);
 
-		$existe=checkSoireeDB($DB,$annee,$theme);
+				if($result){
 
-		if($existe ==1)
-		{
-			echo "La soirée existe déjà !";
-		}
-		else
-		{
-			$result=addSoireeDB($DB,$annee,$theme,$description,$date);
+					/* On a réussi à inserer la soirée dans la base de données, on crée maintenant le sous-dossier */
 
-			if($result){
+					$nameDir = "photos/".$annee."/".$name;
 
-				/* On a réussi à inserer la soirée dans la base de données, on crée maintenant le sous-dossier */
-
-				$nameDir = "photos/".$annee."/".$theme;
-
-				if(!is_dir($nameDir))
-				{
-					mkdir($nameDir, 0777, true);
+					if(!is_dir($nameDir))
+					{
+						mkdir($nameDir, 0777, true);
+					}
+					echo "OK";
 				}
-				echo "OK";
+				else{
+					echo "Problème d'insertion dans la base de données";
+				}
 			}
-			else{
-				echo "Problème d'insertion dans la base de données";
-			}
+			
+			$DB = null;
 		}
-		
-		$DB = null;
+		catch(PDOException $e){
+			echo "Database Error";
+		}
 	}
-	catch(PDOException $e){
-		echo "Database Error";
-	}
-
 }
 
 ?>

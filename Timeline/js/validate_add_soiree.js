@@ -20,6 +20,7 @@ function getYear(date) {
 
 	var date = "";
 	var theme = "";
+	var name = "";
 	var description = "";
 	var mdp = "";
 	var annee = 0;
@@ -76,7 +77,31 @@ function getYear(date) {
 	});
 
 	
+	$("#nom").keyup(function() {
+		
+		var tmp = $(this).val();
 
+		/* TODO : test pas d'espace, pas de caractères chelous, pas de virgules, format : soiree_or par exemple */
+
+		if(tmp == "")
+		{
+			$("#nomerror").html("");
+			name= "";
+		}
+		else if(tmp.length > 20)
+		{
+			$("#nomerror").html("Taille max 20 caractères !");
+			name = "";
+		}
+		else
+		{
+			$("#nomerror").html("");
+			name = tmp;
+		}
+
+		$("#formcorrect").html("");
+		
+	});
 
 	$("#mdp").keyup(function() {
 
@@ -90,25 +115,7 @@ function getYear(date) {
 		else
 		{
 			$("#mdperror").html("");
-			$.ajax({
-
-				type:'POST',
-				url:'script_add_soiree.php',
-				data:"mdp="+tmp,
-				success:function(msg){
-
-				    if(msg == "OK")
-				    {
-					$("#mdperror").html("");
-					mdp = tmp;
-				    }
-				    else
-				    {
-					$("#mdperror").html(msg);
-					mdp = "";
-				    }
-				}
-			});
+			mdp = tmp;
 		}
 
 		$("#formcorrect").html("");
@@ -147,9 +154,9 @@ function getYear(date) {
 
 	$("#submit").click(function() {
 
-		if ( date == "" || theme == "" || description == "" || annee == 0 || mdp == "")
+		if ( date == "" || theme == "" || name == "" || description == "" || annee == 0 || mdp == "")
 		{
-			$("#formerror").html("Informations incorrectes");
+			$("#formerror").html("lol");
 		}
 		else{
 			$("#formerror").html("");
@@ -157,7 +164,7 @@ function getYear(date) {
 
 				type:'POST',
 				url:'script_add_soiree.php',
-				data:"d="+date+"&theme="+theme+"&mdp="+mdp+"&annee="+annee+"&description="+description,
+				data:"d="+date+"&theme="+theme+"&mdp="+mdp+"&annee="+annee+"&description="+description+"&name="+name,
 				success:function(msg) {
 
 					if(msg != "OK"){

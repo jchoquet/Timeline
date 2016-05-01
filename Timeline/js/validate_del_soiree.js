@@ -25,7 +25,7 @@ $(document).ready(function(){
 
 				    if(msg == "OK")
 				    {
-					$("#mdperror").html("");
+					$("#mdperror").html("OK");
 					mdp = tmp;
 				    }
 				    else

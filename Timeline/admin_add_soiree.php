@@ -61,12 +61,21 @@
         			<div class="col-sm-4 errors" id="dateerror"></div> 
 		   </div>
 			<div class="form-group">
-		        <label class="control-label col-sm-3" for="theme" > Thème : </label>
+		        <label class="control-label col-sm-3" for="theme" > Thème (affichage): </label>
 		            <div class="col-sm-5">
 		   				<input class="form-control" id="theme" type="text" name="theme"  />
         			</div>
         			<div class="col-sm-4 errors" id="themeerror"></div> 
 		   </div>
+
+		   <div class="form-group">
+		        <label class="control-label col-sm-3" for="nom" > Thème (BD): </label>
+		            <div class="col-sm-5">
+		   				<input class="form-control" id="nom" type="text" name="nom"  />
+        			</div>
+        			<div class="col-sm-4 errors" id="nomerror"></div> 
+		   </div>
+
 		   <div class="form-group">
 		        <label class="control-label col-sm-3" for="description" > Description : </label>
 		            <div class="col-sm-5">
