@@ -45,10 +45,9 @@ function validatePhoto() {
   return $reponse;
 }
 
-function getIdSoiree($db,$annee,$theme)
-{
-	$stmt = $db->query("SELECT idsoiree FROM soiree WHERE annee='$annee' AND theme='$theme'");
-	$stmt->setFetchMode(PDO::FETCH_OBJ);
+function getIdSoiree($db,$annee,$name){
+  $stmt = $db->query("SELECT idsoiree FROM soiree WHERE annee='$annee' AND name='$name'");
+  $stmt->setFetchMode(PDO::FETCH_OBJ);
   $stmt = $stmt->fetch();
   return $stmt->idsoiree;
 }
@@ -65,9 +64,6 @@ function uploadPhotoDB($db,$idPosteur,$idSoiree,$heure,$commentaire,$extension){
   return $db->lastInsertId('photo_idphoto_seq');
 }
 
-
-
-
 /* Corps du fichier */
 
   $idPosteur=$_SESSION['login'];
@@ -75,7 +71,7 @@ function uploadPhotoDB($db,$idPosteur,$idSoiree,$heure,$commentaire,$extension){
   $heure=$_POST['heure'];
   $commentaire=$_POST['commentaire'];
   $annee=$_POST['annee'];
-  $theme=$_POST['theme'];
+  $name=$_POST['theme'];
 
 
 /* On récupère le résultat de validateUpload() */
@@ -108,7 +104,7 @@ function uploadPhotoDB($db,$idPosteur,$idSoiree,$heure,$commentaire,$extension){
         
         /* On récupère l'id de la soirée et l'id de la photo ajoutée*/
 
-        $idSoiree=getIdSoiree($DB,$annee,$theme);
+        $idSoiree=getIdSoiree($DB,$annee,$name);
 
         $idPhoto=uploadPhotoDB($DB,$idPosteur,$idSoiree,$heure,$commentaire,$extension);
 
@@ -116,7 +112,7 @@ function uploadPhotoDB($db,$idPosteur,$idSoiree,$heure,$commentaire,$extension){
         if($idPhoto != 0)
         {
           
-          $chemin ="photos/{$annee}/{$theme}/{$idPhoto}.{$extension}";
+          $chemin ="photos/{$annee}/{$name}/{$idPhoto}.{$extension}";
           $resultat= move_uploaded_file($_FILES['photo']['tmp_name'], $chemin);
             if($resultat)
             {
