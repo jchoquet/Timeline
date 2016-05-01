@@ -4,7 +4,7 @@
 	
 	function selectThemeAnnee($db,$annee){
 
-		$stmt = $db->prepare("SELECT theme FROM soiree WHERE annee=:a ORDER BY theme");
+		$stmt = $db->prepare("SELECT theme, name FROM soiree WHERE annee=:a ORDER BY theme");
 		$stmt->bindParam(':a', $annee);
 	    $stmt->execute();
 	    $stmt->setFetchMode(PDO::FETCH_NUM);
@@ -18,10 +18,11 @@
 		echo "<option>Sélectionne un thème</option>";
 	  	foreach($tab as $a)
 	  	{
-	  		foreach ($a as $b) 
-	  		{
-	  			echo "<option value='$b'>$b</option>" . PHP_EOL;
-	  		}
+	  			$theme=$a[0];
+	  			$name=$a[1];
+
+	  			echo "<option value='$name'>$theme</option>" . PHP_EOL;
+	  		
 	  	}
   	}
 
