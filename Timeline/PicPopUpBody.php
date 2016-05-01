@@ -30,43 +30,43 @@
         pg_close($connection);
 
         #Test===========================================
-        $com1 = array (
-                "surnom" => "bob",
-                "date_post" => "16/05/16",
-                "heure_post" =>"20:12",
-                "contenu" => "lol !"
-                );
-        $com2 = array (
-                "surnom" => "tom",
-                "date_post" => "15/05/16",
-                "heure_post" => "19:42",
-                "contenu" => "enorme on dirait un elephant"
-                );
-        $com3 = array (
-                "surnom" => "luc",
-                "date_post" => "16/05/16",
-                "heure_post" => "20:14",
-                "contenu" => "j'aime les hamsters"
-                );
-        $com4 = array (
-                "surnom" => "bob",
-                "date_post" => "17/05/16",
-                "heure_post" =>"21:12",
-                "contenu" => "moi aussi"
-                );
-        $com5 = array (
-                "surnom" => "tom",
-                "date_post" => "17/05/16",
-                "heure_post" => "22:42",
-                "contenu" => "like moi, je partage"
-                );
-        $com6 = array (
-                "surnom" => "luc",
-                "date_post" => "18/05/16",
-                "heure_post" => "20:14",
-                "contenu" => "Quel boulet ce mec ..."
-                );
-        $commentaire = array($com1,$com2,$com3,$com4,$com5,$com6);
+        #$com1 = array (
+        #        "surnom" => "bob",
+        #        "date_post" => "16/05/16",
+        #        "heure_post" =>"20:12",
+        #        "contenu" => "lol !"
+        #        );
+        #$com2 = array (
+        #        "surnom" => "tom",
+        #        "date_post" => "15/05/16",
+        #        "heure_post" => "19:42",
+        #        "contenu" => "enorme on dirait un elephant"
+        #        );
+        #$com3 = array (
+        #        "surnom" => "luc",
+        #        "date_post" => "16/05/16",
+        #        "heure_post" => "20:14",
+        #        "contenu" => "j'aime les hamsters"
+        #        );
+        #$com4 = array (
+        #        "surnom" => "bob",
+        #        "date_post" => "17/05/16",
+        #        "heure_post" =>"21:12",
+        #        "contenu" => "moi aussi"
+        #        );
+        #$com5 = array (
+        #        "surnom" => "tom",
+        #        "date_post" => "17/05/16",
+        #        "heure_post" => "22:42",
+        #        "contenu" => "like moi, je partage"
+        #        );
+        #$com6 = array (
+        #        "surnom" => "luc",
+        #        "date_post" => "18/05/16",
+        #        "heure_post" => "20:14",
+        #        "contenu" => "Quel boulet ce mec ..."
+        #        );
+        #$commentaire = array($com1,$com2,$com3,$com4,$com5,$com6);
         #=====================================================
 
 
@@ -81,17 +81,17 @@
 
 	
 	#Test================================================
-	$line1 = array(
-		"nom" => "like",
-		"description" => "nombre de like",
-		"Nbvotes" => "5"
-		);
-	$line2 = array(
-		"nom" => "trash",
-		"description" => "la photo la plus hard",
-		"Nbvotes" => "3"
-		);
-	$concours = array($line1, $line2);
+	#$line1 = array(
+	#	"nom" => "like",
+	#	"description" => "nombre de like",
+	#	"Nbvotes" => "5"
+	#	);
+	#$line2 = array(
+	#	"nom" => "trash",
+	#	"description" => "la photo la plus hard",
+	#	"Nbvotes" => "3"
+	#	);
+	#$concours = array($line1, $line2);
         #=============================================================
 
 
