@@ -16,7 +16,7 @@ prenom VARCHAR (20),
 promo INTEGER,
 surnom VARCHAR (20),
 quote VARCHAR (255),
-avatar VARCHAR (3));
+avatar VARCHAR (15));
 
 
 
