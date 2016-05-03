@@ -1,0 +1,1 @@
+INSERT INTO soiree (idsoiree,theme,description,annee, d) VALUES (1,'BTP','Cest la btp',2016,'2016-12-06');
