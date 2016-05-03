@@ -37,7 +37,7 @@
       
       <div class="container-fluid">
 
-            <?php carousel("pgsql:host=localhost;dbname=projet_web", "SELECT IdPhoto FROM Identification WHERE IdUtilisateur=$_SESSION['login']); ?>      /* a verifier les arguments!! */
+            <?php carousel("pgsql:host=localhost;dbname=projet_web", "SELECT IdPhoto FROM Identification WHERE IdUtilisateur=$_SESSION['login']"); ?>      /* a verifier les arguments!! */
 
       </div>
 	
