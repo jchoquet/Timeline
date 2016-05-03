@@ -2,3 +2,14 @@ INSERT INTO soiree (idsoiree,theme,description,annee, d) VALUES (1,'BTP','Cest l
 INSERT INTO soiree (idsoiree,theme,description,annee, d) VALUES (2,'A3A','Cest ladieu aux 3A',2015,'2015-12-04');
 INSERT INTO soiree (idsoiree,theme,description,annee, d) VALUES (3,'Inte','Integrons les 0A',2015,'2015-07-13');
 
+INSERT INTO utilisateur (identifiant , mdp, nom, prenom, promo, surnom, quote, avatar) VALUES
+    ('bob15','supermdp','bob','thomas',2015,'boby','jaime les cactus', 'bob15.jpg'),
+    ('hans15','supermdp2','bibu','hans',2015,'hardman','jaime pas les ananas', 'photo.jpg'),
+    ('hausman15','moyenmdp','hausman','jack',2014,'SuperMoi','Je suis super !', 'super.jpg');  
+
+INSERT INTO concours (idconcours, nom, description, winner, encours) VALUES
+    (2,'trash','le photo la plus trash',0,true),  
+    (3,'love_btp','parce quon aime les ragots (BTP)',2,false);
+    
+INSERT INTO photo (idphoto, idsoiree, date_mel,heure, composteur, nblike, idposteur, extension, heure_mel) VALUES
+    (1, 1, '2015-02-15', '12:16', 'Enorme !', 4, 'bob15', 'jpg', '15:20');
