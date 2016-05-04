@@ -9,7 +9,7 @@
       $DB = new PDO("pgsql:host=localhost;dbname=projet_web", "postgres", "root");
 
       $tabPhotos = getPhotosMesPosts($DB);
-      $pathPhotos = getPathMesPosts($tab);
+
       $DB = null;
 
     }
@@ -34,8 +34,10 @@
     <meta name="keywords" lang="fr" content="photos, soirée, timeline, ENSIIE, iiens" />
 
 
+   
    <!-- Latest compiled and minified CSS -->
    <link rel="stylesheet" href="css/bootstrap.css">
+
 
    <!-- jquery -->
    <script src="js/jquery_library.js"></script>
@@ -47,6 +49,32 @@
    <link rel="stylesheet" href="css/menu.css">
    <link rel="stylesheet" href="css/mes_posts.css">
 
+   <script>
+
+        //Code nécessaire pour le carroussel 2
+        jQuery(document).ready(function($) {
+ 
+        $('#myCarousel').carousel({
+                interval: 10000
+        });
+ 
+        $('#carousel-text').html($('#slide-content-0').html());
+ 
+        //Handles the carousel thumbnails
+       $('[id^=carousel-selector-]').click( function(){
+            var id = this.id.substr(this.id.lastIndexOf("-") + 1);
+            var id = parseInt(id);
+            $('#myCarousel').carousel(id);
+        });
+ 
+        // When the carousel slides, auto update the text
+        $('#myCarousel').on('slid.bs.carousel', function (e) {
+                 var id = $('.item.active').data('slide-number');
+                $('#carousel-text').html($('#slide-content-'+id).html());
+        });
+         });
+   </script>
+
 </head>
 
   <body>
@@ -54,11 +82,8 @@
 
       <h3 class="page-header">Mes Posts</h3>
       
-      <div class="container-fluid">
+        <?php carousel2($tabPhotos); ?>
 
-      <?php carousel($pathPhotos); ?>
-
-      </div>
 
  <?php include 'footer.php'; ?>
 
