@@ -10,7 +10,7 @@ DROP TABLE vote CASCADE;
 
 CREATE TABLE utilisateur (
 identifiant VARCHAR (12) PRIMARY KEY,
-mdp VARCHAR (20) ,
+mdp VARCHAR (100) ,
 nom VARCHAR (20),
 prenom VARCHAR (20),
 promo INTEGER,

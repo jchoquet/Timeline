@@ -47,8 +47,7 @@ function delDir($dir) {
 
 if(isset($_POST['mdp']) && !isset($_POST['annee']) )
 {
-
-	if($_POST['mdp'] == $pwd)
+	if (password_verify($_POST['mdp'], $pwd)) 
 	{
 		echo "OK";
 	}
@@ -70,7 +69,7 @@ if(isset($_POST['mdp']) && isset($_POST['annee']) && isset($_POST['name']) )
 		
 		$annee=$_POST['annee'];
 		$name=$_POST['name'];
-		$mdp=$_POST['mdp'];
+
 
 		/* On récupère l'id de la soiree */
 		

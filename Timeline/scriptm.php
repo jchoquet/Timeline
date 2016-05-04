@@ -21,7 +21,9 @@ function modifProfilUser($db,$id,$mdp,$quote,$surnom){
 if(isset($_POST['oldmdp']) && !isset($_POST['nmdp']))
 {
 
-	if($_POST['oldmdp'] == $pwd) {
+	/* On utilise les fonctions php intégrés pour la validation de mdp */
+	if (password_verify($_POST['oldmdp'], $pwd)) 
+	{
 
 		echo "OK";
 	}
@@ -29,7 +31,6 @@ if(isset($_POST['oldmdp']) && !isset($_POST['nmdp']))
 
 		echo "Mot de passe incorrect";
 	}
-
 
 }
 
@@ -47,7 +48,9 @@ if(isset($_POST['oldmdp']) && isset($_POST['nmdp']) && isset($_POST['surnom']) &
 		$surnom=$_POST['surnom'];
 		$quote=$_POST['quote'];
 
-		$result=modifProfilUser($DB,$id,$mdp,$quote,$surnom);
+		$safemdp = password_hash($mdp, PASSWORD_DEFAULT);
+
+		$result=modifProfilUser($DB,$id,$safemdp,$quote,$surnom);
 
 		if($result)
 		{

@@ -79,10 +79,10 @@ $(document).ready(function(){
 		var tmp = $(this).val();
 
 		/* test vide */
-		if(tmp == "" || tmp.length != 11)
+		if(tmp == "" || tmp.length < 11 || tmp.length > 12)
 		{
 			$("#idcorrect").html("");
-			$("#iderror").html("Format : 11 caractères");
+			$("#iderror").html("Format : 11 ou 12 caractères");
 
 			id = "";
 		}

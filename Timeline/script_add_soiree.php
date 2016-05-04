@@ -28,8 +28,7 @@ function checkSoireeDB($db,$annee,$theme){
 
 if(isset($_POST['mdp']) && isset($_POST['annee']) && isset($_POST['theme']) && isset($_POST['description']) && isset($_POST['d']) && isset($_POST['name']))
 {
-
-	if($_POST['mdp'] != $pwd)
+	if (!password_verify($_POST['mdp'], $pwd)) 
 	{
 		echo "Mot de passe incorrect";
 	}

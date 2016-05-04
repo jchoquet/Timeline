@@ -100,7 +100,7 @@
 		        <label class="control-label col-sm-3" for="annee" > Année : </label>
 		            <div class="col-sm-5">
 		   				<select name="annee" id="annee" onchange="fetch_select_theme(this.value);">
-		   				<option>Sélectionnez une année</option>
+		   				<option>Sélectionne une année</option>
 		   					<?php printSelect($tab); ?>
 		   				</select>
         			</div>

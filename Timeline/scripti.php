@@ -61,7 +61,8 @@ try{
 		$mdp=$_POST['mdp'];
 		$prenom=$_POST['prenom'];
 
-		$result=inscriptionUser($DB,$id,$nom,$promo,$mdp,$prenom);
+		$hash = password_hash($mdp, PASSWORD_DEFAULT);
+		$result=inscriptionUser($DB,$id,$nom,$promo,$hash,$prenom);
 
 		if($result)
 		{
@@ -70,7 +71,7 @@ try{
 
 			session_start();
 			$_SESSION['login']=$id;
-			$_SESSION['pwd']=$mdp;
+			$_SESSION['pwd']=$hash;
 
 			echo "OK";
 		}

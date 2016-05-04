@@ -33,9 +33,9 @@ $(document).ready(function(){
 			$("#idcerror").html("");
 			idc = "";
 		}
-		else if(tmp.length != 11)
+		else if(tmp.length < 11 || tmp.length > 12)
 		{
-			$("#idcerror").html("Rappel format : 11 caractères");
+			$("#idcerror").html("Rappel format : 11 ou 12 caractères");
 			idc = "";
 		}
 		else
