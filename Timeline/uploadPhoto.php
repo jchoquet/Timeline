@@ -117,10 +117,12 @@ function uploadPhotoDB($db,$idPosteur,$idSoiree,$heure,$commentaire,$extension){
             if($resultat)
             {
               $affichage="Votre photo a bien été ajoutée !";
+              $button="Ajouter une autre photo";
             }
             else
             {
-              $affichage="Erreur, retentez l'upload en cliquant sur Ajout !";
+              $affichage="Erreur, retentez l'upload !";
+              $button="Try again !";
             }
 
 
@@ -128,7 +130,8 @@ function uploadPhotoDB($db,$idPosteur,$idSoiree,$heure,$commentaire,$extension){
         }
         else
         {
-          $affichage="Erreur, retentez l'upload en cliquant sur Ajout !";
+          $affichage="Erreur, retentez l'upload !";
+          $button="Try again !";
         }
         
         /* On ferme la connexion */
@@ -166,6 +169,8 @@ function uploadPhotoDB($db,$idPosteur,$idSoiree,$heure,$commentaire,$extension){
    <!-- fichier css menu -->
    <link rel="stylesheet" href="css/menu.css">
 
+   <link rel="stylesheet" href="css/buttonLink.css">
+
 </head>
 
 <html>
@@ -177,6 +182,9 @@ function uploadPhotoDB($db,$idPosteur,$idSoiree,$heure,$commentaire,$extension){
 
     <div class="container-fluid">
         <h2> <?php echo $affichage; ?> </h2>
+        <div class="col-sm-3">          
+        <button class="btn btn-default btn-block" id="button"><a href="ajout.php"><?php echo $button; ?></a></button>
+        </div>
     </div>   
 
  <?php include 'footer.php'; ?>

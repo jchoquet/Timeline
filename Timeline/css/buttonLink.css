@@ -1,0 +1,18 @@
+/********************* Bouton de base ************************/
+#button
+{
+  background-color:#52b3da;
+  margin-top: 10px;
+}
+
+#button:hover
+{
+  background-color:#66CC33;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+a, a:hover, a:visited {
+	text-decoration: none;
+	color : white;
+}
