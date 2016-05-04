@@ -1,36 +1,78 @@
 <?php
+
   session_start();
+
+  /* Fonction qui renvoie un tableau contenant les années présentes dans soiree */
+
+  function getAnnee($db){
+
+      $stmt = $db->prepare("SELECT DISTINCT annee FROM soiree ORDER BY annee DESC");
+      $stmt->execute();
+      $stmt->setFetchMode(PDO::FETCH_NUM);
+      $result = $stmt->fetchAll();
+      return $result;
+  }
+
+  
+  /* Fonction qui crée un bouton select à partir d'un tableau */
+
+  function printSelect($tab){
+
+    foreach($tab as $a)
+    {
+      foreach ($a as $b) 
+      {
+        echo "<option value='$b'>$b</option>" . PHP_EOL;
+      }
+    }
+  }
+
+
+  try{
+
+
+    $DB = new PDO("pgsql:host=localhost;dbname=projet_web", "postgres", "root");
+
+    $tab=getAnnee($DB);
+
+    $DB = null;
+  }
+  catch(PDOException $e){
+    echo "Database Error";
+  }
+  
 ?>
 
 <!DOCTYPE html >
 <html lang="fr">
-  <head>
-    <meta charset="utf-8">
+   <head>
+    <meta charset="utf-8"/>
+
+    
+    <link rel="shortcut icon" href="fonts/icone.ico">
     <title>TIMELINE</title>
 
     <!-- pour les moteurs de recherche -->
     <meta name="description" lang="fr" content="plateforme de timeline photo pour soirée et évènement" />
     <meta name="keywords" lang="fr" content="photos, soirée, timeline, ENSIIE, iiens" />
 
-     <!-- icone du titre de la page -->
-   <link rel="shortcut icon" href="fonts/icone2.jpg">
-   
-   
-	<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="css/bootstrap.css">
-	 <link rel="stylesheet" href="css/menu.css">
 
+   <!-- Latest compiled and minified CSS -->
+   <link rel="stylesheet" href="css/bootstrap.css">
 
-	<!-- jquery -->
-	<script src="jquery_library.js"></script>
+   <!-- jquery -->
+   <script src="js/jquery_library.js"></script>
 
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="js/bootstrap.js"></script>
+   <!-- JS bouton select -->
+   <script src="js/fetch_select.js"></script>
 
+   <!-- Latest compiled and minified JavaScript -->
+   <script src="js/bootstrap.js"></script>
 
-	<!-- fichier JS validation formulaire -->
-	<script src="js/validate.js"></script>
-    <link rel="stylesheet" href="css/ajout.css">
+   <!-- fichier css perso -->
+   <link rel="stylesheet" href="css/menu.css">
+   <link rel="stylesheet" href="css/soirees.css">
+
 
 </head>
 
@@ -39,51 +81,38 @@
  <?php include 'header.php'; ?>
  
  
-<h3 class="page-header"><b> choisis ta Soirée! </b></h3>
+<h1 class="page-header">Choisis une soirée et découvre du gros dossier</h1>
 
-  <div class="container-fluid">
-     <form id="modif" class="form-horizontal" role="form">
-		          
-          <div class="form-group">
-        <label class="control-label col-sm-3" for="year" > Année : </label>
-        <div class="col-sm-5">
-  				<input class="form-control"  type="number"  max="2016" min="1960"   step="1" value="2016" required/> 
-        </div>
-        <div class="col-sm-4 errors" id="oldMdperror"></div>
-   			</div>
-          
-    			<div class="form-group">
-          <label class="control-label col-sm-3" for="heure" > Theme : </label>
+   <div class="container-fluid">
+
+    <form method="post" action=""  id="showSoiree" class="form-horizontal" >
+
+      <div class="form-group">
+          <label class="control-label col-sm-3" for="annee" > Année : </label>
           <div class="col-sm-5">
-  				<select name="th�me" placeholder="choisir un th�me">
-        <option>intre_rentrée</option>
-        <option>soirée des associations</option>
-        <option>BTP</option>
-        <option>MisterIIE</option>
-        <option>soirée tancarville</option>
-        <option>soirée mexicaine</option>
-        <option>soirée fluo</option>
-        <option>soirée Noel</option>
-        <option>soirée duo de marins</option>
-        <option>soirée bakanim</option>
-        <option>soirée Or</option>
-      </select></div></div>
-    		
-    			<div class="form-group">
-      <div class="col-sm-offset-3 col-sm-5">          
-        <button class="btn btn-default btn-block" type="submit" id="Ajout" name="Ajout">Ajouter !</button>
-        <span class="errors" id="formerror"></span>
+            <select name="annee" id="annee" onchange="fetch_select_theme(this.value);">
+            <option>Sélectionne une année</option>
+            <?php printSelect($tab); ?>
+            </select>
+          </div>
       </div>
+
+      <div class="form-group">
+            <label class="control-label col-sm-3" for="theme" > Thème : </label>
+            <div class="col-sm-5">
+                <select name="theme" id="theme">
+                </select>
+            </div>
       </div>
-      
-      
-			</form>
-		</div>
-   </div>
+
+      <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-6">          
+          <button class="btn btn-default btn-block" type="submit" id="submit" name="submit">Balance !</button>
+        </div>
+      </div>
+
+    </form>
+
    </div>
 
 <?php include 'footer.php'; ?>
-
-
-</body>
-</html>

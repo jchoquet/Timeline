@@ -31,8 +31,10 @@ margin-top:20px;
 }
 
 .border{
-	border : solid black 0.2px;
+	/*border : solid grey 0.2px;*/
 	padding: 20px;
+	background-color: #CFD8DC;
+	border-radius: 5px;
 }
 
 /***************** Cas où l'utilisateur n'a rien posté *****************/
