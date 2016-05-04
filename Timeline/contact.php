@@ -1,5 +1,8 @@
 <?php
 
+$done ="";
+$error="";
+
 if(isset($_POST['mailform'])){
   if(!empty($_POST['nom'])AND !empty($_POST['mail']) AND !empty($_POST['message']))
   {
@@ -24,12 +27,12 @@ if(isset($_POST['mailform'])){
   ';
 
   mail("adm.timeline@gmail.com", "CONTACT - TIMELINE", $message, $header);
-  $res="votre message a bien Ã©tÃ© envoyÃ© !";
+  $done="Votre message a bien été envoyé ! ";
 
   }
   else
   {
-    $res=" veuillez remplir tous les champs ";
+    $error="Veuillez remplir tous les champs !";
 
   }
 
@@ -40,81 +43,73 @@ if(isset($_POST['mailform'])){
 <html lang="fr">
   <head>
     <meta charset="utf-8">
+
+    <link rel="shortcut icon" href="fonts/icone.ico">
     <title>TIMELINE</title>
 
-    <!-- pour les moteurs de recherche -->
-    <meta name="description" lang="fr" content="plateforme de timeline photo pour soirÃ©e et Ã©vÃ¨nement" />
-    <meta name="keywords" lang="fr" content="photos, soirÃ©e, timeline, ENSIIE, iiens" />
+     <!-- pour les moteurs de recherche -->
+    <metaname="description" lang="fr" content="plateforme de timeline photo pour soirée et évènement" />
+    <metaname="keywords" lang="fr" content="photos, soirée, timeline, ENSIIE, iiens" />
+     
+   <!-- jquery -->
+   <script src="js/jquery_library.js"></script>
 
-     <!-- icone du titre de la page -->
-   <link rel="shortcut icon" href="fonts/icone2.jpg">
-   
-   
-	<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="css/bootstrap.css">
-	 <link rel="stylesheet" href="css/menu.css">
+   <!-- Latest compiled and minified JavaScript -->
+   <script src="js/bootstrap.js"></script>
 
+   <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
 
-	<!-- jquery -->
-	<script src="jquery_library.js"></script>
+    <!-- fichier css menu -->
+   <link rel="stylesheet" href="css/menu.css">
 
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="js/bootstrap.js"></script>
-
-
-	<!-- fichier JS validation formulaire -->
-	<script src="js/validate.js"></script>
-    <link rel="stylesheet" href="css/ajout.css">
+   <link rel="stylesheet" href="css/contact.css">
 
 </head>
 
 <body>
 
  <?php include 'header.php'; ?>
- <h3 class="page-header"><b> Contact! </b></h3>
-<div class="container-fluid">
-     <form id="modif" class="form-horizontal" role="form" method="POST" action="">
+
+ <h3 class="page-header">Contact </h3>
+
+  <div class="container-fluid">
+     <form id="contact" class="form-horizontal" role="form" method="POST" action="">
 		          
           <div class="form-group">
-            <label class="control-label col-sm-3" for="nom" > Ajouter votre nom : </label>
+            <label class="control-label col-sm-3" for="nom" > Votre nom : </label>
             <div class="col-sm-5">
-                <input class="form-control" type="text" name="nom" placeholder="ajouter votre nom " required/> 
+                <input class="form-control" type="text" name="nom"  required/> 
             </div>
-            <div class="col-sm-4 errors" id="nom"></div>
+            <div class="col-sm-4 errors" id="nomerror"></div>
    			</div>
         
         <div class="form-group">
-            <label class="control-label col-sm-3" for="mail" > Ajouter votre email : </label>
+            <label class="control-label col-sm-3" for="mail" > Votre email : </label>
             <div class="col-sm-5">
-                <input class="form-control" type="email" name="mail" placeholder="Ajouter votre email"  required/> 
+                <input class="form-control" type="email" name="mail" required/> 
             </div>
-            <div class="col-sm-4 errors" id="mail"></div>
+            <div class="col-sm-4 errors" id="mailerror"></div>
    			</div>
         
         <div class="form-group">
-            <label class="control-label col-sm-3" for="year" > Ajouter votre message : </label>
+            <label class="control-label col-sm-3" for="year" > Un petit message : </label>
             <div class="col-sm-5">
-                <textarea class="form-control" name="message" placeholder="votre message" ></textarea>
+                <textarea class="form-control" name="message" ></textarea>
             </div>
-            <div class="col-sm-4 errors" id="nom"></div>
+            <div class="col-sm-4 errors" id="nomerror"></div>
    			</div>
         
         <div class="form-group">
-      <div class="col-sm-offset-3 col-sm-5">          
-        <button class="btn btn-default btn-block" type="submit" id="Ajout" name="mailform">Send it!</button>
-        <span class="errors" id="formerror"></span>
-      </div>
-      </div>
+          <div class="col-sm-offset-3 col-sm-5">          
+            <button class="btn btn-default btn-block" type="submit" id="submit" name="mailform">Balance !</button>
+            <span class="errors" id="formerror"><?php if(isset($res)) { echo $res ; } ?></span>
+            <span class="correct" id="formcorrect"><?php if(isset($done)) { echo $done ; } ?></span>
+          </div>
+        </div>
 
-</form>
-</div>
-<?php
-if(isset($res))
-{
+    </form>
+  </div>
 
-echo $res;
+ <?php include 'footer.php'; ?>
 
-}
-?>
-</body>
-</html>

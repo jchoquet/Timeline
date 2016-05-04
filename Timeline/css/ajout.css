@@ -11,8 +11,8 @@ fieldset.field-border {
 
 
 legend.field-border {
-    width:inherit; /* Or auto */
-    padding:0 3px; /* To give a bit of padding on the left and right */
+    width:inherit; 
+    padding:0 3px; 
     border-bottom:none;
     font-size: 1em;
 }
