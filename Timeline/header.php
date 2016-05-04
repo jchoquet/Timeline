@@ -118,7 +118,7 @@
           </div>
           <ul class="nav nav-sidebar">
             <li><a href="monprofil.php"><span class="glyphicon glyphicon-user"></span>Mon profil</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-camera"></span>Mes posts</a></li>
+            <li><a href="mes_posts.php"><span class="glyphicon glyphicon-camera"></span>Mes posts</a></li>
             <li><a href="#"><span class="glyphicon glyphicon-pushpin"></span>Mes identifications</a></li>
             <li><a href="#"><span class="glyphicon glyphicon-star"></span>Mes wins</a></li>
           </ul>
