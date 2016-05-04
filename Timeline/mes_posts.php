@@ -48,6 +48,7 @@
    <!-- fichier css perso -->
    <link rel="stylesheet" href="css/menu.css">
    <link rel="stylesheet" href="css/mes_posts.css">
+   <link rel="stylesheet" href="css/buttonLink.css">
 
    <script>
 
@@ -82,7 +83,20 @@
 
       <h3 class="page-header">Mes Posts</h3>
       
-        <?php carousel2($tabPhotos); ?>
+        <?php
+          if($tabPhotos) 
+          {
+            carousel2($tabPhotos);
+          }
+          else
+          {
+            echo "<div class='container-fluid'>";
+            echo "<p class='nothing'>Tanche ! Tu n'as encore rien posté !<p>";
+            echo '<div class="col-sm-3">';          
+            echo '<button class="btn btn-default btn-block" id="button"><a href="ajout.php">Poster une photo</a></button>';
+            echo '</div>';
+          }
+        ?>
 
 
  <?php include 'footer.php'; ?>

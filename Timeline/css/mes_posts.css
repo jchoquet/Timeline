@@ -34,3 +34,10 @@ margin-top:20px;
 	border : solid black 0.2px;
 	padding: 20px;
 }
+
+/***************** Cas où l'utilisateur n'a rien posté *****************/
+
+.nothing {
+	padding: 30px;
+}
+}
