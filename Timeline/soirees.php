@@ -14,17 +14,6 @@
   }
 
 
- /* Fonction qui renvoie un tableau contenant les annÃ©es prÃ©sentes dans soiree */
-  
-  
-  function getTheme($db){
-
-      $stmt = $db->prepare("SELECT DISTINCT theme FROM soiree ");
-      $stmt->execute();
-      $stmt->setFetchMode(PDO::FETCH_NUM);
-      $result = $stmt->fetchAll();
-      return $result;
-  }
   
   /* Fonction qui crée un bouton select à partir d'un tableau */
 
@@ -46,7 +35,6 @@
     $DB = new PDO("pgsql:host=localhost;dbname=projet_web", "postgres", "root");
 
     $tab=getAnnee($DB);
-    $tab2=getTheme($DB);
 
     $DB = null;
   }
@@ -114,8 +102,6 @@
             <label class="control-label col-sm-2" for="theme" > Thème : </label>
             <div class="col-sm-5">
                 <select name="theme" id="theme">
-                <option>SÃ©lectionne un ThÃ¨me</option>
-                <?php printSelect($tab2); ?>
                 </select>
             </div>
       </div>
