@@ -28,12 +28,55 @@
 
     function getPhotosSoiree($db, $idsoiree) {
 
-        $stmt = $db->query("SELECT photo.idphoto, photo.extension, photo.composteur, photo.heure, utilisateur.surnom FROM photo INNER JOIN utilisateur ON photo.idposteur=utilisateur.identifiant WHERE idsoiree='$idsoiree'");
+        $stmt = $db->query("SELECT photo.idphoto, photo.extension, photo.composteur, photo.heure, utilisateur.surnom FROM photo INNER JOIN utilisateur ON photo.idposteur=utilisateur.identifiant WHERE idsoiree='$idsoiree' ORDER BY photo.heure ASC");
         $stmt->setFetchMode(PDO::FETCH_NUM);
         $result = $stmt->fetchAll();
         return $result;
     }
 
+    function orderPhoto($tab) {
+
+    	 $avantMinuit = array();
+    	 $apresMinuit = array();
+
+    	 foreach ($tab as $pic)
+    	 {
+    	 	if($pic[3] > "17:00:00" && $pic[3] < "23:59:59")
+    	 	{
+    	 		$avantMinuit[] = $pic;
+    	 	}
+    	 	else
+    	 	{
+    	 		$apresMinuit[] = $pic;
+    	 	}
+    	 }
+
+    	 $result = array();
+
+    	 foreach ($avantMinuit as $a) 
+    	 {
+    	 	$result[] = $a;
+    	 }
+    	 foreach ($apresMinuit as $b) 
+    	 {
+    	 	$result[] = $b;
+    	 }
+
+    	 return $result;
+
+    }
+
+    function test($tab) {
+
+	  	foreach($tab as $a)
+	  	{
+	  			
+
+	  			echo $a[0].$a[1]. PHP_EOL;
+	  		
+	  	}
+  	}
+    
 
     function printTimeline($tab, $annee, $name) {
 
@@ -43,7 +86,8 @@
     	// 3 heure
     	// 4 surnom posteur
 
-    	 
+    	$tab = orderPhoto($tab);
+
     	 $i=0;
     	 foreach ($tab as $pic)
     	 {
@@ -96,6 +140,8 @@
        $idsoiree = getIdSoiree($DB,$name,$annee);
 
        $tabPhotos = getPhotosSoiree($DB,$idsoiree);
+
+
 
        $DB = null;
     	

@@ -2,7 +2,7 @@
 
   session_start();
 
-  /* Fonction qui renvoie un tableau contenant les annÃ©es prÃ©sentes dans soiree */
+  /* Fonction qui renvoie un tableau contenant les années présentes dans soiree */
 
   function getAnnee($db){
 
@@ -12,21 +12,9 @@
       $result = $stmt->fetchAll();
       return $result;
   }
-  
-  /* Fonction qui renvoie un tableau contenant les annÃ©es prÃ©sentes dans soiree */
-  
-  
-  function getTheme($db){
-
-      $stmt = $db->prepare("SELECT DISTINCT theme FROM soiree ");
-      $stmt->execute();
-      $stmt->setFetchMode(PDO::FETCH_NUM);
-      $result = $stmt->fetchAll();
-      return $result;
-  }
 
   
-  /* Fonction qui crÃ©e un bouton select Ã  partir d'un tableau */
+  /* Fonction qui crée un bouton select à partir d'un tableau */
 
   function printSelect($tab){
 
@@ -46,8 +34,6 @@
     $DB = new PDO("pgsql:host=localhost;dbname=projet_web", "postgres", "root");
 
     $tab=getAnnee($DB);
-    $tab2=getTheme($DB);
-    
 
     $DB = null;
   }
@@ -67,8 +53,8 @@
     <title>TIMELINE</title>
 
     <!-- pour les moteurs de recherche -->
-    <meta name="description" lang="fr" content="plateforme de timeline photo pour soirÃ©e et Ã©vÃ¨nement" />
-    <meta name="keywords" lang="fr" content="photos, soirÃ©e, timeline, ENSIIE, iiens" />
+    <meta name="description" lang="fr" content="plateforme de timeline photo pour soirée et évènement" />
+    <meta name="keywords" lang="fr" content="photos, soirée, timeline, ENSIIE, iiens" />
 
 
    <!-- Latest compiled and minified CSS -->
@@ -95,28 +81,26 @@
  <?php include 'header.php'; ?>
  
  
-<h1 class="page-header">Choisis une soirÃ©e et dÃ©couvre du gros dossier</h1>
+<h1 class="page-header">Choisis une soirée et découvre du gros dossier</h1>
 
    <div class="container-fluid">
 
     <form method="post" action="timeline.php" id="showSoiree" class="form-horizontal" >
 
       <div class="form-group">
-          <label class="control-label col-sm-2" for="annee" > AnnÃ©e : </label>
+          <label class="control-label col-sm-2" for="annee" > Année : </label>
           <div class="col-sm-5">
             <select name="annee" id="annee" onchange="fetch_select_theme(this.value);">
-            <option>SÃ©lectionne une annÃ©e</option>
+            <option>Sélectionne une année</option>
             <?php printSelect($tab); ?>
             </select>
           </div>
       </div>
 
       <div class="form-group">
-            <label class="control-label col-sm-2" for="theme" > ThÃ¨me : </label>
+            <label class="control-label col-sm-2" for="theme" > Thème : </label>
             <div class="col-sm-5">
                 <select name="theme" id="theme">
-                <option>SÃ©lectionne un ThÃ¨me</option>
-                <?php printSelect($tab2); ?>
                 </select>
             </div>
       </div>
