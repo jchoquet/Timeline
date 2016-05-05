@@ -12,7 +12,14 @@ INSERT INTO concours (idconcours, nom, description, winner, encours) VALUES
     (3,'love_btp','parce quon aime les ragots (BTP)',2,false);
     
 INSERT INTO photo (idphoto, idsoiree, date_mel,heure, composteur, nblike, idposteur, extension, heure_mel) VALUES
-    (1, 1, '2015-02-15', '12:16', 'Enorme !', 4, 'bob15', 'jpg', '15:20');
+    (1, 1, '2015-02-15', '12:16', 'Enorme !', 4, 'bob15', 'jpg', '15:20'),
+    (2, 2, '2016-08-12', '21:50', 'Il est pas beau comme ça ?', 6, 'hans15', 'png', '20:50');
+    
+INSERT INTO vote (idphoto, idutilisateur, idconcours) VALUES
+    (1, 'bob15', 2),
+    (1, 'hans15',2),
+    (2, 'bob15', 3),
+    (1, 'hausman15', 3);
 
 
 Instructions pour remettre les index des séquences id à zéro après suppression :
