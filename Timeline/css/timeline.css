@@ -1,10 +1,18 @@
+img {
+    margin-right: auto;
+    margin-left: auto;
+    max-height: 400px;
+}
 .glyphicon-record {
   padding-right: 0px;
+  top: 4px;
 }
 .timeline {
   list-style: none;
   padding: 20px 0 20px;
   position: relative;
+  width: 75%;
+  margin-left: 12%;
 }
 .timeline:before {
   top: 0;
@@ -17,11 +25,13 @@
   margin-left: -1.5px;
 }
 .timeline > li {
-  margin-bottom: 20px;
+  margin-bottom: 21px;
   position: relative;
   width: 50%;
   float: left;
   clear: left;
+  /* padding-bottom: 1px; */
+  padding-right: 11px;
 }
 .timeline > li:before,
 .timeline > li:after {
@@ -43,8 +53,8 @@
   width: 95%;
   float: left;
   border: 1px solid #d4d4d4;
-  /*border-radius: 2px;*/
-  /*padding: 20px;*/
+  border-radius: 2px;
+  padding: 20px;
   position: relative;
   -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
@@ -211,10 +221,11 @@
     height:0;
 }
 .timeline > li.timeline-inverted{
-  float: right; 
+  float: right;
   clear: right;
   margin-top: 30px;
   margin-bottom: 30px;
+  padding-left: 12px;
 }
 .timeline > li:nth-child(2){
   margin-top: 60px;
@@ -223,7 +234,7 @@
   left: -12px;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
     ul.timeline:before {
         left: 40px;
     }
