@@ -85,10 +85,10 @@
 
    <div class="container-fluid">
 
-    <form method="post" action=""  id="showSoiree" class="form-horizontal" >
+    <form method="post" action="timeline.php" id="showSoiree" class="form-horizontal" >
 
       <div class="form-group">
-          <label class="control-label col-sm-3" for="annee" > Année : </label>
+          <label class="control-label col-sm-2" for="annee" > Année : </label>
           <div class="col-sm-5">
             <select name="annee" id="annee" onchange="fetch_select_theme(this.value);">
             <option>Sélectionne une année</option>
@@ -98,7 +98,7 @@
       </div>
 
       <div class="form-group">
-            <label class="control-label col-sm-3" for="theme" > Thème : </label>
+            <label class="control-label col-sm-2" for="theme" > Thème : </label>
             <div class="col-sm-5">
                 <select name="theme" id="theme">
                 </select>
@@ -106,7 +106,7 @@
       </div>
 
       <div class="form-group">
-        <div class="col-sm-offset-3 col-sm-6">          
+        <div class="col-sm-offset-2 col-sm-4">          
           <button class="btn btn-default btn-block" type="submit" id="submit" name="submit">Balance !</button>
         </div>
       </div>
