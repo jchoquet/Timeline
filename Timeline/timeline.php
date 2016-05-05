@@ -5,6 +5,108 @@
 	$annee = $_POST['annee'];
 	$name = $_POST['theme'];
 
+	/* On doit chopper les photos de l'id soiree du ocup changer le truc d'en dessous pour chopper l'id */
+
+	/* apres on se connecter pour chopper where id soirre = machin
+		il faut extension idphoto, com posteur, surnom posteur, heure */
+
+    function getThemeSoiree($db, $name, $annee) {
+
+      $stmt = $db->query("SELECT theme FROM soiree WHERE name='$name' AND annee='$annee'");
+      $stmt->setFetchMode(PDO::FETCH_OBJ);
+      $stmt = $stmt->fetch();
+      return $stmt->theme;
+    }
+
+    function getIdSoiree($db, $name, $annee) {
+
+      $stmt = $db->query("SELECT idsoiree FROM soiree WHERE name='$name' AND annee='$annee'");
+      $stmt->setFetchMode(PDO::FETCH_OBJ);
+      $stmt = $stmt->fetch();
+      return $stmt->idsoiree;
+    }
+
+    function getPhotosSoiree($db, $idsoiree) {
+
+        $stmt = $db->query("SELECT photo.idphoto, photo.extension, photo.composteur, photo.heure, utilisateur.surnom FROM photo INNER JOIN utilisateur ON photo.idposteur=utilisateur.identifiant WHERE idsoiree='$idsoiree'");
+        $stmt->setFetchMode(PDO::FETCH_NUM);
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
+
+    function printTimeline($tab, $annee, $name) {
+
+    	// $tab[0] idphoto
+    	// 1 extension
+    	// 2 com
+    	// 3 heure
+    	// 4 surnom posteur
+
+    	 
+    	 $i=0;
+    	 foreach ($tab as $pic)
+    	 {
+    	 	$idphoto=$pic[0];
+    	 	$extension=$pic[1];
+    	 	$com=$pic[2];
+    	 	$heure=$pic[3];
+    	 	$surnom=$pic[4];
+
+    	 	$path = "photos/{$annee}/{$name}/{$idphoto}.{$extension}";
+    	 	if( ($i%2) == 0 )
+    	 	{
+    	 		echo "<li>";
+    	 		echo "<div class='timeline-badge primary'><a><i class='glyphicon glyphicon-record' rel='tooltip' title='$heure' id=''></i></a></div>";
+    	 	}
+    	 	else
+    	 	{
+    	 		echo "<li  class='timeline-inverted'>";
+    	 		echo "<div class='timeline-badge primary'><a><i class='glyphicon glyphicon-record invert' rel='tooltip' title='$heure' id=''></i></a></div>";
+    	 	}
+
+			echo "<div class='timeline-panel'>";
+			echo "<div class='timeline-heading'>";
+			echo "<img class='img-responsive' src='$path' />";
+			echo '</div>';
+			echo "<div class='timeline-body'>";
+			echo "<blockquote><p>".$com."</p><footer>D'après ".$surnom."</footer></blockquote>";
+			echo "</div>";
+			// echo "<div class='timeline-footer'>";
+			// echo "<a><i class='glyphicon glyphicon-thumbs-up'></i></a>";
+			// echo "<a><i class='glyphicon glyphicon-share'></i></a>";
+			// echo "<a class='pull-right'>Postée par ".$surnom."</a>";
+			// echo "</div>";
+			echo "</div>";
+			echo "</li>";
+			$i=$i+1;
+    	 }
+    	
+          
+    }
+
+
+    try{
+
+      /* Connexion à la base de données avec PDO */
+
+       $DB = new PDO("pgsql:host=localhost;dbname=projet_web", "postgres", "root");
+
+       $theme = getThemeSoiree($DB,$name,$annee);
+       $idsoiree = getIdSoiree($DB,$name,$annee);
+
+       $tabPhotos = getPhotosSoiree($DB,$idsoiree);
+
+       $DB = null;
+    	
+
+
+    }
+
+    catch(PDOException $e){
+       echo "Database Error";
+    }
+
 ?>
 
 <!DOCTYPE html >
@@ -34,140 +136,15 @@
 <body>
 
 	<?php include 'header2.php'; ?>
+
 	<div class="container" id="main">
     <div class="page-header text-center">
-        <h1 id="timeline">Timeline 2.1</h1>
+        <h1 id="timeline"><?php echo $annee." - ".$theme; ?></h1>
     </div>
     <ul class="timeline">
-        <li>
-          <div class="timeline-badge primary"><a><i class="glyphicon glyphicon-record" rel="tooltip" title="11 hours ago via Twitter" id=""></i></a></div>
-          <div class="timeline-panel">
-            <div class="timeline-heading">
-              <img class="img-responsive" src="photos/2016/soiree_or/1.jpg" />
-              
-            </div>
-            <div class="timeline-body">
-              <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
-              
-            </div>
-            
-            <div class="timeline-footer">
-                <a><i class="glyphicon glyphicon-thumbs-up"></i></a>
-                <a><i class="glyphicon glyphicon-share"></i></a>
-                <a class="pull-right">Continuar Lendo</a>
-            </div>
-          </div>
-        </li>
         
-        <li  class="timeline-inverted">
-          <div class="timeline-badge primary"><a><i class="glyphicon glyphicon-record invert" rel="tooltip" title="11 hours ago via Twitter" id=""></i></a></div>
-          <div class="timeline-panel">
-            <div class="timeline-heading">
-              <img class="img-responsive" src="http://lorempixel.com/1600/500/sports/2" />
-              
-            </div>
-            <div class="timeline-body">
-              <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
-             
-            </div>
-            
-            <div class="timeline-footer">
-                <a><i class="glyphicon glyphicon-thumbs-up"></i></a>
-                <a><i class="glyphicon glyphicon-share"></i></a>
-                <a class="pull-right">Continuar Lendo</a>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="timeline-badge primary"><a><i class="glyphicon glyphicon-record" rel="tooltip" title="11 hours ago via Twitter" id=""></i></a></div>
-          <div class="timeline-panel">
-            <div class="timeline-heading">
-              <img class="img-responsive" src="http://lorempixel.com/1600/500/sports/2" />
-              
-            </div>
-            <div class="timeline-body">
-              <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
-              
-            </div>
-            
-            <div class="timeline-footer">
-                <a><i class="glyphicon glyphicon-thumbs-up"></i></a>
-                <a><i class="glyphicon glyphicon-share"></i></a>
-                <a class="pull-right">Continuar Lendo</a>
-            </div>
-          </div>
-        </li>
-        
-        <li  class="timeline-inverted">
-          <div class="timeline-badge primary"><a><i class="glyphicon glyphicon-record invert" rel="tooltip" title="11 hours ago via Twitter" id=""></i></a></div>
-          <div class="timeline-panel">
-            <div class="timeline-body">
-              <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
-              
-            </div>
-            
-            <div class="timeline-footer">
-                <a><i class="glyphicon glyphicon-thumbs-up"></i></a>
-                <a><i class="glyphicon glyphicon-share"></i></a>
-                <a class="pull-right">Continuar Lendo</a>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="timeline-badge primary"><a><i class="glyphicon glyphicon-record" rel="tooltip" title="11 hours ago via Twitter" id=""></i></a></div>
-          <div class="timeline-panel">
-            <div class="timeline-heading">
-              <img class="img-responsive" src="http://lorempixel.com/1600/500/sports/2" />
-              
-            </div>
-            <div class="timeline-body">
-              <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
-              
-            </div>
-            
-            <div class="timeline-footer">
-                <a><i class="glyphicon glyphicon-thumbs-up"></i></a>
-                <a><i class="glyphicon glyphicon-share"></i></a>
-                <a class="pull-right">Continuar Lendo</a>
-            </div>
-          </div>
-        </li>
-        
-        <li  class="timeline-inverted">
-          <div class="timeline-badge primary"><a><i class="glyphicon glyphicon-record invert" rel="tooltip" title="11 hours ago via Twitter" id=""></i></a></div>
-          <div class="timeline-panel">
-            <div class="timeline-heading">
-              <img class="img-responsive" src="http://lorempixel.com/1600/500/sports/2" />
-              
-            </div>
-            <div class="timeline-body">
-              <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
-              
-            </div>
-            
-            <div class="timeline-footer primary">
-                <a><i class="glyphicon glyphicon-thumbs-up"></i></a>
-                <a><i class="glyphicon glyphicon-share"></i></a>
-                <a class="pull-right">Continuar Lendo</a>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="timeline-badge primary"><a><i class="glyphicon glyphicon-record invert" rel="tooltip" title="11 hours ago via Twitter" id=""></i></a></div>
-          <div class="timeline-panel">
-            <div class="timeline-body">
-              <p><b>All the credits go to <a href="http://bootsnipp.com/rafamaciel">Rafamaciel</a></b></p>
-              <p>I only make it responsive and remove the empty spaces to be more like Facebook timeline!</p>
-            </div>
-            
-            <div class="timeline-footer primary">
-                <a><i class="glyphicon glyphicon-thumbs-up"></i></a>
-                <a><i class="glyphicon glyphicon-share"></i></a>
-                <a class="pull-right">Continuar Lendo</a>
-            </div>
-          </div>
-        </li>
-        
+        <?php printTimeline($tabPhotos, $annee, $name); ?>
+
         <li class="clearfix" style="float: none;"></li>
     </ul>
 </div>
