@@ -10,11 +10,11 @@
    
 
    #== usage : ======================================
-   #PicPopUp ("PopUpClicSurPhoto","1.png", "");
+   #PicPopUp ("NomDuPopUp","IdPhoto", "dbname=YourDB");
 
-   #echo "<a data-toggle='modal' data-target='#PopUpClicSurPhoto'>MyAwesomeLink</a><br>";
+   #echo "<a data-toggle='modal' data-target='#NomDuPopUp'>MyAwesomeLink</a><br>";
    #== OR ===
-   #echo "<button type='button' class='btn btn-info btn-lg' data-toggle='modal' data-target='#PopUpClicSurPhoto'>MyAwesomeButton</button><br>";
+   #echo "<button type='button' class='btn btn-info btn-lg' data-toggle='modal' data-target='#NomDuPopUp'>MyAwesomeButton</button><br>";
    #===============================================
 
 ?>
