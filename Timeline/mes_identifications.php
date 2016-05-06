@@ -2,6 +2,21 @@
 
   session_start();
 
+  include 'carousel.php';
+
+  try{
+
+      $DB = new PDO("pgsql:host=localhost;dbname=projet_web", "postgres", "root");
+
+      $tabPhotos = getPhotosMesIdentifications($DB);
+
+      $DB = null;
+
+    }
+
+    catch(PDOException $e){
+      echo "Database Error";
+    }
 ?>
 
 <!DOCTYPE html >
@@ -25,6 +40,40 @@
 
      <!-- Latest compiled and minified JavaScript -->
      <script src="js/bootstrap.js"></script>
+
+     <!-- fichier css perso -->
+     <link rel="stylesheet" href="css/menu.css">
+     <link rel="stylesheet" href="css/mes_idenifications.css">
+     <link rel="stylesheet" href="css/buttonLink.css">
+
+     <script>
+
+        //Code nécessaire pour le carroussel 2
+        jQuery(document).ready(function($) {
+ 
+        $('#myCarousel').carousel({
+                interval: 10000
+        });
+ 
+        $('#carousel-text').html($('#slide-content-0').html());
+ 
+        //Handles the carousel thumbnails
+       $('[id^=carousel-selector-]').click( function(){
+            var id = this.id.substr(this.id.lastIndexOf("-") + 1);
+            var id = parseInt(id);
+            $('#myCarousel').carousel(id);
+        });
+ 
+        // When the carousel slides, auto update the text
+        $('#myCarousel').on('slid.bs.carousel', function (e) {
+                 var id = $('.item.active').data('slide-number');
+                $('#carousel-text').html($('#slide-content-'+id).html());
+        });
+         });
+   </script>
+
+
+
    
 
   </head>
@@ -33,16 +82,19 @@
   <?php include 'header.php'; ?>
   <?php include 'carousel.php'; ?>  
 
-      <h1 class="page-header">Mes Identifications</h1>
+      <h3 class="page-header">Mes Identifications</h3>
       
-      <div class="container-fluid">
+        <?php
+          if($tabPhotos) 
+          {
+            carousel2($tabPhotos);
+          }
+          else
+          {
+            echo "<div class='container-fluid'>";
+            echo "<p class='nothing'>Tanche ! Tu n'es encore identifié nul part !<p>";
+          }
+        ?>
 
-            <?php carousel("pgsql:host=localhost;dbname=projet_web", "SELECT IdPhoto FROM Identification WHERE IdUtilisateur=$_SESSION['login']"); ?>      /* a verifier les arguments!! */
 
-      </div>
-	
-
-  </body>
-</html>
-
-
+ <?php include 'footer.php'; ?>
