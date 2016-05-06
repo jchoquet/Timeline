@@ -30,7 +30,6 @@
         return $result;
     }
 
-    /* Working */
 
     function orderPhoto($tab) {
 
@@ -84,11 +83,8 @@
     	// 3 heure
     	// 4 surnom posteur
 
-    	$test = orderPhoto($tab);
-    	
-
     	 $i=0;
-    	 foreach ($test as $pic)
+    	 foreach ($tab as $pic)
     	 {
 
     	 	$idphoto=$pic[0];
@@ -162,7 +158,32 @@
           
     }
 
+    function printSideBar ($tab) {
 
+        $i=0;
+        foreach ($tab as $pic) 
+        {
+            if($i == 0)
+            {
+                $heure = date("H", strtotime($pic[3]));
+                $oldHeure = $heure;
+
+                echo "<li><button class='scroll-button' id='b_".$heure."'>".$heure." H</button><li>";
+                
+            }
+            else
+            {
+                $oldHeure=$heure;
+                $heure=date("H", strtotime($pic[3]));
+
+                if($heure != $oldHeure)
+                   echo "<li><button class='scroll-button' id='b_".$heure."'>".$heure." H</button><li>";
+            }
+            $i=$i+1;
+
+        }
+
+    }    
     try{
 
       /* Connexion à la base de données avec PDO */
@@ -174,7 +195,7 @@
 
        $tabPhotos = getPhotosSoiree($DB,$idsoiree);
 
-
+       $tabOrd = orderPhoto($tabPhotos);
 
        $DB = null;
     	
@@ -221,14 +242,9 @@
   <div id="lmenu" class="container-fluid">
   <div class="row">
         <div class="col-sm-2 col-md-1 sidebar">
-        <button id="b_22">LOL</button>
+
           <ul class="nav nav-sidebar ss-links">
-                <li><a href="#22">22 H</a><li>
-                <li><a href="#23">23 H</a></li>
-                <li><a href="#02">02 H</a></li>
-                <li><a href="#03">03 H</a></li>
-                <li><a href="#july">Jul</a></li>
-                <li><a href="#june">Jun</a></li>
+                <?php printSideBar($tabOrd); ?>
           </ul>
           
         </div>
@@ -242,7 +258,7 @@
             </div>
             <ul class="timeline">
                 
-                <?php printTimeline($tabPhotos, $annee, $name); ?>
+                <?php printTimeline($tabOrd, $annee, $name); ?>
 
                 <li class="clearfix" style="float: none;"></li>
             </ul>
@@ -259,10 +275,15 @@
 	<script type="text/javascript" src="js/timeline.js"></script>
 	  <script>
     $(document).ready(function (){
-            $("#b_22").click(function (){
-                $('html, body').scrollTop($("#02").offset().top - 100);
+        $.each($('.scroll-button'), function (index, value) {
+            var id = $(this).attr('id');
+            var tmp = id.split('_');
+            var cible = tmp[1];
+            $("#"+id).click(function (){
+                $('html, body').scrollTop($("#"+cible).offset().top - 100);
             });
-        });
+        });  
+     });
     </script>
 </body>
 

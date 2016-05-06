@@ -1,7 +1,23 @@
-/* Il faut reussir ÃƒÂ  centrer le texte au milieu des boutons */
+/********************* Menu gauche avec liens vers heures ************************/
 .sidebar {
-	padding-top: 100px;
+	padding-top: 50px;
 }
+.nav-sidebar > li > button{
+  color : black;
+  padding-right: 20px;
+  padding-left: 20px;
+  margin-left:25%;
+  margin-top:15%;
+  font-size: 1.2em;
+  background-color: #52b3da;
+  color:white;
+  border-radius:5px;
+}
+.nav-sidebar > li > button:active, .nav-sidebar > li > button:focus {
+	outline :0;
+}
+
+/********************* Bouttons heure timeline ************************/
 
 .button-timeline {
   width: 48px;
@@ -31,7 +47,7 @@
 }
 
 
-/* Mise en page timeline de base */
+/********************* Mise en page de la timeline de base ************************/
 
 img {
     margin-right: auto;
@@ -271,6 +287,7 @@ img {
   left: -12px;
 }
 
+/********************* Mise en page sous mobile ************************/
 @media (max-width: 768px) {
     ul.timeline:before {
         left: 40px;
