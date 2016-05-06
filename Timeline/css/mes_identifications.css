@@ -1,0 +1,46 @@
+/* Decommenter le suivant pour carousel 1 */
+/*
+
+.carousel-indicators {
+	bottom: 0;
+}
+*/
+
+/***************** Mise en page commune aux 2 carousels ************************/
+
+.carousel-control.right,
+.carousel-control.left {
+	background-image: none;
+}
+
+.hide-bullets {
+list-style:none;
+margin-left: -40px;
+margin-top:20px;
+}
+
+
+
+/***************** Mise en page pour le carousel 2 ************************/
+
+#carousel-text {
+	
+	text-align: center;
+	margin-left: -2%;
+	padding-top: 8%;
+}
+
+.border{
+	/*border : solid grey 0.2px;*/
+	padding: 20px;
+	background-color: #CFD8DC;
+	border-radius: 5px;
+}
+
+/***************** Cas où l'utilisateur n'est identifié nul part *****************/
+
+.nothing {
+	padding: 30px;
+}
+}
+
