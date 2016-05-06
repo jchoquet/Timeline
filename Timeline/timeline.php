@@ -107,7 +107,7 @@
 				$heure = date("H", strtotime($pic[3]));
 				$oldHeure = $heure;
 
-				echo '<button class="button-timeline button-timeline btn btn-info btn-sm" class="btn btn-info btn-sm">';
+				echo "<button class='button-timeline btn btn-info btn-sm' id='$heure'>";
 				echo $heure.' H';
 				echo '</button>';
 				}
@@ -118,7 +118,7 @@
 
 				if($heure != $oldHeure)
 				{
-				echo '<button class="button-timeline btn btn-info btn-sm">';
+				echo "<button class='button-timeline btn btn-info btn-sm' id='$heure'>";
 				echo $heure.' H';
 				echo '</button>';
 				}
@@ -134,7 +134,7 @@
 
 				if($heure != $oldHeure)
 				{
-				echo '<button class="button-timeline btn btn-info btn-sm">';
+				echo "<button class='button-timeline btn btn-info btn-sm'  id='$heure'>";
 				echo $heure.' H';
 				echo '</button>';
 				}
@@ -210,23 +210,44 @@
 	<!-- fichier css et js mise en page timeline -->
 	<link rel="stylesheet" type="text/css" href="css/timeline.css">
 
+  
 </head>
 
 <body>
 
 	<?php include 'header2.php'; ?>
 
-	<div class="container" id="main">
-    <div class="page-header text-center">
-        <h1 id="timeline"><?php echo $annee." - ".$theme; ?></h1>
-    </div>
-    <ul class="timeline">
-        
-        <?php printTimeline($tabPhotos, $annee, $name); ?>
+  <!-- menu gauche -->
+  <div id="lmenu" class="container-fluid">
+  <div class="row">
+        <div class="col-sm-2 col-md-1 sidebar">
+        <button id="b_22">LOL</button>
+          <ul class="nav nav-sidebar ss-links">
+                <li><a href="#22">22 H</a><li>
+                <li><a href="#23">23 H</a></li>
+                <li><a href="#02">02 H</a></li>
+                <li><a href="#03">03 H</a></li>
+                <li><a href="#july">Jul</a></li>
+                <li><a href="#june">Jun</a></li>
+          </ul>
+          
+        </div>
 
-        <li class="clearfix" style="float: none;"></li>
-    </ul>
-</div>
+        <div class="col-sm-10 col-sm-offset-2 col-md-11 col-md-offset-1 main">
+
+
+        	<div class="container fluid" id="main">
+            <div class="page-header text-center">
+                <h1 id="timeline"><?php echo $annee." - ".$theme; ?></h1>
+            </div>
+            <ul class="timeline">
+                
+                <?php printTimeline($tabPhotos, $annee, $name); ?>
+
+                <li class="clearfix" style="float: none;"></li>
+            </ul>
+            </div>
+        </div>
 
 <!-- div fin de menu -->
 </div>
@@ -236,7 +257,13 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script type="text/javascript" src="js/bootstrap.js"></script>
 	<script type="text/javascript" src="js/timeline.js"></script>
-	
+	  <script>
+    $(document).ready(function (){
+            $("#b_22").click(function (){
+                $('html, body').scrollTop($("#02").offset().top - 100);
+            });
+        });
+    </script>
 </body>
 
 </html>

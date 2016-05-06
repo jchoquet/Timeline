@@ -1,4 +1,7 @@
-/* Il faut reussir Ã  centrer le texte au milieu des boutons */
+/* Il faut reussir ÃƒÂ  centrer le texte au milieu des boutons */
+.sidebar {
+	padding-top: 100px;
+}
 
 .button-timeline {
   width: 48px;
@@ -42,10 +45,9 @@ img {
 .timeline {
   list-style: none;
   padding: 20px 0 20px;
-
   position: relative;
-  width: 100%;
-  margin-left: 0%;
+  width: 80%;
+  margin-left: 12%;
 }
 .timeline:before {
   top: 0;
@@ -89,7 +91,7 @@ img {
   border-radius: 2px;
   padding: 20px;
   /* padding-right: 20px; */
-  margin-top: 5px;
+  /* margin-top: 5px; */
   position: relative;
   -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
