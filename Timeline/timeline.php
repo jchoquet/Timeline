@@ -5,10 +5,6 @@
 	$annee = $_POST['annee'];
 	$name = $_POST['theme'];
 
-	/* On doit chopper les photos de l'id soiree du ocup changer le truc d'en dessous pour chopper l'id */
-
-	/* apres on se connecter pour chopper where id soirre = machin
-		il faut extension idphoto, com posteur, surnom posteur, heure */
 
     function getThemeSoiree($db, $name, $annee) {
 
@@ -34,22 +30,24 @@
         return $result;
     }
 
+    /* Working */
+
     function orderPhoto($tab) {
 
     	 $avantMinuit = array();
     	 $apresMinuit = array();
 
     	 foreach ($tab as $pic)
-    	 {
-    	 	if($pic[3] > "17:00:00" && $pic[3] < "23:59:59")
-    	 	{
-    	 		$avantMinuit[] = $pic;
-    	 	}
-    	 	else
-    	 	{
-    	 		$apresMinuit[] = $pic;
-    	 	}
-    	 }
+    	{
+	    	if( strtotime($pic[3]) < strtotime("12:00:00"))
+		 	{
+		 		$apresMinuit[] = $pic;
+		 	}
+		 	else
+		 	{
+		 		$avantMinuit[] = $pic;
+		 	}
+		}
 
     	 $result = array();
 
@@ -86,27 +84,62 @@
     	// 3 heure
     	// 4 surnom posteur
 
-    	$tab = orderPhoto($tab);
+    	$test = orderPhoto($tab);
+    	
 
     	 $i=0;
-    	 foreach ($tab as $pic)
+    	 foreach ($test as $pic)
     	 {
+
     	 	$idphoto=$pic[0];
     	 	$extension=$pic[1];
     	 	$com=$pic[2];
-    	 	$heure=$pic[3];
     	 	$surnom=$pic[4];
-
+    	 	$time=$pic[3];
+    	 
     	 	$path = "photos/{$annee}/{$name}/{$idphoto}.{$extension}";
     	 	if( ($i%2) == 0 )
     	 	{
     	 		echo "<li>";
-    	 		echo "<div class='timeline-badge primary'><a><i class='glyphicon glyphicon-record' rel='tooltip' title='$heure' id=''></i></a></div>";
+
+				if($i == 0)
+				{
+				$heure = date("H", strtotime($pic[3]));
+				$oldHeure = $heure;
+
+				echo '<button class="button-timeline button-timeline btn btn-info btn-sm" class="btn btn-info btn-sm">';
+				echo $heure.' H';
+				echo '</button>';
+				}
+				else
+				{
+				$oldHeure=$heure;
+				$heure=date("H", strtotime($pic[3]));
+
+				if($heure != $oldHeure)
+				{
+				echo '<button class="button-timeline btn btn-info btn-sm">';
+				echo $heure.' H';
+				echo '</button>';
+				}
+				}
+    	 		echo "<div class='timeline-badge primary'><a><i class='glyphicon glyphicon-record' rel='tooltip' title='$time' id=''></i></a></div>";
     	 	}
     	 	else
     	 	{
     	 		echo "<li  class='timeline-inverted'>";
-    	 		echo "<div class='timeline-badge primary'><a><i class='glyphicon glyphicon-record invert' rel='tooltip' title='$heure' id=''></i></a></div>";
+
+    	 		$oldHeure=$heure;
+				$heure=date("H", strtotime($pic[3]));
+
+				if($heure != $oldHeure)
+				{
+				echo '<button class="button-timeline btn btn-info btn-sm">';
+				echo $heure.' H';
+				echo '</button>';
+				}
+
+    	 		echo "<div class='timeline-badge primary'><a><i class='glyphicon glyphicon-record invert' rel='tooltip' title='$time' id=''></i></a></div>";
     	 	}
 
 			echo "<div class='timeline-panel'>";
