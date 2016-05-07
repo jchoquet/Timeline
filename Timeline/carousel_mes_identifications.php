@@ -54,7 +54,7 @@
      function carousel_mes_identifications($tabPhotos)
      {
 
-         $photos = getPathMesPosts($tabPhotos);
+         $photos = getPathMesIdentifications($tabPhotos);
 
          $first = 0;     
       
@@ -109,7 +109,7 @@
         echo '<div class="col-sm-4" id="carousel-text"></div>';
         echo '<div id="slide-content" style="display: none;">';
 
-        panelMesPosts($tabPhotos);
+        panelMesIdentifications($tabPhotos);
 
         echo'</div>';
         echo'</div>';
