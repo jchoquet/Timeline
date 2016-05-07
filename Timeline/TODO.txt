@@ -16,30 +16,33 @@ DONE :
 - mail anouar DONE
 
 Refonte CSS :
--page gestion admin 
-- Soirees maybe
-- carroussel REFONTE 
+- page gestion admin : mettre des boutons 
+- carroussel REFONTE affichage gris moche
 
 
 TO DO :
 
-- page de garde : oui ou non, navigation liens en haut à droite
-- ajout concours admin
-- changer nom / logo
+- click photo utilisateur -> affichage profil
+
+TO DO LATER :
+- boutons j'aime, vote, et ajout commentaire sur click photo
+
+- identification de personnes
+
+- start : oui ou non, navigation liens en haut à droite
+- ajout concours admin, fin concours admin
+- creation soiree : creer en mm temps trash love 
+- changer nom / logo ?
 
 
 TO CHECK
-- Mes posts
 
-- picpopup 
+- Mes wins, mes identifications 
 
-DO LATER
-- Concours
--close concours admin
 - mes identifications
 - mes wins
 
-Base de données :
+Base de données AJOUT DE CONTENU POUR TEST :
 	- verifier si le script correspond OK
 	- ajout de contenu  -> mettre le script de réindexation de la base OK
 						-> creation de 4 utilisateurs (2 pour l'instant)
@@ -47,14 +50,3 @@ Base de données :
 						-> ajout de photos OK
 						-> dossier photos OK
 
-
-Infos sur mdp 
-echo password_hash("rasmuslerdorf", PASSWORD_DEFAULT).
-
-if (password_verify('rasmuslerdorf', $hash)) {
-    echo 'Le mot de passe est valide !';
-} else {
-    echo 'Le mot de passe est invalide.';
-}
-
-taille 100 pour le mot de passe dans la bd + tester pas plus de 40 caracteres
