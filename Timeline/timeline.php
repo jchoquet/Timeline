@@ -130,7 +130,7 @@
 
 				if($heure != $oldHeure)
 				{
-				echo "<button class='button-timeline btn btn-info btn-sm'  id='$heure'>";
+				echo "<button class='button-timeline btn btn-info btn-sm'  id='$heure' >";
 				echo $heure.' H';
 				echo '</button>';
 				}
@@ -140,7 +140,7 @@
 
 			echo "<div class='timeline-panel'>";
 			echo "<div class='timeline-heading'>";
-			echo "<img class='img-responsive' src='$path' />";
+			echo "<img class='img-responsive' src='$path' id='$idphoto' data-toggle='modal' data-target='#myModal'/>";
 			echo '</div>';
 			echo "<div class='timeline-body'>";
 			echo "<blockquote><p>".$com."</p><footer>D'après ".$surnom."</footer></blockquote>";
@@ -266,15 +266,58 @@
         </div>
 
 <!-- div fin de menu -->
-</div>
-</div>
+    </div>
+    </div>
 
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+           
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-7 col-sm-12" id="image-content">
+                        <!-- Va contenir l'image -->
+                        </div>
+                        <div class="col-lg-5 col-sm-12">
+                            <p>Commentaires</p>
+                                <div style="overflow:scroll;height:340px;" >
+                                    <div id="com-content">
+                                    <!-- Contiendra les commentaires  -->
+                                    </div>
+                                    <form id="post-comment">
+                                    </form>
+                                </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <!-- va contenir les boutons j'aime ect -->
+                </div>
+          
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- End of content : script JS -->
 	<script type="text/javascript" src="js/jquery_library.js"></script>
 	<!-- Latest compiled and minified JavaScript -->
 	<script type="text/javascript" src="js/bootstrap.js"></script>
 	<script type="text/javascript" src="js/timeline.js"></script>
-	  <script>
+	<script>
     $(document).ready(function (){
+
+        // Fonction qui permet de scroller la timeline vers une heure
         $.each($('.scroll-button'), function (index, value) {
             var id = $(this).attr('id');
             var tmp = id.split('_');
@@ -282,8 +325,49 @@
             $("#"+id).click(function (){
                 $('html, body').scrollTop($("#"+cible).offset().top - 100);
             });
-        });  
-     });
+        });
+
+        // Fonction qui permet l'affichage d'une photo en mode pop-up au click
+        $('img').click(function () {
+            
+            var src = $(this).attr('src');
+            var idphoto = $(this).attr('id');
+            var idsoiree = '<?php echo $idsoiree; ?>';
+            
+            $('#image-content').html('<div class="thumbnail"><img src="' + src + '" class="img-responsive" /></div>');
+
+            $.ajax({
+
+                type:'POST',
+                url:'script_modal.php',
+                data:"idsoiree="+idsoiree+"&idphoto="+idphoto,
+                success:function(result) {
+                    if(result)
+                    {
+                        resultObj = eval (result);
+                        
+                        // for(var index in resultObj)
+                        // {
+                        //     alert("index:"+index+"value"+resultObj[index]);
+                        // }
+
+                        // var commentaire = resultObj[2];
+
+
+                        $('#com-content').html(resultObj[2][0]);
+                    }
+                    else
+                    {
+                        $('#com-content').html("Erreur");
+                    }
+                }
+            });
+
+          
+        }); 
+    
+    });
+
     </script>
 </body>
 

@@ -17,12 +17,12 @@ DONE :
 
 Refonte CSS :
 -page gestion admin 
+- Soirees maybe
+- carroussel REFONTE 
 
 
 TO DO :
-- Soirées
-- timeline rajouter bouton heure pour zoomer
-- carroussel REFONTE 
+
 - page de garde : oui ou non, navigation liens en haut à droite
 - ajout concours admin
 - changer nom / logo
