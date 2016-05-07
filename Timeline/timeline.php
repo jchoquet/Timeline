@@ -299,73 +299,20 @@
                                                 <div class="tab-content">
                                                     <div class="tab-pane active" id="list-comment">                
                                                         <ul class="media-list" style="overflow-y: scroll; max-height: 240px;">
-                                                          <li class="media">
-                                                            <a class="pull-left" href="#">
-                                                              <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/128.jpg" alt="profile">
-                                                            </a>
-                                                            <div class="container media-body">
-                                                              <div class="well well-lg">
-                                                                  <h4 class="media-heading text-uppercase reviews">Marco </h4>
-                                                                  <ul class="media-date text-uppercase reviews list-inline">
-                                                                    <li class="dd">22</li>
-                                                                    <li class="mm">09</li>
-                                                                    <li class="aaaa">2014</li>
-                                                                  </ul>
-                                                                  <p class="media-comment">
-                                                                    Great snippet! Thanks for sharing.
-                                                                  </p>
-                                                              </div>              
-                                                            </div>
-                                                          </li> 
-                                                          <li class="media">
-                                                            <a class="pull-left" href="#">
-                                                              <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/128.jpg" alt="profile">
-                                                            </a>
-                                                            <div class="container media-body">
-                                                              <div class="well well-lg">
-                                                                  <h4 class="media-heading text-uppercase reviews">Marco </h4>
-                                                                  <ul class="media-date text-uppercase reviews list-inline">
-                                                                    <li class="dd">22</li>
-                                                                    <li class="mm">09</li>
-                                                                    <li class="aaaa">2014</li>
-                                                                  </ul>
-                                                                  <p class="media-comment">
-                                                                    Great snippet! Thanks for sharing.
-                                                                  </p>
-                                                              </div>              
-                                                            </div>
-                                                          </li> 
-                                                          <li class="media">
-                                                            <a class="pull-left" href="#">
-                                                              <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/128.jpg" alt="profile">
-                                                            </a>
-                                                            <div class="container media-body">
-                                                              <div class="well well-lg">
-                                                                  <h4 class="media-heading text-uppercase reviews">Marco </h4>
-                                                                  <ul class="media-date text-uppercase reviews list-inline">
-                                                                    <li class="dd">22</li>
-                                                                    <li class="mm">09</li>
-                                                                    <li class="aaaa">2014</li>
-                                                                  </ul>
-                                                                  <p class="media-comment">
-                                                                    Great snippet! Thanks for sharing.
-                                                                  </p>
-                                                              </div>              
-                                                            </div>
-                                                          </li>                 
+                                                                   
                                                         </ul>
                                                     </div>      
                                                     <div class="tab-pane" id="add-comment">
                                                         <form action="#" method="post" class="form-horizontal" id="commentForm" role="form"> 
                                                             <div class="form-group">
-                                                                <label for="email" class="col-sm-2 control-label">Comment</label>
+                                                                <label for="email" class="col-sm-2 control-label">Commentaire</label>
                                                                 <div class="col-sm-10">
                                                                   <textarea class="form-control" name="addComment" id="addComment" rows="5"></textarea>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
                                                                 <div class="col-sm-offset-2 col-sm-10">                    
-                                                                    <button class="btn btn-success btn-circle text-uppercase" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> Summit comment</button>
+                                                                    <button class="btn btn-success btn-circle text-uppercase" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> Envoyer </button>
                                                                 </div>
                                                             </div>            
                                                         </form>

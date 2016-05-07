@@ -20,16 +20,9 @@
 
        $DB = new PDO("pgsql:host=localhost;dbname=projet_web", "postgres", "root");
 
-       $commentaire = getComment($DB, $idphoto);
+       $commentaires = getComment($DB, $idphoto);
 
-       $comresult = array();
-
-       foreach ($commentaire as $com){
-	      $comresult[] = "<p>".$com[1]." ".$com[2]." ".$com[5]." : ".$com[3]."</p>";
-	  	}
-    
-
-    	$DB = null;
+   	   $DB = null;
 
     }
 
@@ -38,7 +31,7 @@
     }
 
 
-	$array = array($idphoto, $idsoiree, $comresult);
+	$array = array($commentaires);
 
 	echo json_encode($array);
 
