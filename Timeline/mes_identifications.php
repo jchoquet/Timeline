@@ -29,8 +29,8 @@
     <link rel="shortcut icon" href="fonts/icone2.jpg">
  
     <!-- pour les moteurs de recherche -->
-    <meta name="description" lang="fr" content="plateforme de timeline photo pour soirÃ©e et Ã©vÃ¨nement" />
-    <meta name="keywords" lang="fr" content="photos, soirÃ©e, timeline, ENSIIE, iiens" />
+    <meta name="description" lang="fr" content="plateforme de timeline photo pour soirÃƒÂ©e et ÃƒÂ©vÃƒÂ¨nement" />
+    <meta name="keywords" lang="fr" content="photos, soirÃƒÂ©e, timeline, ENSIIE, iiens" />
 
      <!-- Latest compiled and minified CSS -->
      <link rel="stylesheet" href="css/bootstrap.css">
@@ -40,41 +40,15 @@
 
      <!-- Latest compiled and minified JavaScript -->
      <script src="js/bootstrap.js"></script>
+     
+     <!-- fichier js perso -->
+     <script src="js/mes_identifications.js"></script>
 
      <!-- fichier css perso -->
      <link rel="stylesheet" href="css/menu.css">
      <link rel="stylesheet" href="css/mes_idenifications.css">
      <link rel="stylesheet" href="css/buttonLink.css">
-
-     <script>
-
-        //Code nécessaire pour le carroussel 2
-        jQuery(document).ready(function($) {
  
-        $('#myCarousel').carousel({
-                interval: 10000
-        });
- 
-        $('#carousel-text').html($('#slide-content-0').html());
- 
-        //Handles the carousel thumbnails
-       $('[id^=carousel-selector-]').click( function(){
-            var id = this.id.substr(this.id.lastIndexOf("-") + 1);
-            var id = parseInt(id);
-            $('#myCarousel').carousel(id);
-        });
- 
-        // When the carousel slides, auto update the text
-        $('#myCarousel').on('slid.bs.carousel', function (e) {
-                 var id = $('.item.active').data('slide-number');
-                $('#carousel-text').html($('#slide-content-'+id).html());
-        });
-         });
-   </script>
-
-
-
-   
 
   </head>
 
@@ -88,13 +62,14 @@
           if($tabPhotos) 
           {
             carousel2($tabPhotos);
+        ?>
           }
           else
           {
-            echo "<div class='container-fluid'>";
-            echo "<p class='nothing'>Tanche ! Tu n'es encore identifié nul part !<p>";
+            <div class='container-fluid'>
+              <p class='nothing'>Tanche ! Tu n'es encore identifiÃ© nul part ! <p>
+            </div>
           }
-        ?>
 
 
  <?php include 'footer.php'; ?>
