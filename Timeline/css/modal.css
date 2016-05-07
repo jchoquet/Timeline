@@ -1,0 +1,7 @@
+.vote {
+	float : left;
+}
+
+.vote .badge {
+	margin: 5px;
+}

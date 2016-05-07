@@ -228,8 +228,10 @@
 	<!-- fichier css menu -->
 	<link rel="stylesheet" href="css/menu.css">
 
-	<!-- fichier css et js mise en page timeline -->
+	<!-- fichier css mise en page timeline -->
 	<link rel="stylesheet" type="text/css" href="css/timeline.css">
+
+    <link rel="stylesheet" type="text/css" href="css/modal.css">
 
   
 </head>
@@ -300,7 +302,9 @@
                 </div>
 
                 <div class="modal-footer">
-                    <!-- va contenir les boutons j'aime ect -->
+                    <button class='btn btn-primary vote' data-toggle='tooltip' title='Vote pour la photo la plus trash'>Trash<span class='badge'>15</span></button>
+                    <button class='btn btn-primary vote' data-toggle='tooltip' title='Vote pour la photo où ça pécho sec'>Love<span class='badge'>15</span></button>
+                    <button class='btn btn-primary vote' data-toggle='tooltip' title='Photo de toute beauté'>Like<span class='badge'>15</span></button>
                 </div>
           
             </div>
@@ -314,61 +318,7 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script type="text/javascript" src="js/bootstrap.js"></script>
 	<script type="text/javascript" src="js/timeline.js"></script>
-	<script>
-    $(document).ready(function (){
-
-        // Fonction qui permet de scroller la timeline vers une heure
-        $.each($('.scroll-button'), function (index, value) {
-            var id = $(this).attr('id');
-            var tmp = id.split('_');
-            var cible = tmp[1];
-            $("#"+id).click(function (){
-                $('html, body').scrollTop($("#"+cible).offset().top - 100);
-            });
-        });
-
-        // Fonction qui permet l'affichage d'une photo en mode pop-up au click
-        $('img').click(function () {
-            
-            var src = $(this).attr('src');
-            var idphoto = $(this).attr('id');
-            var idsoiree = '<?php echo $idsoiree; ?>';
-            
-            $('#image-content').html('<div class="thumbnail"><img src="' + src + '" class="img-responsive" /></div>');
-
-            $.ajax({
-
-                type:'POST',
-                url:'script_modal.php',
-                data:"idsoiree="+idsoiree+"&idphoto="+idphoto,
-                success:function(result) {
-                    if(result)
-                    {
-                        resultObj = eval (result);
-                        
-                        // for(var index in resultObj)
-                        // {
-                        //     alert("index:"+index+"value"+resultObj[index]);
-                        // }
-
-                        // var commentaire = resultObj[2];
-
-
-                        $('#com-content').html(resultObj[2][0]);
-                    }
-                    else
-                    {
-                        $('#com-content').html("Erreur");
-                    }
-                }
-            });
-
-          
-        }); 
-    
-    });
-
-    </script>
+	<script type="text/javascript" src="js/modal.js"></script>
 </body>
 
 </html>

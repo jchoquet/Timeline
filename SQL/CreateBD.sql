@@ -33,11 +33,12 @@ idconcours SERIAL PRIMARY KEY,
 nom VARCHAR (20),
 description VARCHAR(300),
 winner INTEGER,
-encours BOOLEAN,
+encours BOOLEAN DEFAULT FALSE,
 idsoiree INTEGER,
 
-CONSTRAINT lien_soiree FOREIGN KEY (idsoiree) REFERENCES soiree(idsoiree));
-
+CONSTRAINT lien_photo  FOREIGN KEY (winner) REFERENCES photo(idphoto),
+CONSTRAINT lien_soiree FOREIGN KEY (idsoiree) REFERENCES soiree(idsoiree)
+);
 
 
 CREATE TABLE photo (

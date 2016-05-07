@@ -13,4 +13,15 @@ $(document).ready(function(){
             the_post.css("cursor","pointer");
         }
     }
+
+// Fonction qui permet de scroller la timeline vers une heure
+    $.each($('.scroll-button'), function (index, value) {
+        var id = $(this).attr('id');
+        var tmp = id.split('_');
+        var cible = tmp[1];
+        $("#"+id).click(function (){
+            $('html, body').scrollTop($("#"+cible).offset().top - 100);
+        });
+    });
+    
 });
