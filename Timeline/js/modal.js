@@ -9,38 +9,38 @@ $(document).ready(function (){
             
             $('#image-content').html('<div class="thumbnail"><img src="' + src + '" class="img-responsive" /></div>');
 
-            $.ajax({
+            // $.ajax({
 
-                type:'POST',
-                url:'script_modal.php',
-                data:"idsoiree="+idsoiree+"&idphoto="+idphoto,
-                success:function(result) {
-                    if(result)
-                    {
-                        resultObj = eval (result);
+            //     type:'POST',
+            //     url:'script_modal.php',
+            //     data:"idsoiree="+idsoiree+"&idphoto="+idphoto,
+            //     success:function(result) {
+            //         if(result)
+            //         {
+            //             resultObj = eval (result);
                         
-                        // for(var index in resultObj)
-                        // {
-                        //     alert("index:"+index+"value"+resultObj[index]);
-                        // }
+            //             // for(var index in resultObj)
+            //             // {
+            //             //     alert("index:"+index+"value"+resultObj[index]);
+            //             // }
 
-                        // var commentaire = resultObj[2];
+            //             // var commentaire = resultObj[2];
 
-                        var commentaire = new Array();
-                        commentaire = resultObj[2];
-                        $('#com-content').html('');
-                        for (var index in commentaire)
-                        {
-                            $('#com-content').append(commentaire[index]);
-                        }
+            //             var commentaire = new Array();
+            //             commentaire = resultObj[2];
+            //             $('#com-content').html('');
+            //             for (var index in commentaire)
+            //             {
+            //                 $('#com-content').append(commentaire[index]);
+            //             }
 
-                    }
-                    else
-                    {
-                        $('#com-content').html("Erreur");
-                    }
-                }
-            });
+            //         }
+            //         else
+            //         {
+            //             $('#com-content').html("Erreur");
+            //         }
+            //     }
+            // });
 
           
         }); 
