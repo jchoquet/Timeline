@@ -1,7 +1,7 @@
 <?php
 
 
-     function getPhotosMesIde,tifications($db) {
+     function getPhotosMesIdentifications($db) {
 
         $id=$_SESSION['login'];
         $stmt = $db->query("SELECT soiree.annee, soiree.name, photo.idphoto, photo.extension, photo.composteur, soiree.theme FROM photo INNER JOIN soiree ON photo.idsoiree=soiree.idsoiree INNER JOIN identification ON photo.idphoto=utilisateur.idphoto WHERE identification.idutilisateur='$id'");
