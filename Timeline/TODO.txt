@@ -22,17 +22,17 @@ DONE :
 
 
 TO DO LATER :
-- boutons j'aime, votes ect avec le bon nombre
+
 - ajout commentaire sur click photo
 - faire le bouton j'aime qui marche
+- acceuil
+- identification de personnes rajouter un bouton et que ça marche (mettre qu'on aurait aimer elastic search ect)
 
-
-
-- identification de personnes rajouter un bouton et que ça marche
+- oubli de marquer qui a posté à raj ?
 
 - ajout concours admin, fin concours admin: Abandon -> probleme dans la table concours winner = identifiant photo
 
-
+LATER
 Base de données AJOUT DE CONTENU POUR TEST :
 	- verifier si le script correspond OK
 	- ajout de contenu  -> mettre le script de réindexation de la base OK

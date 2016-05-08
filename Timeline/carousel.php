@@ -39,7 +39,7 @@
         }
     }
 
-    /* Fonction qui va crée le texte afficher à côté de chaque photo dans le carousel (utilisée pour wins) */
+    /* Fonction qui va crée le texte affiché à côté de chaque photo dans le carousel (utilisée pour wins) */
 
     function panelCarouselWins($tab){
 
@@ -63,9 +63,31 @@
         }
     }
 
+    /* Fonction qui va crée le texte affiché à côté de chaque photo dans le carousel (utilisée pour acceuil) */
+
+    function panelCarouselAcceuil($tab){
+
+        $i=0;
+        foreach($tab as $a)
+        {
+            $annee=$a[0];
+            $com=$a[4];
+
+            $theme=$a[5];
+            $date=$a[6];
+            $heure = date("H:i:s", strtotime($a[7]));
+
+            echo "<div class='side-text' id='slide-content-".$i."'>";
+            echo '<h3>'.$annee.' - '.$theme.'</h4>';
+            echo '<p>'.$com.'</p>';
+            echo '<p class="sub-text">Postée le '.$date.' à '.$heure.' </p>';
+            echo '</div>';
+            $i=$i+1;
+        }
+    }
 
 
-     /* Carousel avec texte à droite + petites images en dessous (2eme argument : 2 pour le panel carousel wins, sinon panel carousel de base )*/
+     /* Carousel avec texte à droite + petites images en dessous (2eme argument : 2 pour le panel carousel wins, 3 pour celui de l'acceuil, sinon panel carousel de base )*/
 
      function carousel($tabPhotos,$version)
      {
@@ -133,6 +155,10 @@
         if($version == 2)
         {
             panelCarouselWins($tabPhotos);
+        }
+        elseif ($version == 3) 
+        {
+            panelCarouselAcceuil($tabPhotos);
         }
         else
         {
