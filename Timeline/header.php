@@ -119,8 +119,8 @@
           <ul class="nav nav-sidebar">
             <li><a href="monprofil.php"><span class="glyphicon glyphicon-user"></span>Mon profil</a></li>
             <li><a href="mes_posts.php"><span class="glyphicon glyphicon-camera"></span>Mes posts</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-pushpin"></span>Mes identifications</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-star"></span>Mes wins</a></li>
+            <li><a href="mes_identifications.php"><span class="glyphicon glyphicon-pushpin"></span>Mes identifications</a></li>
+            <li><a href="mes_wins.php"><span class="glyphicon glyphicon-star"></span>Mes wins</a></li>
           </ul>
           <ul class="nav nav-sidebar navbar-static-bottom" id="d">
             <li><a href="logout.php"><span class="glyphicon glyphicon-off"></span>Déconnexion</a></li>

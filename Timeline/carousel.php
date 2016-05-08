@@ -1,38 +1,28 @@
 <?php
 
+      /* Fonction qui va retourner la chaine avec le path des photos à afficher */
+  
+    function getPath($tab){
 
-     function getPhotosMesPosts($db) {
+          $photos = array();
 
-        $id=$_SESSION['login'];
-        $stmt = $db->query("SELECT soiree.annee, soiree.name, photo.idphoto, photo.extension, photo.composteur, soiree.theme FROM photo INNER JOIN soiree ON photo.idsoiree=soiree.idsoiree WHERE photo.idposteur='$id'");
-        $stmt->setFetchMode(PDO::FETCH_NUM);
-        $result = $stmt->fetchAll();
-        return $result;
-    }
+          foreach($tab as $a)
+          {
+                  $annee=$a[0];
+                  $name=$a[1];
+                  $idphoto=$a[2];
+                  $ext=$a[3];
 
-    /* Fonction qui va retourner la chaine avec le path des photos à afficher */
-    
-    function getPathMesPosts($tab){
+                  $photoPath = "photos/{$annee}/{$name}/{$idphoto}.{$ext}";
+                  $photos[] = $photoPath;
+          }
 
-        $photos = array();
-
-        foreach($tab as $a)
-        {
-                $annee=$a[0];
-                $name=$a[1];
-                $idphoto=$a[2];
-                $ext=$a[3];
-
-                $photoPath = "photos/{$annee}/{$name}/{$idphoto}.{$ext}";
-                $photos[] = $photoPath;
-        }
-
-        return $photos;
+          return $photos;
     }
 
     /* Fonction qui va crée le texte afficher à côté de chaque photo dans le carousel */
 
-    function panelMesPosts($tab){
+    function panelCarousel($tab){
 
         $i=0;
         foreach($tab as $a)
@@ -48,14 +38,6 @@
             $i=$i+1;
         }
     }
-
-    // function test ($tab){
-
-    //     foreach($tab as $a)
-    //     {
-    //         echo $a. PHP_EOL;
-    //     }
-    // }
 
     /* Carousel de base */
 
@@ -115,7 +97,7 @@
      function carousel2($tabPhotos)
      {
 
-         $photos = getPathMesPosts($tabPhotos);
+         $photos = getPath($tabPhotos);
 
          $first = 0;     
       
@@ -170,7 +152,7 @@
         echo '<div class="col-sm-4" id="carousel-text"></div>';
         echo '<div id="slide-content" style="display: none;">';
 
-        panelMesPosts($tabPhotos);
+        panelCarousel($tabPhotos);
 
         echo'</div>';
         echo'</div>';

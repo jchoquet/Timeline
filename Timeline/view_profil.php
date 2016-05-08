@@ -107,9 +107,9 @@ if(isset($_GET['identifiant']))
 	    	<div class="row">
 	    		<div class="col-xs-12" id="nav_photos">    
 	    			<ul>
-	    				<li><span class="glyphicon glyphicon-pushpin"></span>Ses identifications</li>
-	    				<li><span class="glyphicon glyphicon-camera"></span>Ses posts</li>
-	    				<li><span class="glyphicon  glyphicon-star"></span>Ses Wins</li>
+	    				<li><span class="glyphicon glyphicon-pushpin"></span><a href="view_profil_ident.php?identifiant=<?php echo $idprofil; ?>">Ses identifications</a></li>
+	    				<li><span class="glyphicon glyphicon-camera"></span><a href="view_profil_post.php?identifiant=<?php echo $idprofil; ?>">Ses posts</a></li>
+	    				<li><span class="glyphicon  glyphicon-star"></span><a href="view_profil_wins.php?identifiant=<?php echo $idprofil; ?>">Ses Wins</a></li>
            			</ul>
            		</div>
            	</div>

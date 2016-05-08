@@ -4,6 +4,17 @@
 
   include 'carousel.php';
 
+
+   function getPhotosMesPosts($db) {
+
+      $id=$_SESSION['login'];
+      $stmt = $db->query("SELECT soiree.annee, soiree.name, photo.idphoto, photo.extension, photo.composteur, soiree.theme FROM photo INNER JOIN soiree ON photo.idsoiree=soiree.idsoiree WHERE photo.idposteur='$id'");
+      $stmt->setFetchMode(PDO::FETCH_NUM);
+      $result = $stmt->fetchAll();
+      return $result;
+  }
+
+
   try{
 
       $DB = new PDO("pgsql:host=localhost;dbname=projet_web", "postgres", "root");
@@ -45,36 +56,12 @@
    <!-- Latest compiled and minified JavaScript -->
    <script src="js/bootstrap.js"></script>
 
+   <!-- Js carousel -->
+   <script src="js/carousel.js"></script>
+
    <!-- fichier css perso -->
    <link rel="stylesheet" href="css/menu.css">
    <link rel="stylesheet" href="css/mes_posts.css">
-   <link rel="stylesheet" href="css/buttonLink.css">
-
-   <script>
-
-        //Code nécessaire pour le carroussel 2
-        jQuery(document).ready(function($) {
- 
-        $('#myCarousel').carousel({
-                interval: 10000
-        });
- 
-        $('#carousel-text').html($('#slide-content-0').html());
- 
-        //Handles the carousel thumbnails
-       $('[id^=carousel-selector-]').click( function(){
-            var id = this.id.substr(this.id.lastIndexOf("-") + 1);
-            var id = parseInt(id);
-            $('#myCarousel').carousel(id);
-        });
- 
-        // When the carousel slides, auto update the text
-        $('#myCarousel').on('slid.bs.carousel', function (e) {
-                 var id = $('.item.active').data('slide-number');
-                $('#carousel-text').html($('#slide-content-'+id).html());
-        });
-         });
-   </script>
 
 </head>
 
