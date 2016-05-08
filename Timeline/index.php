@@ -26,25 +26,23 @@
 
 <body >
 
-<div class="start1">
-<div class="container-fluid "> 
+<div class="container-fluid" id="index"> 
 	<div class="tab-content " >  
-			<form id="co" class="col-lg-offset-4 col-lg-4" role="form"> 				
-				<div class="form-group ">
-          <div class="thumbnail ">
-        
-          <h4><center>Bienvenue sur TimeLine</center></h4>
-            <p><center>"Cheese, clic & share."</center></p>
-            <img alt="logo" src="fonts/logo.png"/>
-            <button class="btn btn-primary btn-block btn-md" type="submit" name="Connexion"><a href="connexion.php">Se connecter</a></button>
-            <button class="btn btn-success btn-block btn-md" type="submit" name="Inscription"><a href="inscription.php">S'inscrire</a></button>
-         
-          </div>         
-        </div>    
-			</form>
-    
+		  <div class="col-lg-offset-4 col-lg-4"> 				
+          
+          	<div class="thumbnail ">
+		        
+		          <h4><center>Bienvenue sur TimeLine</center></h4>
+		            <p><center>"Cheese, clic & share."</center></p>
+		            <img alt="logo" src="fonts/logo.png"/>
+		            <button class="btn btn-primary btn-block btn-md" type="submit" name="Connexion"><a href="connexion.php">Se connecter</a></button>
+		            <button class="btn btn-success btn-block btn-md" type="submit" name="Inscription"><a href="inscription.php">S'inscrire</a></button>
+		         
+            </div>         
+         </div>    
+		
   </div>
-</div>
+
 </div>
 
 

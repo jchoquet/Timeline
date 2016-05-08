@@ -1,11 +1,21 @@
+body { 
+margin:0; 
+padding:0; 
+background: url('../fonts/background.jpg') no-repeat center fixed;  
+-webkit-background-size: cover; /* pour Chrome et Safari */ 
+-moz-background-size: cover; /* pour Firefox */ 
+-o-background-size: cover; /* pour Opera */ 
+background-size: cover; /* version standardisée */ 
+}
 
 /* -------------- Formulaire connexion----------------- */
 
 
 #co {
 
-	margin-top: 15%;
-	padding:3%;
+	margin-top: 10%;
+	padding:30px;
+	background-color: white;
 	border-radius: 5px;
 }
 
