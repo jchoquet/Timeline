@@ -16,10 +16,10 @@ function checkIdentifiantUser($db,$id){
   return $stmt->fetchColumn();
 }
 
-function surnomUser($db, $id) {
+function surnomUser($db, $idprofil) {
 
   $stmt = $db->prepare("SELECT surnom FROM utilisateur WHERE identifiant=:id");
-  $stmt->bindParam(':id', $id);
+  $stmt->bindParam(':id', $idprofil);
   $stmt->setFetchMode(PDO::FETCH_OBJ);
   $stmt->execute();
   $stmt = $stmt->fetch();

@@ -1,8 +1,10 @@
 <?php
 
 session_start();
-$id = $_SESSION['login'];
 
+include 'carousel.php';
+
+$id = $_SESSION['login'];
 
 function checkIdentifiantUser($db,$id){
 
@@ -14,9 +16,64 @@ function checkIdentifiantUser($db,$id){
   return $stmt->fetchColumn();
 }
 
+function surnomUser($db, $idprofil) {
 
+  $stmt = $db->prepare("SELECT surnom FROM utilisateur WHERE identifiant=:id");
+  $stmt->bindParam(':id', $idprofil);
+  $stmt->execute();
+  $stmt->setFetchMode(PDO::FETCH_OBJ);
+  $stmt = $stmt->fetch();
+  return $stmt->surnom;
+
+}
+
+ function getPhotosSesIdentifications($db, $idprofil) {
+
+      $stmt = $db->prepare("SELECT soiree.annee, soiree.name, photo.idphoto, photo.extension, photo.composteur, soiree.theme, soiree.idsoiree FROM photo INNER JOIN soiree ON photo.idsoiree=soiree.idsoiree INNER JOIN identification ON photo.idphoto=identification.idphoto WHERE identification.idutilisateur=:id");
+      $stmt->bindParam(':id', $idprofil);
+      $stmt->execute();
+      $stmt->setFetchMode(PDO::FETCH_NUM);
+      $result = $stmt->fetchAll();
+      return $result;
+  }
+
+if(isset($_GET['identifiant']))
+{
+  /* On vérifie que l'identifiant existe avec une requete préparée sinon page d'acceuil logout */
+
+  $idprofil = $_GET['identifiant'];
+
+  try{
+
+        $DB = new PDO("pgsql:host=localhost;dbname=projet_web", "postgres", "root");
+        
+        if(checkIdentifiantUser($DB,$idprofil) == 1)
+        {
+
+          if($id == $idprofil)
+          {
+
+              header('location: mes_identifications.php');
+          }
+          else
+          {
+              $tabPhotos = getPhotosSesIdentifications($DB, $idprofil);
+              $surnom = surnomUser($DB, $idprofil);
+          }
+
+        }
+        $DB = null;
+
+      }
+
+      catch(PDOException $e){
+        echo "Database Error";
+      }
+
+}
 
 ?>
+
 
 <!DOCTYPE html >
 <html lang="fr">
@@ -41,11 +98,37 @@ function checkIdentifiantUser($db,$id){
      <script src="js/bootstrap.js"></script>
    
 
+     <!-- Js carousel -->
+    <script src="js/carousel.js"></script>
+    <script type="text/javascript" src="js/modal.js"></script> 
+
+
    <!-- fichier css perso -->
    <link rel="stylesheet" href="css/menu.css">
-   <link rel="stylesheet" href="css/view_profil_ident.css">  
+   <link rel="stylesheet" href="css/mes_posts.css">
+   <link rel="stylesheet" type="text/css" href="css/modal.css">
+
   </head>
 
 <body>
 
-  		<?php include 'header.php'; ?>
+      <?php include 'header.php'; ?>
+
+      <h3 class="page-header">Posts de <?php echo $surnom; ?></h3>
+      
+        <?php
+          if($tabPhotos) 
+          {
+            carousel($tabPhotos,1);
+          }
+          else
+          {
+            echo "<div class='container-fluid'>";
+            echo "<p class='nothing'>Cette tanche n'est identifiée nulle part!<p>";
+            echo '</div>';
+          }
+        ?>
+   
+ <?php include 'modal.php'; ?>
+
+ <?php include 'footer.php'; ?>
