@@ -1,0 +1,26 @@
+ul {
+  list-style-type:none;  
+}
+
+#infos {
+    margin-top : 5%;
+}
+#infos li{
+    padding :10px;
+}
+
+#infos li .etiquette{
+    font-weight :bold;
+    padding-right:3px;
+}
+
+#nav_photos li .glyphicon{
+  padding-right: 15px;
+  padding-bottom: 20px;
+}
+
+#nav_photos li {
+  font-size : 1.2em;
+  font-weight: bold;
+}
+

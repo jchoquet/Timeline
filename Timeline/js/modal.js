@@ -43,7 +43,7 @@ $(document).ready(function (){
                             var identifiant = com[5];
                             var ext = com[6];
 
-                            var photo = '<a class="pull-left" href="#"><img class="media-object" src="users/avatar/'+identifiant+'.'+ext+'" alt="profile"></a>';
+                            var photo = '<a class="pull-left" href="view_profil.php?identifiant='+identifiant+'"><img class="media-object" src="users/avatar/'+identifiant+'.'+ext+'" alt="profile"></a>';
                             var titre = '<h4 class="media-heading text-uppercase reviews">'+surnom+'</h4><p class="media-date text-uppercase reviews ">';
                             var date = date_post+' '+heure_post2+'</p>';
                             var printContenu ='<p class="media-comment">'+contenu+'</p>';
