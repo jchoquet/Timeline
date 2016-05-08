@@ -1,27 +1,6 @@
-/* Decommenter le suivant pour carousel 1 */
-/*
-
-.carousel-indicators {
-	bottom: 0;
-}
-*/
-
-/***************** Mise en page commune aux 2 carousels ************************/
-
-.carousel-control.right,
-.carousel-control.left {
-	background-image: none;
-}
-
-.hide-bullets {
-list-style:none;
-margin-left: -40px;
-margin-top:20px;
-}
 
 
-
-/***************** Mise en page pour le carousel 2 ************************/
+/***************** Mise en page pour le carousel ************************/
 
 #carousel-text {
 	
@@ -37,9 +16,24 @@ margin-top:20px;
 	border-radius: 5px;
 }
 
+.carousel-control.right,
+.carousel-control.left {
+	background-image: none;
+}
+
+.hide-bullets {
+list-style:none;
+margin-left: -40px;
+margin-top:20px;
+}
+
+.sub-text {
+	font-style: italic;
+}
+
+
 /***************** Cas où l'utilisateur n'a rien posté *****************/
 
 .nothing {
 	padding: 30px;
-}
 }

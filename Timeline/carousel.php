@@ -20,7 +20,7 @@
           return $photos;
     }
 
-    /* Fonction qui va crée le texte afficher à côté de chaque photo dans le carousel */
+    /* Fonction qui va crée le texte afficher à côté de chaque photo dans le carousel (utilisée pour posts, identifications) */
 
     function panelCarousel($tab){
 
@@ -39,62 +39,35 @@
         }
     }
 
-    /* Carousel de base */
+    /* Fonction qui va crée le texte afficher à côté de chaque photo dans le carousel (utilisée pour wins) */
 
-     function carousel($photos) {
-     
-         $first = 0;     
-      
-         echo '<div class="container">';
-         echo '<br>';
-         echo '<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">';
+    function panelCarouselWins($tab){
 
-        /* Indicateurs : point en bas representant le nombre de slides */
+        $i=0;
+        foreach($tab as $a)
+        {
+            $annee=$a[0];
+            $com=$a[4];
 
-         $n = count($photos); /* Nombre de photos */
-         echo '<ol class="carousel-indicators">';
-         echo '<li data-target="#myCarousel" data-slide-to="0" class="active"></li>';
-         for ($i = 1; $i < $n; $i++){
-               echo "<li data-target='#myCarousel' data-slide-to='$i'></li>";
-         }
-         echo '</ol>';
-          
-        /* Wrapper pour les slides */
-         echo '<div class="carousel-inner" role="listbox">';
-        
+            $nomConcours = $a[5];
+            $themeSoiree = $a[7];
+            $votes = $a[8];
 
-         foreach ($photos as $pic)
-         {
-            /* On crée les slides une à une */
-            if ($first == 0)
-            { 
-                echo '<div class="item active">'; 
-            }
-            else 
-            { 
-                echo '<div class="item">';
-            }
-            echo "<img src='$pic' class='img-responsive img-rounded' style='margin:0px auto;max-height:400px;'>";
-            echo "<div class='carousel-caption'><h4>Test</h4><p>Blablablabla</p></div>";
+            echo "<div class='side-text' id='slide-content-".$i."'>";
+            echo '<h3>Concours '.$nomConcours.'</h3>';
+            echo '<h4>'.$annee.' - '.$themeSoiree.'</h4>';
+            echo '<p>'.$com.'</p>';
+            echo '<p class="sub-text">Dénoncée par '.$votes.' personnes</p>';
             echo '</div>';
-          $first = 1;
-         }
-
-         echo '</div>';
-         
-         /* Fleches suivant, précédent */
-        
-
-         echo'</div>';
-         echo'</div>';
-     
-    
-     }
+            $i=$i+1;
+        }
+    }
 
 
-     /* Carousel avec texte à droite + petites images en dessous */
 
-     function carousel2($tabPhotos)
+     /* Carousel avec texte à droite + petites images en dessous (2eme argument : 2 pour le panel carousel wins, sinon panel carousel de base )*/
+
+     function carousel($tabPhotos,$version)
      {
 
          $photos = getPath($tabPhotos);
@@ -157,7 +130,14 @@
         echo '<div class="col-sm-4" id="carousel-text"></div>';
         echo '<div id="slide-content" style="display: none;">';
 
-        panelCarousel($tabPhotos);
+        if($version == 2)
+        {
+            panelCarouselWins($tabPhotos);
+        }
+        else
+        {
+            panelCarousel($tabPhotos);
+        }
 
         echo'</div>';
         echo'</div>';
@@ -183,4 +163,8 @@
         echo'</div>';
         echo'</div>';
     }
+
+
+
+
 ?>

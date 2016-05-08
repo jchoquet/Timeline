@@ -75,7 +75,7 @@
         <?php
           if($tabPhotos) 
           {
-            carousel2($tabPhotos);
+            carousel($tabPhotos,1);
           }
           else
           {
