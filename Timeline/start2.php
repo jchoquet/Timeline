@@ -5,8 +5,8 @@
     <title>TIMELINE</title>
 
     <!-- pour les moteurs de recherche -->
-    <meta name="description" lang="fr" content="plateforme de timeline photo pour soirée et évènement" />
-    <meta name="keywords" lang="fr" content="photos, soirée, timeline, ENSIIE, iiens" />
+    <meta name="description" lang="fr" content="plateforme de timeline photo pour soirÃ©e et Ã©vÃ¨nement" />
+    <meta name="keywords" lang="fr" content="photos, soirÃ©e, timeline, ENSIIE, iiens" />
 
   <!-- icone du titre de la page -->
   <link rel="shortcut icon" href="fonts/icone2.jpg">
@@ -39,20 +39,22 @@
 
 <div class="jumbotron masthead">
   <div class="container-fluid">
+      
       <div class="tab-content ">
 			  <form id="co" class="col-md-offset-4 col-md-4 " role="form">
  				
-		<div class="form-group ">
+				  <div class="form-group ">
             <div class="thumbnail ">
-                <h4><center><FONT face="Segoe Script"> Bienvenue sur TimeLine</FONT></center></h4>
-                <p><center><FONT face="Segoe Script">"Cheese, clic & share."</FONT></center></p>
-                <img alt="logo" src="fonts/logo.png"/>
-                <button class="btn btn-primary btn-block btn-sm" type="submit" name="Connexion"><a href="connexion.php">Se connecter</a></button>
-                <button class="btn btn-success btn-block btn-sm" type="submit" name="Inscription"><a href="inscription.php">Inscription</a></button>
-            </div>
+            <h4><center><FONT face="Segoe Script"> Bienvenue sur TimeLine</FONT></center></h4>
+            <p><center><FONT face="Segoe Script">"Cheese, clic & share."</FONT></center></p>
+              <img alt="logo" src="fonts/logo.png"/>
+              <button class="btn btn-primary btn-block btn-sm" type="submit" name="Connexion"><a href="connexion.php">Se connecter</a></button>
+              <button class="btn btn-success btn-block btn-sm" type="submit" name="Inscription"><a href="inscription.php">Inscription</a></button>
+          </div>
         </div>    
-		    	</form>
-	</div>
+			</form>
+		</div>
+    
   </div>
 </div>
 </body>
