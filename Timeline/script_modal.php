@@ -21,22 +21,6 @@
 		return $result;
 	}
 
-	function concoursEncours($db, $nameConcours, $idsoiree) {
-		$stmt = $db->prepare("SELECT winner, encours, idconcours FROM concours WHERE nom=:nom AND idsoiree='$idsoiree'");
-		$stmt->bindParam(':nom', $nameConcours);
-		$stmt->execute();
-		$stmt->setFetchMode(PDO::FETCH_NUM);
-      	$result = $stmt->fetchAll();
-		return $result;
-	}
-
-	function getVote($db, $idphoto, $idconcours, $idsoiree) {
-		$stmt = $db->query("SELECT compteur.nbre_votes FROM compteur WHERE idconcours='$idconcours' AND idphoto='$idphoto'");
-		$stmt->setFetchMode(PDO::FETCH_NUM);
-      	$result = $stmt->fetchAll();
-		return $result;
-	}
-
 	try{
 
       /* Connexion à la base de données avec PDO */
@@ -46,25 +30,6 @@
        $commentaires = getComment($DB, $idphoto);
        $nblike = getLike($DB, $idphoto);
 
-       $trashActu = concoursEncours($DB, "Trash", $idsoiree);
-       $loveActu = concoursEncours($DB, "Love", $idsoiree);
-
-       if (($trashActu[0][0] == 0) && ($trashActu[0][1]) )
-       {
-       	 $voteTrash = getVote($DB, $idphoto, $trashActu[0][2], $idsoiree);
-       	 if($voteTrash)
-       	 {
-       	 	$trashResult = $voteTrash;
-       	 }
-       	 else
-       	 {
-       	 	$trashResult = 0;
-       	 }
-       }
-       else
-       {
-       	$trashResult = -1;
-       }
    	   $DB = null;
 
     }
@@ -74,7 +39,7 @@
     }
 
 
-	$array = array($commentaires, $nblike, $trashResult);
+	$array = array($commentaires, $nblike);
 
 	echo json_encode($array);
 
