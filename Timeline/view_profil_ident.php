@@ -1,6 +1,19 @@
 <?php
 
 session_start();
+$id = $_SESSION['login'];
+
+
+function checkIdentifiantUser($db,$id){
+
+  /* On prépare la requête pour éviter les injections SQL */
+  
+  $stmt = $db->prepare("SELECT COUNT(*) FROM utilisateur WHERE identifiant=:id");
+  $stmt->bindParam(':id', $id);
+  $stmt->execute();
+  return $stmt->fetchColumn();
+}
+
 
 
 ?>

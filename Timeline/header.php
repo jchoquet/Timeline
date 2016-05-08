@@ -111,7 +111,7 @@
   <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <div class="thumbnail">
-            <img alt="profil" src=<?php echo $avatar; ?> />
+            <a href="view_profil.php?identifiant=<?php echo $id; ?>" ><img alt="profil" src=<?php echo $avatar; ?> /></a>
             <div class="caption">
               <p> <?php echo $msg; ?></p>
             </div>

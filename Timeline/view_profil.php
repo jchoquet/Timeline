@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+$id = $_SESSION['login'];
 
 function checkIdentifiantUser($db,$id){
 
@@ -83,6 +84,7 @@ if(isset($_GET['identifiant']))
 
   		<?php include 'header.php'; ?>
 
+  		<?php if($id == $idprofil) { echo '<h1 class="page-header">Votre profil, vu par les autres</h1>'; } ?>
   		<div class="container-fluid">
   			<div class="row">
 	    		<div class="col-xs-12 col-sm-6 col-lg-4">

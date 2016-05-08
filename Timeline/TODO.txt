@@ -25,6 +25,7 @@ TO DO :
 - click photo utilisateur -> affichage profil
 - ses wins
 - ses machins blabla
+- replacer mon profil les champs quote et surnom par l'actuel
 
 TO DO LATER :
 - boutons j'aime, vote, et ajout commentaire sur click photo
