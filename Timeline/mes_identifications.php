@@ -6,7 +6,7 @@
 
    function getPhotosMesIdentifications($db) {
       $id=$_SESSION['login'];
-      $stmt = $db->query("SELECT soiree.annee, soiree.name, photo.idphoto, photo.extension, photo.composteur, soiree.theme FROM photo INNER JOIN soiree ON photo.idsoiree=soiree.idsoiree INNER JOIN identification ON photo.idphoto=identification.idphoto WHERE identification.idutilisateur='$id'");
+      $stmt = $db->query("SELECT soiree.annee, soiree.name, photo.idphoto, photo.extension, photo.composteur, soiree.theme, soiree.idsoiree FROM photo INNER JOIN soiree ON photo.idsoiree=soiree.idsoiree INNER JOIN identification ON photo.idphoto=identification.idphoto WHERE identification.idutilisateur='$id'");
       $stmt->setFetchMode(PDO::FETCH_NUM);
       $result = $stmt->fetchAll();
       return $result;
@@ -54,10 +54,12 @@
 
    <!-- Js carousel -->
    <script src="js/carousel.js"></script>
+   <script type="text/javascript" src="js/modal.js"></script> 
 
    <!-- fichier css perso -->
    <link rel="stylesheet" href="css/menu.css">
    <link rel="stylesheet" href="css/mes_posts.css">
+   <link rel="stylesheet" type="text/css" href="css/modal.css">
 
 </head>
 
@@ -79,5 +81,7 @@
           }
         ?>
 
+
+ <?php include 'modal.php'; ?>
 
  <?php include 'footer.php'; ?>

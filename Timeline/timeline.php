@@ -260,75 +260,8 @@
     </div>
     </div>
 
-    <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-lg">
 
-            <div class="modal-content">
-
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"></h4>
-                </div>
-           
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-lg-12 col-sm-12" id="image-content">
-                        <!-- Va contenir l'image -->
-                        </div>
-                        <div class="col-lg-12 col-sm-12 hidden-xs">
-                                <div >
-                                    <div id="com-content" class="container-fluid">
-                                      <div class="row">
-
-                                            <div class="comment-tabs">
-                                                <ul class="nav nav-tabs" role="tablist">
-                                                    <li class="active"><a href="#list-comment" role="tab" data-toggle="tab"><h4>Commentaires</h4></a></li>
-                                                    <li><a href="#add-comment" role="tab" data-toggle="tab"><h4>Ajouter un commentaire</h4></a></li>
-                                                </ul>            
-                                                <div class="tab-content">
-                                                    <div class="tab-pane active" id="list-comment">                
-                                                        <ul class="media-list" style="overflow-y: scroll; max-height: 240px;">
-                                                                   
-                                                        </ul>
-                                                    </div>      
-                                                    <div class="tab-pane" id="add-comment">
-                                                        <form action="#" method="post" class="form-horizontal" id="commentForm" role="form"> 
-                                                            <div class="form-group">
-                                                                <label for="email" class="col-sm-2 control-label">Commentaire</label>
-                                                                <div class="col-sm-10">
-                                                                  <textarea class="form-control" name="addComment" id="addComment" rows="5"></textarea>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <div class="col-sm-offset-2 col-sm-10">                    
-                                                                    <button class="btn btn-success btn-circle text-uppercase" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> Envoyer </button>
-                                                                </div>
-                                                            </div>            
-                                                        </form>
-                                                    </div>
-                                                   
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                        </div>
-
-                    </div>
-                </div> <!-- close modal body -->
-
-                <div class="modal-footer">
-                    <button class='btn btn-primary vote' data-toggle='tooltip' title='Vote pour la photo la plus trash'>Trash<span class='badge'>15</span></button>
-                    <button class='btn btn-primary vote' data-toggle='tooltip' title='Vote pour la photo où ça pécho sec'>Love<span class='badge'>15</span></button>
-                    <button class='btn btn-primary vote' data-toggle='tooltip' title='Photo de toute beauté'>Like<span class='badge'>15</span></button>
-                </div>
-          
-            </div>
-
-        </div>
-    </div>
-
+    <?php include 'modal.php'; ?>
 
     <!-- End of content : script JS -->
 	<script type="text/javascript" src="js/jquery_library.js"></script>
