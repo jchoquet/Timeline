@@ -43,3 +43,8 @@
     border-bottom-left-radius: 4px;
 }
 
+img {
+    margin-right: auto;
+    margin-left: auto;
+    max-height: 400px;
+}

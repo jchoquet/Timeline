@@ -7,7 +7,7 @@ $(document).ready(function (){
 
             var src = $(this).attr('src');
             var idphoto = $(this).attr('id');
-            var idsoiree = '<?php echo $idsoiree; ?>';
+            var idsoiree =  $(this).attr('idsoiree');
             
             $('#image-content').html('<div class="thumbnail"><img src="' + src + '" class="img-responsive" /></div>');
 

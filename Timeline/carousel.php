@@ -120,6 +120,11 @@
         $i=0;
         foreach ($photos as $pic)
         {
+
+            $tab = $tabPhotos[$i];
+            $id = $tab[2];
+            $idsoiree = $tab[6];
+
             if($i == 0)
             {
                 echo "<div class='active item' data-slide-number='$i'>";
@@ -128,7 +133,7 @@
             {
                  echo "<div class='item' data-slide-number='$i'>";
             }
-            echo "<img src='$pic' class='img-responsive img-rounded' style='margin:0px auto;max-height:350px;'/>";
+            echo "<img src='$pic' id='$id' idsoiree='$idsoiree' class='img-responsive img-rounded' style='margin:0px auto;max-height:350px;' data-toggle='modal' data-target='#myModal'/>";
             echo '</div>';
            $i=$i+1;
         }

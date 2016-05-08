@@ -63,19 +63,8 @@
 
     }
 
-    function test($tab) {
 
-	  	foreach($tab as $a)
-	  	{
-	  			
-
-	  			echo $a[0].$a[1]. PHP_EOL;
-	  		
-	  	}
-  	}
-    
-
-    function printTimeline($tab, $annee, $name) {
+    function printTimeline($tab, $annee, $name, $idsoiree) {
 
     	// $tab[0] idphoto
     	// 1 extension
@@ -140,7 +129,7 @@
 
 			echo "<div class='timeline-panel'>";
 			echo "<div class='timeline-heading'>";
-			echo "<img class='img-responsive' src='$path' id='$idphoto' data-toggle='modal' data-target='#myModal'/>";
+			echo "<img class='img-responsive' src='$path' id='$idphoto' idsoiree='$idsoiree' data-toggle='modal' data-target='#myModal'/>";
 			echo '</div>';
 			echo "<div class='timeline-body'>";
 			echo "<blockquote><p>".$com."</p><footer>D'après ".$surnom."</footer></blockquote>";
@@ -260,7 +249,7 @@
             </div>
             <ul class="timeline">
                 
-                <?php printTimeline($tabOrd, $annee, $name); ?>
+                <?php printTimeline($tabOrd, $annee, $name, $idsoiree); ?>
 
                 <li class="clearfix" style="float: none;"></li>
             </ul>
