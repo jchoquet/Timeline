@@ -2,6 +2,8 @@
 
 	session_start();
 
+
+	$id = $_SESSION['login'];
 	$idphoto = $_POST['idphoto'];
 	$idsoiree = $_POST['idsoiree'];
 
@@ -21,6 +23,11 @@
 		return $result;
 	}
 
+	function dejaLike($db, $idphoto, $id) {
+		$stmt = $db->query("SELECT COUNT(*) FROM liker WHERE idutilisateur='$id' AND idphoto='$idphoto'");
+		return $stmt->fetchColumn();
+	}
+
 	try{
 
       /* Connexion à la base de données avec PDO */
@@ -29,6 +36,7 @@
 
        $commentaires = getComment($DB, $idphoto);
        $nblike = getLike($DB, $idphoto);
+       $likePossible = dejaLike($DB, $idphoto, $id);
 
    	   $DB = null;
 
@@ -39,7 +47,7 @@
     }
 
 
-	$array = array($commentaires, $nblike);
+	$array = array($commentaires, $nblike, $likePossible);
 
 	echo json_encode($array);
 

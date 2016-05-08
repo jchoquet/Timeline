@@ -56,6 +56,13 @@ $(document).ready(function (){
                         var like = resultObj[1][0];
                         $('.like').html(like);
 
+                        var possible = resultObj[2][0];
+
+                        if(possible == 1)
+                        {
+                            $("#like").attr("disabled", true);
+                        }
+
                     }
                     else
                     {
