@@ -51,9 +51,10 @@ $(document).ready(function (){
 
                             $('.media-list').append('<li class="media">'+photo+'<div class="container media-body"><div class="well well-lg">'+titre+date+printContenu+'</div></div></li>');
                            
-                        
-                
                         }
+
+                        var like = resultObj[1][0];
+                        $('.like').html(like);
 
                     }
                     else

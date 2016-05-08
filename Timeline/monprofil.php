@@ -2,6 +2,35 @@
 
   session_start();
 
+  $id=$_SESSION['login'];
+
+  function quoteUser($db, $id) {
+
+      /* On ne prépare pas la requête car l'id est déjà safe */
+
+      $stmt = $db->query("SELECT quote FROM utilisateur WHERE identifiant='$id'");
+      $stmt->setFetchMode(PDO::FETCH_OBJ);
+      $stmt = $stmt->fetch();
+      return $stmt->quote;
+
+  }
+
+  try
+  {
+
+    /* Connexion à la base de données avec PDO */
+
+    $DB = new PDO("pgsql:host=localhost;dbname=projet_web", "postgres", "root");
+
+    $quote = quoteUser($DB, $id);
+
+    $DB = null;
+
+  }
+  catch(PDOException $e){
+    echo "Database Error";
+  }
+
 ?>
 
 <!DOCTYPE html >
@@ -51,7 +80,7 @@
         <div class="form-group">
           <label class="control-label col-sm-3" for="surnom" > Modifier mon surnom : </label>
               <div class="col-sm-5">
-                <input type="text" class="form-control" id="surnom" />
+                <input type="text" class="form-control" id="surnom" placeholder="<?php echo $surnom; ?>" />
               </div>
               <div class="col-sm-4 errors" id="surerror"></div>
           </div>
@@ -60,7 +89,7 @@
         <div class="form-group">
         <label class="control-label col-sm-3" for="quote" class >Modifier ma quote : </label>
         <div class="col-sm-5">
-          <textarea class="form-control" id="quote"></textarea>
+          <textarea class="form-control" id="quote" placeholder="<?php echo $quote; ?>"></textarea>
         </div>
         <div class="col-sm-4 errors" id="quoteerror"></div> 
         </div>

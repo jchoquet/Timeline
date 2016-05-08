@@ -15,24 +15,25 @@ DONE :
 - sécurité des mots de passe -> tout est modifié DONE
 - mail anouar DONE
 - click photo utilisateur -> affichage profil
-
+- replacer mon profil les champs quote et surnom par l'actuel DONE
+- affichage nombre like 
 Refonte CSS :
 - page gestion admin : mettre des boutons 
-- carroussel REFONTE affichage gris moche
+- (carroussel REFONTE affichage gris moche )
 
 
 TO DO :
 
-- ses wins
 
-- replacer mon profil les champs quote et surnom par l'actuel
+
 
 TO DO LATER :
 - boutons j'aime, vote, et ajout commentaire sur click photo
+- faire le bouton j'aime qui marche
+- page de garde
+- identification de personnes rajouter un bouton
 
-- identification de personnes
-
-- start : oui ou non, navigation liens en haut à droite
+- start : oui ou non, navigation liens en haut à droite,page
 - ajout concours admin, fin concours admin
 - creation soiree : creer en mm temps trash love 
 - changer nom / logo ?

@@ -59,6 +59,7 @@
    <!-- Js carousel -->
    <script src="js/carousel.js"></script>
    <script type="text/javascript" src="js/modal.js"></script> 
+   <scrip type="text/javascript" src="js/validate_add_comment.js"></script>
 
    <!-- fichier css perso -->
    <link rel="stylesheet" href="css/menu.css">
