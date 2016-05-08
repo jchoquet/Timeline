@@ -80,7 +80,7 @@ $(document).ready(function(){
 	
 	$("#submit").click(function() {
 
-		if ( date == "" || theme == "" || name == "" || description == "" || annee == 0 || mdp == "")
+		if (  nom == "" || description == "" ||  mdp == "")
 		{
 			$("#formerror").html("lol");
 		}
@@ -89,15 +89,15 @@ $(document).ready(function(){
 			$.ajax({
 
 				type:'POST',
-				url:'script_add_soiree.php',
-				data:"d="+date+"&theme="+theme+"&mdp="+mdp+"&annee="+annee+"&description="+description+"&name="+name,
+				url:'script_add_concours.php',
+				data:mdp="+mdp+"&description="+description+"&nom="+nom,
 				success:function(msg) {
 
 					if(msg != "OK"){
 						$("#formerror").html(msg);
 					}
 					else{
-						$("#formcorrect").html("Soirée ajoutée !");
+						$("#formcorrect").html("Concours ajouté !");
 					}
 				}
 			});
