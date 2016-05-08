@@ -104,6 +104,15 @@ CONSTRAINT lien_utilisateur FOREIGN KEY (idutilisateur) REFERENCES utilisateur(i
 
 );
 
+CREATE TABLE liker (
+idphoto INTEGER,
+idutilisateur VARCHAR(12),
+
+CONSTRAINT lien_photo FOREIGN KEY (idphoto) REFERENCES photo(idphoto),
+CONSTRAINT lien_utilisateur FOREIGN KEY (idutilisateur) REFERENCES utilisateur(identifiant)
+
+);
+
 
 INSERT INTO utilisateur(identifiant, mdp, nom, prenom, promo, surnom, quote, avatar) VALUES ('administrat', 'rootroot', 'norris', 'chuck', '2000', '', '', '');
 
