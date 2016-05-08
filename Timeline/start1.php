@@ -5,8 +5,8 @@
     <title>TIMELINE</title>
 
     <!-- pour les moteurs de recherche -->
-    <meta name="description" lang="fr" content="plateforme de timeline photo pour soirée et évènement" />
-    <meta name="keywords" lang="fr" content="photos, soirée, timeline, ENSIIE, iiens" />
+    <meta name="description" lang="fr" content="plateforme de timeline photo pour soirÃ©e et Ã©vÃ¨nement" />
+    <meta name="keywords" lang="fr" content="photos, soirÃ©e, timeline, ENSIIE, iiens" />
 
   <!-- icone du titre de la page -->
   <link rel="shortcut icon" href="fonts/icone2.jpg">
@@ -31,11 +31,11 @@
 body{ 
 margin:0; 
 padding:0; 
-background: url('fonts/photo1.jpg') no-repeat center fixed;   // changer la photo du fond qui s'adapte � la taille de l'�cran 
+background: url('fonts/photo1.jpg') no-repeat center fixed;   // changer la photo du fond qui s'adapte à la taille de l'écran 
 -webkit-background-size: cover; /* pour Chrome et Safari */ 
 -moz-background-size: cover; /* pour Firefox */ 
 -o-background-size: cover; /* pour Opera */ 
-background-size: cover; /* version standardis�e */ 
+background-size: cover; /* version standardisée */ 
 } 
 </style> 
 
@@ -53,8 +53,8 @@ background-size: cover; /* version standardis�e */
           <h4><center><FONT face="Segoe Script"> Bienvenue sur TimeLine</FONT></center></h4>
             <p><center><FONT face="Segoe Script">"Cheese, clic & share."</FONT></center></p>
             <img alt="logo" src="fonts/logo.png"/>
-            <button class="btn btn-primary btn-block btn-md" type="submit" name="Connexion"><a href="index.php">Se connecter</a></button>
-            <button class="btn btn-success btn-block btn-md" type="submit" name="Inscription"><a href="index.php">Inscription</a></button>
+            <button class="btn btn-primary btn-block btn-md" type="submit" name="Connexion"><a href="connexion.php">Se connecter</a></button>
+            <button class="btn btn-success btn-block btn-md" type="submit" name="Inscription"><a href="inscription.php">Inscription</a></button>
           </div>
         </div>    
 			</form>
