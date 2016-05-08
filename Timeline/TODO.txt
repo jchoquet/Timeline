@@ -14,6 +14,7 @@ DONE :
 - plugin timeline DONE
 - sécurité des mots de passe -> tout est modifié DONE
 - mail anouar DONE
+- click photo utilisateur -> affichage profil
 
 Refonte CSS :
 - page gestion admin : mettre des boutons 
@@ -22,9 +23,8 @@ Refonte CSS :
 
 TO DO :
 
-- click photo utilisateur -> affichage profil
 - ses wins
-- ses machins blabla
+
 - replacer mon profil les champs quote et surnom par l'actuel
 
 TO DO LATER :
@@ -38,12 +38,6 @@ TO DO LATER :
 - changer nom / logo ?
 
 
-TO CHECK
-
-- Mes wins, mes identifications 
-
-- mes identifications
-- mes wins
 
 Base de données AJOUT DE CONTENU POUR TEST :
 	- verifier si le script correspond OK

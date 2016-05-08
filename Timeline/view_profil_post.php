@@ -60,7 +60,7 @@ if(isset($_GET['identifiant']))
           else
           {
               $tabPhotos = getPhotosSesPosts($DB, $idprofil);
-              $surnom = surnomUser($DB, $idprofil);
+              $surUser = surnomUser($DB, $idprofil);
           }
 
         }
@@ -115,7 +115,7 @@ if(isset($_GET['identifiant']))
 
   		<?php include 'header.php'; ?>
 
-      <h3 class="page-header">Posts de <?php echo $surnom; ?></h3>
+      <h3 class="page-header">Posts de <?php echo $surUser; ?></h3>
       
         <?php
           if($tabPhotos) 
