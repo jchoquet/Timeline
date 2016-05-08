@@ -14,9 +14,12 @@
 
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="css/bootstrap.css">
+ <link href="css/start1.css" rel="stylesheet">
+
+
 
 	<!-- jquery -->
-	<script src="js/jquery_library.js"></script>
+	<script src="jquery_library.js"></script>
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="js/bootstrap.js"></script>
@@ -42,24 +45,25 @@ background-size: cover; /* version standardisée */
 </head>
 <body >
 
-
-<div class="container-fluid ">
-  
-	<div class="tab-content " >
-			<form id="co" class="col-md-offset-4 col-md-4 pull-right" role="form">
- 				
+<div class="start1">
+<div class="container-fluid "> 
+	<div class="tab-content " >  
+			<form id="co" class="col-md-offset-4 col-md-4" role="form"> 				
 				<div class="form-group ">
           <div class="thumbnail ">
+        
           <h4><center><FONT face="Segoe Script"> Bienvenue sur TimeLine</FONT></center></h4>
             <p><center><FONT face="Segoe Script">"Cheese, clic & share."</FONT></center></p>
             <img alt="logo" src="fonts/logo.png"/>
-            <button class="btn btn-primary btn-block btn-md" type="submit" name="Connexion"><a href="connexion.php">Se connecter</a></button>
+            <button class="btn btn-primary btn-block btn-md" type="submit" name="Connexion"><a href="connexion.php">Se connecter</button>
             <button class="btn btn-success btn-block btn-md" type="submit" name="Inscription"><a href="inscription.php">Inscription</a></button>
-          </div>
+         
+          </div>         
         </div>    
 			</form>
-		</div>
-   
+    
+</div>
+</div>
 </div>
 </body>
 </html>
