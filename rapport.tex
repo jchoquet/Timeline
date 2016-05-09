@@ -69,57 +69,73 @@ Guillaume \textsc{Gamelin}\\[3cm]
 
 \textcolor{sec}{\section{Introduction}}
 
-La gestion des photos d'évènements et soirées à l'école est encore très basique. Une fois connecté sur iiens.net, l'upload
-des photos se fait par dossiers, tout comme la consultation. Enfin l'interface nécessiterait d'être mise à jour,
-et son ergonomie repensée, bien que le site soit tout à fait fonctionnel. Le but est de proposer un nouveau
-fonctionnement et une nouvelle interface sous la forme d'une application web (qui pourrait plus tard être intégrée
-à iiens.net). Nous avons donc choisi de réaliser un site web grâce auquel chaque élève aura un profil et la
-possibilité d'ajouter ses propres photos pour une soirée, ses propres commentaires, d'identifier ses camarades
-sur les photos qu'il publiera... Toutes les photos ajoutées au site seront triées par soirée et par année, et affichées
-sous la forme d'une Timeline. Nous avons souhaité ajouter un système de concours. Pour chaque soirée, une
-photo sera élue grâce au vote des utilisateurs pour chaque concours proposé.
+Aujourd'hui, la gestion des photos d'évènements et soirées à l'ENSIIE est encore très basique. Une fois connecté sur iiens.net, l'upload
+des photos se fait par dossiers, tout comme la consultation. Bien que le site soit tout à fait fonctionnel, son interface nécessiterait d'être mise à jour et son ergonomie repensée pour mieux combler les attentes actuelles des utilisateurs. Notre but est donc de proposer des focntionnalités innovantes, en plus des anciennes fonctionnalités du site, avec une nouvelle interface sous la forme d'une application web (qui pourrait plus tard être intégrée
+à iiens.net).\\ 
+Notre objectif est de produire un site au design moderne, qui s'adapte aux appareils mobiles et qui permet une personnalisation de l'expérience utilisateur (profil modifiable, barre de navigation personnelle). L'affichage des photos sera totalement revu : il se fera sous forme de timeline avec la possibilité de zoomer sur une certaine période. Cela permettra d'avoir à la fois un aperçu global de l'avancement de la soirée et de pouvoir se focaliser sur une partie de la soirée. Enfin, notre site aura une dimension sociale : possibilité de liker une photo, de commenter, de consulter le profil des autres utilisateurs et d'identifier ceux-ci mais aussi d'élire une photo lors de concours réguliers.
 
 
 \textcolor{sec}{\section{Conception}}
 
-\textcolor{secp}{\subsection{Étude de l'existant}}
+\textcolor{secp}{\subsection{Features}}
+
+\textcolor{para}{\subsubsection*{Étude de l'existant : features minimales}}
+
+Dans un premier temps, nous nous sommes concentrés sur le développement d'une liste de features minimales : celles déjà présentes sur l'outil proposé par iiens.net.
 
 \begin {description}
-\item[Identification :] authentification grâce à un identifiant unique (exemple: AriseID) et un mot de passe qui sont sauvegardés dans la base de données.
+
+\item[Connexion, déconnexion :] authentification grâce à un identifiant unique (exemple: AriseID) et un mot de passe qui sont sauvegardés dans la base de données.
 
 \item[Inscription :] tout élève membre d'Arise peut s'inscrire gratuitement à TIMELINE.
-Lors de cette inscription, il saisit ses informations personnelles (nom , prénom, promo,  identifiant et mot de passe) et personnalise son profil afin de devenir membre.
+Lors de cette inscription, il saisit ses informations personnelles (nom , prénom, promo,  identifiant et mot de passe) et peut personnaliser son profil (avatar, quote).
 
-\item[Compte administrateur :]compte ayant accès à certaines fonctionnalités permettant notamment l'ajout ou la suppression de soirée et de concours. Ce compte est aussi responsable de la maintenance de l'application.
+\item[Compte administrateur :]compte ayant accès à certaines fonctionnalités permettant notamment l'ajout ou la suppression de soirée. Ce compte est aussi responsable de la maintenance de l'application.
 
-\item[Importation des photos :]chaque utilisateur à la possibilité d'importer des photos sur le site. Lors de l'importation, l'utilisateur doit renseigner une soirée puis attendre une validation d'un administrateur.
+\item[Importation des photos :] chaque utilisateur à la possibilité d'importer des photos sur le site en précisant ses infos (année, thème).
+Nous avons choisi de ne pas permettre l'ajout multiple de photos à partir d'un fichier zip ou tar pour des raisons expliquées plus bas.
 
-\item[Consultation des photos:]chaque utilisateur peut avoir accès aux photos postées sur le site. Pour cela, il doit choisir une année et une soirée, il aura alors accès à une liste de photos.
+\item[Consultation des photos:]chaque utilisateur peut avoir accès aux photos postées sur le site. Pour cela, il doit choisir une année et une soirée, il aura alors accès à une liste de photos. Il peut cliquer sur une photo pour l'agrandir. Nous avons choisi de ne pas permettre le slide d'une photo à une autre dans la consultation d'ensemble des photos d'une soirée de part la mise en place de la timeline.
 
 \end{description}
 
-\textcolor{secp}{\subsection{Nos Features :}}
+\textcolor{para}{\subsubsection*{Features ajoutées}}
 
  \begin{description}
  
-\item [Timeline :] amélioration de la consultation des photos. Celle-ci se fera toujours par soirée, mais l'utilisateur pourra naviguer le long de la Timeline et associer à chaque photo une heure dans la soirée. L'application fournit ainsi une version temporalisée de la consultation existante.
+\item [Importation des photos plus complète :] les photos s'ajoutent une à une car l'utilisateur doit renseigner l'heure de prise de la photo en plus des informations sur la soirée afin qu'elle soit immédiatement jointe à la Timeline. Le posteur peut aussi mettre un commentaire sur cette photo.
 
-
-\item [Profil utilisateur éditable:] sur la partie gauche de l'écran, l'utilisateur a accès à une barre de navigation qui lui est propre. Il peut ainsi modifier ses informations personnelles (quote, avatar, surnom ou mot de passe), mais aussi avoir accès à toutes les photos qu'il a postées (notamment celles ayant remporté un concours) et celles où il est identifié.
-
-\item [Identification des personnes présentes sur une photo :]lors du post d'une photo, l'utilisateur peut identifier les personnes présentes sur la photo. Les personnes identifiées voient alors ces photos apparaître dans la partie Mes Identifications de leur profil.
-Chaque utilisateur peut ajouter une identification à une photo après que celle-ci soit postée à sa consultation.
-
-\item [Importation des photos plus complète :] chaque utilisateur à la possibilité d'importer des photos sur le site. Lors de l'importation, l'utilisateur doit renseigner l'heure de prise de la photo, la date, et l'affilier à une soirée afin qu'elle soit immédiatement jointe à la Timeline.
-
-
-\item [Commentaire :]chaque utilisateur peut ajouter un commentaire à une photo, qu'il l'ai postée ou non. Les commentaires sont visibles par public et donc visibles par tous.
-
+\item [Timeline :] amélioration de la consultation des photos. Celle-ci se fera toujours par soirée (identifié par une année et un thème), mais l'utilisateur pourra naviguer le long de la Timeline et associer à chaque photo une heure dans la soirée. L'application fournit ainsi une version temporalisée de la consultation existante. La Timeline présente donc toutes les photos d'une soirée, indépendamment du photographe.
 
 \item [Contact  :]pour toute question, information ou réclamation, l'utilisateur peut contacter l'administrateur en lui envoyant un mail.
 
-\item [Concours :]pour chaque soirée, une liste de concours est proposée pendant un certain temps. Chaque utilisateur peut voter une fois par soirée et par concours pour la photo qu'il juge correspondre le mieux au thème du concours. 
+\item [Afficher les commentaires :]chaque utilisateur peut lire les commentaires postées sur une photo en cliquant sur celle-ci.
+
+\item [Partie utilisateur personnalisée:] sur la partie gauche de l'écran, l'utilisateur a accès à une barre de navigation qui lui est propre. Il peut ainsi modifier ses informations personnelles (quote, avatar, surnom ou mot de passe), mais aussi avoir accès à toutes les photos qu'il a postées (notamment celles ayant remporté un concours) et celles où il est identifié.
+
+\item [Affichage des photos hors timeline :] les photos peuvent être consultées en dehors de la timeline sous forme de carousel (slide de la précédente à la suivante possible) et l'utilisateur peut agrandir la photo en cliquant sur celle-ci pour afficher des informations supplémentaires.
+
+\item [Mise en avant des dernières photos postées :] sur la page acceuil, carousel présentant les 10 dernières photos postées.
+
+\item [Consultation de profil :] un utilisateur peut afficher le profil d'un autre en cliquant sur son surnom ou son avatar, il a alors accès à ses informations personnelles (surnom, quote, avatar) mais aussi ses posts, ses wins et ses identifications.
+
 \end{description}
+
+\textcolor{para}{\subsubsection*{Features incomplètes}}
+
+Dans cette partie, nous allons vous présenter les features prévues initialement, commencées mais qui ne sont pas encore implentées par manque de temps.
+
+\begin{description}
+
+\item [Identification :]lors du post d'une photo, l'utilisateur peut identifier les personnes présentes sur la photo.
+Chaque utilisateur peut ajouter une identification à une photo après que celle-ci soit postée lors de sa consultation.
+
+\item [Concours :]pour chaque soirée, une liste de concours est proposée pendant un certain temps. Chaque utilisateur peut voter une fois par soirée et par concours pour la photo qu'il juge correspondre le mieux au thème du concours. Les concours actuels et passés, les photos gagnantes ou en tête des votes sont visibles dans la rubrique concours. Des boutons permettant de voter pour ces concours sont disponibles en dessous de chaque photo.
+
+\item [Rechercher un élève :] actuellement, il est possible de consulter le profil d'un élève en cliquant sur son avatar si celui-ci a laissé un commentaire sur une photo. L'objectif était de rendre accessible le profil d'un utilisateur en cliquant sur son surnom (lors d'une identification par exemple) ou en entrant son nom dans une barre de recherche (avec ElasticSearch).
+\end{description}
+
+
 
 \textcolor{secp}{\subsection{Structure}}
 
