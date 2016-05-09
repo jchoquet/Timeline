@@ -139,18 +139,50 @@ Chaque utilisateur peut ajouter une identification à une photo après que celle-c
 
 \textcolor{secp}{\subsection{Structure}}
 
-\textcolor{para}{\subsubsection{Structure du Projet}}Le projet est divisé en deux parties: la partie utilisateur et la partie administrateur. Les administrateurs ont accès à des fonctionnalités supplémentaires par rapport aux utilisateurs, notamment pour la maintenance du site.
-\textcolor{para}{\subsubsection{Structure des pages}}
+\textcolor{para}{\subsubsection*{Découpage du site}}
+
+Le projet est divisé en deux parties: la partie utilisateur et la partie administrateur. Les administrateurs ont accès à des fonctionnalités supplémentaires par rapport aux utilisateurs, notamment pour la maintenance du site. Ces fonctionnalités sont disponibles dans la page Gestion accessible grâce à la barre de navigation seulement si le compte connecté est un compte administrateur.
+
+\textcolor{para}{\subsubsection*{Structure des pages}}
 Sur Timeline, on trouve deux types de structure de pages :
 
 \begin{itemize}
 \item les pages de timeline photos qui sont composées d'une barre de navigation horizontale en haut de l'écran pour accèder aux différentes rubriques du site et l'affichage de la Timeline sur toute la largeur de l'écran. 
-\item les autres pages suivent un autre modèle : la même barre de navigation horizontale en haut de l'écran, mais aussi un menu vertical personnel à gauche de l'écran. Le contenu prend la place restante.
+\item les autres pages suivent un autre modèle : la même barre de navigation horizontale en haut de l'écran, mais aussi un menu vertical personnel à gauche de l'écran. Le contenu prend la place restante. Ces barres de navigation sont incluses dans chaque page grâce à \texttt{menu.php}.
 \end {itemize}
 
+\textcolor{para}{\subsubsection*{Base de données}}
 
+Pour répondre aux exigences fonctionnelles du site, nous avons utilisé la base de données représentée ci-dessous. Celle-ci a du être modifiée à de nombreuses reprises au cours du codage pour faciliter ce dernier (exemple du stockage de l'extension de la photo de profil dans avatar).
+
+\includegraphics[scale=0.5]{DiagUML.jpeg}
+
+\textcolor{sec}{\section {Avancement du projet}}
+
+\textcolor{sec}{\subsection{Planning prévu et réel}}
+
+La contrainte de temps du projet était forte : nous avons eu un peu plus d'un mois et demi pour réaliser beaucoup de choses et nous n'avions pas forcément les compétences nécessaires au préalable. Il a fallu faire beaucoup de recherche, découvrir des fonctionnalités et apprendre par soi-même. Certaines parties du travail prévues comme rapide ont au final pris plus de temps que prévu. Voici les différentes étapes de notre travail :\\
+\begin{description}
+\item[29 Mars - 12 Avril :] élaboration de la base de données, de la liste des features (minimales, envisagées, prévues) et de la maquette du site avec Balsamiq. Cette étape a été couteuse en temps mais nous a permis d'avoir un aperçu global du site et de faciliter les requêtes SQL et la mise en page CSS. Le bilan avec le chargé de groupe a permis de faire évoluer la base de donnée, de mieux comprendre les technologies derrière chaque fonctionnalité, d'appréhender les difficultés et de trier les fonctionnalités à implémenter par ordre de priorité.
+\item[12 Avril - 24 Avril :] choix des technologies, découverte de GitLab et Bootstrap, consultation de \\ \emph{http://www.phptherightway.com/}. Après avoir identifié les modules et les tâches à accomplir pour chacun, nous commencons le développement des features minimales.
+\item[24 Avril - 10 Mai :] intégration des différentes fonctionnalités, développement des features ajoutées, période de test (navigateurs, appareils, tests unitaires, cas d'usage).
+\end{description}
+
+\textcolor{sec}{\subsection{Répartition du travail}}
+
+Au début du projet, nous avions décidé de nous répartir les tâches en fonctions des langages utilisés (PHP, Javascript, HTML et CSS). Nous avons remis en question ce découpage puisque celui-ci était impossible à mettre en oeuvre efficacement et inintéressant d'un point de vue individuel. Par conséquent, nous nous sommes mis d'accord sur l'arborescence du projet et ses modules et nous avons développé conjointement ou par équipe de 2 en utilisant GitLab. La maquette étant établie au préalable, celle-ci nous servait de charte graphique à respecter. \\
+
+A tour de rôle, un membre du groupe était chargé de l'intégration des fichiers et fonctions et de la réalisation des différents tests : le fichier n'était intégré au reste du travail que si celui-ci était valide d'un point de vue technique et graphique.\\
 
 \textcolor{sec}{\section {Réalisation technique}}
+
+
+\textcolor{secp}{\subsection {Les technologies utilisées}}
+\begin{itemize}
+\item GIT
+\item Bootstrap
+%todo
+\end{itemize}
 
 \textcolor{secp}{\subsection {Partie graphique}}
 L'ergonomie d'un site est un point très important. Notre objectif principal est donc de faciliter l'utilisation du site pour les utilisateurs. Pour cela, nous avons défini certaines contraintes :
@@ -173,49 +205,15 @@ La \textbf{barre personnelle} est un menu vertical situé à gauche de l'écran et 
 \end{description}
 
 
-\textcolor{secp}{\subsection {Les technologies utilisées}}
-\begin{itemize}
-\item GIT
-\item Bootstrap
-%todo
-\end{itemize}
-	
 \textcolor{secp}{\subsection {Problèmes rencontrés}}
 \begin{itemize}
 \item Difficultés techniques
 \item Difficultés temporelles : certaines features étaient au final trop ambitieuses et non réalisable dans le temps imparti
-\item Organisation : attribution précise des taches
+\item 
 \end{itemize}
 
-
-\textcolor{sec}{\section {Planning et bilan}}
+\textcolor{sec}{\section {Bilan}}
 	
-\textcolor{secp}{\subsection{Discussions, maquette}}
-Élaboration d'un plan de site précis et de features. Pas de programmation à ce stade.
-
-\textcolor{secp}{\subsection{Présentation du projet au professeur, base de données}}
-Présentation du plan de site et des features, réduction de certains objectifs et identification des difficultés à venir.\\
-Élaboration du modèle relationnel de la base de données.
-
-\textcolor{secp}{\subsection{Choix des technologies}}
-Nous optons pour un usage de Bootstrap, du serveur Git fourni par Arise et une consultation de \emph{http://www.phptherightway.com/}.
-%TO check
-
-
-\textcolor{secp}{\subsection{développement, Design, Tests}}
-Début du développement, attribution de taches à chaque membres. Le design de chaque page est étudié pour se rapprocher au mieux de la maquette réalisée précédemment.
-
-
-\textcolor{secp}{\subsection{Bilan}}
-Au début du projet nous avions décidé de nous répartir les tâches en fonctions des langages utilisés. Nous avons remis en question ce découpage puisque nous ne pouvions pas développer ensemble. Par conséquent, nous avons développé chacun de notre côté puis mis en commun grâce au GIT.\\
-\\
-Une fois la maquette de l'application établie, nous avons déterminé les différentes parties et modules du projet, puis nous avons défini  les éléments de chaque module de sorte qu'un membre puisse commencer à développer la mise en page relative à son module, le CSS. Mais aussi nous définissions les différents éléments techniques relatifs au bon fonctionnement du module. \\
-\\
-Selon les différents modules de la maquette, leurs complexités, et les différentes compétences de chacun de membres, nous développions à un ou plusieurs les différents éléments du module, indépendamment les uns des autres. Une fois l'élément développé et les différentes fonctionnalités réalisées, nous effectuons des tests unitaires. Lorsqu'ils sont validés et le résultat souhaité affiché, l'élément en question est ajouté à l'ensemble du projet sur le GIT.\\
-\\
-Par la suite, nous vérifions que le produit répond à nos attentes, c'est-à-dire que le module correspond au scénario prévu, sur le point de vue graphique ou technique.
-
-
 \textcolor{secp}{\subsection{Améliorations envisagées}}
 Les exigences fonctionnelles fixées dès le début par notre cahier des charges ont presque été menées à bien. En effet, les principaux modules caractérisant un réseau social ont été intégrés.\\
 \\
@@ -234,10 +232,8 @@ Bien que nous aurions pu développer ces modules, nous avons préféré vérifier et 
 \\
 Si nous étions amenés à approfondir le développement de cette application, nous pourrions envisager une spatialisation de la Timeline. En projetant celle-ci sur un plan de l'école, il serait possible de situer les photos dans l'espace et dans le temps et de fournir un mode de navigation innovant et encore plus convivial.
 
-\textcolor{sec}{\section{Conclusion}}
+\textcolor{secp}{\subsection{Conclusion}}
 L'application finale n'intègre pas tous les modules envisagés dans notre cahier des charges. Néanmoins celle-ci est conforme à nos objectifs qui étaient d'intégrer les modules de base caractérisant la TIMELINE. De plus, l'application a été améliorée en termes de sécurité (hashage du mot de passe), performance et qualité, ce qui rend son utilisation beaucoup plus rassurante, rapide, facile et agréable. 
-
-
 
 
 
