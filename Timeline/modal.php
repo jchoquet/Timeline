@@ -61,9 +61,9 @@ echo '</div>';
 echo '</div>';
 
 echo '<div class="modal-footer">';
-echo '<button class="btn btn-primary vote" data-toggle="tooltip" title="Vote pour la photo la plus trash">Trash<span class="badge trash">0</span></button>';
-echo '<button class="btn btn-primary vote" data-toggle="tooltip" title="Vote pour la photo où ça pécho sec">Love<span class="badge love">0</span></button>';
-echo '<button class="btn btn-primary vote" data-toggle="tooltip" title="Photo de toute beauté" id="like">Like<span class="badge like">0</span></button>';
+echo '<button class="btn btn-primary vote" data-toggle="tooltip" title="Vote pour la photo la plus trash">Trash<span class="badge">0</span></button>';
+echo '<button class="btn btn-primary vote" data-toggle="tooltip" title="Vote pour la photo où ça pécho sec">Love<span class="badge">0</span></button>';
+echo '<button class="btn btn-primary vote" data-toggle="tooltip" title="Photo de toute beauté" id="like">Like<span class="badge" id="nbr_like" idphoto="" >0</span></button>';
 echo '</div>';
 
 echo '</div>';

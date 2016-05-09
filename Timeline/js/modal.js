@@ -62,6 +62,10 @@ $(document).ready(function (){
                         {
                             $("#like").attr("disabled", true);
                         }
+                        else
+                        {
+                            $("#nbr_like").attr("idphoto", idphoto);
+                        }
 
                     }
                     else
@@ -71,7 +75,33 @@ $(document).ready(function (){
                 }
             });
 
-          
-        }); 
+          $('#like').click(function () {
+            
+            var nombre = $("#nbr_like").text();
+            var idphoto = $("#nbr_like").attr("idphoto");
+
+            $.ajax({
+
+                type:'POST',
+                url:'script_like.php',
+                data:"nombre="+nombre+"&idphoto="+idphoto,
+                success:function(msg) {
+
+                    if(msg == "OK")
+                    {
+                        $("#like").attr("disabled", true);
+
+                        nombre = nombre + 1;
+
+                        $("#nbr_like").html(nombre);
+                    }
+
+                }
+            });
+
+        });
     
+        }); 
+
+        
 });

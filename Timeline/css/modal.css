@@ -1,4 +1,4 @@
-.vote {
+.vote, .vote:focus, .vote:active {
     float : left;
     background-color: #52b3da;
     color: white;
@@ -47,7 +47,9 @@
     border-color:#66CC33;
 }
 
-
+.glyphicon-send {
+    color : white;
+}
 .btn-circle span { padding-right: 6px; }
 
 .tab-content {
@@ -62,4 +64,8 @@ img {
     margin-right: auto;
     margin-left: auto;
     max-height: 400px;
+}
+
+.nav-tabs a, .nav-tabs a:hover{
+    color:black;
 }
