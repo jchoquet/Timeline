@@ -1,0 +1,228 @@
+\documentclass[a4paper]{article}
+% debut du preambule, on met les packages
+
+\usepackage[latin1]{inputenc} % sous windows
+\usepackage[T1]{fontenc}   
+\usepackage[francais]{babel}
+\usepackage{lmodern}
+\usepackage{layout}
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{algorithmique}
+\usepackage{hhline}
+
+
+\definecolor{sec}{rgb}{0,0.34,0.5}
+\definecolor{secp}{rgb}{0,0.47,0.72}
+\definecolor{para}{rgb}{0,0.65,0.86}
+
+
+
+\begin{document}
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\center
+
+\includegraphics[scale=0.4]{Logo_ENSIIE.png}\\[1.5cm]
+
+		
+\textsc{\LARGE E.N.S.I.I.E}\\[0.5cm]
+
+\textsc{\Large }\\[0.5cm]
+
+\HRule \\[0.4cm]
+
+{\huge \bfseries Projet Web 1A \\
+ Rapport de projet  \\[0.4cm] }
+
+\HRule \\[1.5cm]
+
+\begin{flushleft}
+\Large \emph{Groupe H:}\\
+Julie \textsc{Choquet}\\
+Julien \textsc{Naty-Daufin}\\
+Anouar \textsc{Mahrous}\\
+Guillaume \textsc{Gamelin}\\[3cm]
+\end{flushleft}
+
+\vfill
+
+{\large \today}\\
+
+\thispagestyle{empty}
+\setcounter{page}{0}
+
+\end{titlepage}
+
+\newpage
+
+\renewcommand{\contentsname}{Sommaire} % Dans le corps du document,avant la commande \tableofcontents.
+\setcounter{tocdepth}{5}
+
+\tableofcontents
+\thispagestyle{empty}
+\setcounter{page}{0}
+
+\newpage
+
+\textcolor{sec}{\section{Introduction}}
+
+La gestion des photos d'évènements et soirées à l'école est encore très basique. Une fois connecté sur iiens.net, l'upload
+des photos se fait par dossiers, tout comme la consultation. Enfin l'interface nécessiterait d'être mise à jour,
+et son ergonomie repensée, bien que le site soit tout à fait fonctionnel. Le but est de proposer un nouveau
+fonctionnement et une nouvelle interface sous la forme d'une application web (qui pourrait plus tard être intégrée
+à iiens.net). Nous avons donc choisi de réaliser un site web grâce auquel chaque élève aura un profil et la
+possibilité d'ajouter ses propres photos pour une soirée, ses propres commentaires, d'identifier ses camarades
+sur les photos qu'il publiera... Toutes les photos ajoutées au site seront triées par soirée et par année, et affichées
+sous la forme d'une Timeline. Nous avons souhaité ajouter un système de concours. Pour chaque soirée, une
+photo sera élue grâce au vote des utilisateurs pour chaque concours proposé.
+
+
+\textcolor{sec}{\section{Conception}}
+
+\textcolor{secp}{\subsection{Étude de l'existant}}
+
+\begin {description}
+\item[Identification :] authentification grâce à un identifiant unique (exemple: AriseID) et un mot de passe qui sont sauvegardés dans la base de données.
+
+\item[Inscription :] tout élève membre d'Arise peut s'inscrire gratuitement à TIMELINE.
+Lors de cette inscription, il saisit ses informations personnelles (nom , prénom, promo,  identifiant et mot de passe) et personnalise son profil afin de devenir membre.
+
+\item[Compte administrateur :]compte ayant accès à certaines fonctionnalités permettant notamment l'ajout ou la suppression de soirée et de concours. Ce compte est aussi responsable de la maintenance de l'application.
+
+\item[Importation des photos :]chaque utilisateur à la possibilité d'importer des photos sur le site. Lors de l'importation, l'utilisateur doit renseigner une soirée puis attendre une validation d'un administrateur.
+
+\item[Consultation des photos:]chaque utilisateur peut avoir accès aux photos postées sur le site. Pour cela, il doit choisir une année et une soirée, il aura alors accès à une liste de photos.
+
+\end{description}
+
+\textcolor{secp}{\subsection{Nos Features :}}
+
+ \begin{description}
+ 
+\item [Timeline :] amélioration de la consultation des photos. Celle-ci se fera toujours par soirée, mais l'utilisateur pourra naviguer le long de la Timeline et associer à chaque photo une heure dans la soirée. L'application fournit ainsi une version temporalisée de la consultation existante.
+
+
+\item [Profil utilisateur éditable:] sur la partie gauche de l'écran, l'utilisateur a accès à une barre de navigation qui lui est propre. Il peut ainsi modifier ses informations personnelles (quote, avatar, surnom ou mot de passe), mais aussi avoir accès à toutes les photos qu'il a postées (notamment celles ayant remporté un concours) et celles où il est identifié.
+
+\item [Identification des personnes présentes sur une photo :]lors du post d'une photo, l'utilisateur peut identifier les personnes présentes sur la photo. Les personnes identifiées voient alors ces photos apparaître dans la partie Mes Identifications de leur profil.
+Chaque utilisateur peut ajouter une identification à une photo après que celle-ci soit postée à sa consultation.
+
+\item [Importation des photos plus complète :] chaque utilisateur à la possibilité d'importer des photos sur le site. Lors de l'importation, l'utilisateur doit renseigner l'heure de prise de la photo, la date, et l'affilier à une soirée afin qu'elle soit immédiatement jointe à la Timeline.
+
+
+\item [Commentaire :]chaque utilisateur peut ajouter un commentaire à une photo, qu'il l'ai postée ou non. Les commentaires sont visibles par public et donc visibles par tous.
+
+
+\item [Contact  :]pour toute question, information ou réclamation, l'utilisateur peut contacter l'administrateur en lui envoyant un mail.
+
+\item [Concours :]pour chaque soirée, une liste de concours est proposée pendant un certain temps. Chaque utilisateur peut voter une fois par soirée et par concours pour la photo qu'il juge correspondre le mieux au thème du concours. 
+\end{description}
+
+\textcolor{secp}{\subsection{Structure}}
+
+\textcolor{para}{\subsubsection{Structure du Projet}}Le projet est divisé en deux parties: la partie utilisateur et la partie administrateur. Les administrateurs ont accès à des fonctionnalités supplémentaires par rapport aux utilisateurs, notamment pour la maintenance du site.
+\textcolor{para}{\subsubsection{Structure des pages}}
+Sur Timeline, on trouve deux types de structure de pages :
+
+\begin{itemize}
+\item les pages de timeline photos qui sont composées d'une barre de navigation horizontale en haut de l'écran pour accèder aux différentes rubriques du site et l'affichage de la Timeline sur toute la largeur de l'écran. 
+\item les autres pages suivent un autre modèle : la même barre de navigation horizontale en haut de l'écran, mais aussi un menu vertical personnel à gauche de l'écran. Le contenu prend la place restante.
+\end {itemize}
+
+
+
+\textcolor{sec}{\section {Réalisation technique}}
+
+\textcolor{secp}{\subsection {Partie graphique}}
+L'ergonomie d'un site est un point très important. Notre objectif principal est donc de faciliter l'utilisation du site pour les utilisateurs. Pour cela, nous avons défini certaines contraintes :
+
+\begin{description}
+\item [Accessibilité des navigateurs :] l'application doit être fonctionnelle sous les navigateurs les plus utilisés, c'est-à-dire : Chrome, Firefox, Internet Explorer. Les différentes fonctionnalités développées devront donc être testées sur ces trois navigateurs.
+
+\item [Accessibilité des appareils :] l'application doit être au maximum responsive, pour que l'affichage soit plaisant sur les appareils de taille d'écran plus petite (tablettes, smartphones). Pour cela, nous utiliserons le toggle device mode du panel développement de Chrome, les media queries et Bootstrap.
+
+\item [Le système de navigation :] la navigation doit être simple, même pour les utilisateurs débutants. Il est donc indispensable que l'apprentissage du site ne demande pas d' efforts à l'utilisateur. L'utilisation de menus qui répertorient les principales fonctionnalités permet à l'utilisateur de minimiser son effort mental et de trouver son chemin sans effort.\\
+La \textbf{barre de navigation}, qui est un menu horizontal fixé en haut de chaque page est donc composée de :
+	\begin{itemize}
+	\item acceuil : page d'acceuil présentant les 10 dernières photos postées
+	\item soirées : permet d'accèder à la timeline de chaque soirée
+	\item ajout : permet d'ajouter une photo à une soirée
+	\item contact : contacter l'administrateur
+	\item concours : consulter les concours actuels et passés, voter pour une photo et voir celles qui sont déjà nominées
+	\end{itemize}
+La \textbf{barre personnelle} est un menu vertical situé à gauche de l'écran et permet d'accèder à : mon profil, mes posts , mes identifications et mes wins. Il permet aussi de se déconnecter.
+\end{description}
+
+
+\textcolor{secp}{\subsection {Les technologies utilisées}}
+\begin{itemize}
+\item GIT
+\item Bootstrap
+%todo
+\end{itemize}
+	
+\textcolor{secp}{\subsection {Problèmes rencontrés}}
+\begin{itemize}
+\item Difficultés techniques
+\item Difficultés temporelles : certaines features étaient au final trop ambitieuses et non réalisable dans le temps imparti
+\item Organisation : attribution précise des taches
+\end{itemize}
+
+
+\textcolor{sec}{\section {Planning et bilan}}
+	
+\textcolor{secp}{\subsection{Discussions, maquette}}
+Élaboration d'un plan de site précis et de features. Pas de programmation à ce stade.
+
+\textcolor{secp}{\subsection{Présentation du projet au professeur, base de données}}
+Présentation du plan de site et des features, réduction de certains objectifs et identification des difficultés à venir.\\
+Élaboration du modèle relationnel de la base de données.
+
+\textcolor{secp}{\subsection{Choix des technologies}}
+Nous optons pour un usage de Bootstrap, du serveur Git fourni par Arise et une consultation de \emph{http://www.phptherightway.com/}.
+%TO check
+
+
+\textcolor{secp}{\subsection{développement, Design, Tests}}
+Début du développement, attribution de taches à chaque membres. Le design de chaque page est étudié pour se rapprocher au mieux de la maquette réalisée précédemment.
+
+
+\textcolor{secp}{\subsection{Bilan}}
+Au début du projet nous avions décidé de nous répartir les tâches en fonctions des langages utilisés. Nous avons remis en question ce découpage puisque nous ne pouvions pas développer ensemble. Par conséquent, nous avons développé chacun de notre côté puis mis en commun grâce au GIT.\\
+\\
+Une fois la maquette de l'application établie, nous avons déterminé les différentes parties et modules du projet, puis nous avons défini  les éléments de chaque module de sorte qu'un membre puisse commencer à développer la mise en page relative à son module, le CSS. Mais aussi nous définissions les différents éléments techniques relatifs au bon fonctionnement du module. \\
+\\
+Selon les différents modules de la maquette, leurs complexités, et les différentes compétences de chacun de membres, nous développions à un ou plusieurs les différents éléments du module, indépendamment les uns des autres. Une fois l'élément développé et les différentes fonctionnalités réalisées, nous effectuons des tests unitaires. Lorsqu'ils sont validés et le résultat souhaité affiché, l'élément en question est ajouté à l'ensemble du projet sur le GIT.\\
+\\
+Par la suite, nous vérifions que le produit répond à nos attentes, c'est-à-dire que le module correspond au scénario prévu, sur le point de vue graphique ou technique.
+
+
+\textcolor{secp}{\subsection{Améliorations envisagées}}
+Les exigences fonctionnelles fixées dès le début par notre cahier des charges ont presque été menées à bien. En effet, les principaux modules caractérisant un réseau social ont été intégrés.\\
+\\
+Les exigences qui assurent la qualité et la performance du site ont toutes été développées. L'ergonomie du site est satisfaisante pour les utilisateurs d'après les tests d'utilisabilité, le site est compatible avec Internet Explorer et Firefox. \\
+\\
+Toutefois, certains points n'ont pu être développés par manque de temps.
+
+\begin{description}
+\item [Le module concours :] ce module n'a pas été totalement finalisé: l'ajout d'un concours correspondant à chaque soirée et la clôture d'un concours par l'administrateur ont été développés. Mais par souci de temps, la participation des membres aux différents concours,  n'a pu être intégrée. Nous avons donc laissé de côté ce module, mais en laissant les liens s'y rapportant qui pourrait donc été intégré sans grande 
+difficulté.  
+
+\item [Les modules commentaires , votes et bouton j'aime :] ceux-ci n'ont pas pu être intégrés par manque de temps.
+\end{description}
+
+Bien que nous aurions pu développer ces modules, nous avons préféré vérifier et améliorer les performances et la qualité de l'application, notamment grâce aux différents tests. Cette solution a été envisagée lorsque nous nous sommes rendu compte que le temps était insuffisant, nous avons donc réfléchi afin de mener à bien notre projet de la meilleure façon possible. C'est pourquoi nous avons décidé de recarder notre sujet en ne gardant que les modules les plus important et en contrepartie nous avons décidé d'améliorer la qualité et la performance de notre application.\\
+\\
+Si nous étions amenés à approfondir le développement de cette application, nous pourrions envisager une spatialisation de la Timeline. En projetant celle-ci sur un plan de l'école, il serait possible de situer les photos dans l'espace et dans le temps et de fournir un mode de navigation innovant et encore plus convivial.
+
+\textcolor{sec}{\section{Conclusion}}
+L'application finale n'intègre pas tous les modules envisagés dans notre cahier des charges. Néanmoins celle-ci est conforme à nos objectifs qui étaient d'intégrer les modules de base caractérisant la TIMELINE. De plus, l'application a été améliorée en termes de sécurité (hashage du mot de passe), performance et qualité, ce qui rend son utilisation beaucoup plus rassurante, rapide, facile et agréable. 
+
+
+
+
+
+\end{document}
