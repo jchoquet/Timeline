@@ -70,9 +70,9 @@ Guillaume \textsc{Gamelin}\\[3cm]
 \textcolor{sec}{\section{Introduction}}
 
 Aujourd'hui, la gestion des photos d'évènements et soirées à l'ENSIIE est encore très basique. Une fois connecté sur iiens.net, l'upload
-des photos se fait par dossiers, tout comme la consultation. Bien que le site soit tout à fait fonctionnel, son interface nécessiterait d'être mise à jour et son ergonomie repensée pour mieux combler les attentes actuelles des utilisateurs. Notre but est donc de proposer des focntionnalités innovantes, en plus des anciennes fonctionnalités du site, avec une nouvelle interface sous la forme d'une application web (qui pourrait plus tard être intégrée
+des photos se fait par dossiers, tout comme la consultation. Bien que le site soit tout à fait fonctionnel, son interface nécessiterait d'être mise à jour et son ergonomie repensée pour mieux combler les attentes actuelles des utilisateurs. Notre but est donc de proposer des fonctionnalités innovantes, en plus des anciennes fonctionnalités du site, avec une nouvelle interface sous la forme d'une application web (qui pourrait plus tard être intégrée
 à iiens.net).\\ 
-Notre objectif est de produire un site au design moderne, qui s'adapte aux appareils mobiles et qui permet une personnalisation de l'expérience utilisateur (profil modifiable, barre de navigation personnelle). L'affichage des photos sera totalement revu : il se fera sous forme de timeline avec la possibilité de zoomer sur une certaine période. Cela permettra d'avoir à la fois un aperçu global de l'avancement de la soirée et de pouvoir se focaliser sur une partie de la soirée. Enfin, notre site aura une dimension sociale : possibilité de liker une photo, de commenter, de consulter le profil des autres utilisateurs et d'identifier ceux-ci mais aussi d'élire une photo lors de concours réguliers.
+Notre objectif est de produire un site au design moderne, qui s'adapte aux appareils mobiles et qui permet une personnalisation de l'expérience utilisateur (profil modifiable, barre de navigation personnelle). L'affichage des photos sera totalement revu : il se fera sous forme de timeline avec la possibilité de zoomer sur une certaine période. Cela permettra d'avoir à la fois un aperçu global de l'avancement de la soirée et de pouvoir se focaliser sur une partie de la soirée. Enfin, notre site aura une dimension sociale : possibilité de liker une photo, de commenter, de consulter le profil des autres utilisateurs et d'identifier ceux-ci, mais aussi d'élire une photo lors de concours réguliers.
 
 
 \textcolor{sec}{\section{Conception}}
@@ -95,7 +95,7 @@ Lors de cette inscription, il saisit ses informations personnelles (nom , prénom
 \item[Importation des photos :] chaque utilisateur à la possibilité d'importer des photos sur le site en précisant ses infos (année, thème).
 Nous avons choisi de ne pas permettre l'ajout multiple de photos à partir d'un fichier zip ou tar pour des raisons expliquées plus bas.
 
-\item[Consultation des photos:]chaque utilisateur peut avoir accès aux photos postées sur le site. Pour cela, il doit choisir une année et une soirée, il aura alors accès à une liste de photos. Il peut cliquer sur une photo pour l'agrandir. Nous avons choisi de ne pas permettre le slide d'une photo à une autre dans la consultation d'ensemble des photos d'une soirée de part la mise en place de la timeline.
+\item[Consultation des photos:]chaque utilisateur peut avoir accès aux photos postées sur le site. Pour cela, il doit choisir une année et une soirée, il aura alors accès à une liste de photos. Il peut cliquer sur une photo pour l'agrandir. Nous avons choisi de ne pas permettre le slide d'une photo à une autre dans la consultation d'ensemble des photos d'une soirée de par la mise en place de la timeline.
 
 \end{description}
 
@@ -103,19 +103,19 @@ Nous avons choisi de ne pas permettre l'ajout multiple de photos à partir d'un f
 
  \begin{description}
  
-\item [Importation des photos plus complète :] les photos s'ajoutent une à une car l'utilisateur doit renseigner l'heure de prise de la photo en plus des informations sur la soirée afin qu'elle soit immédiatement jointe à la Timeline. Le posteur peut aussi mettre un commentaire sur cette photo.
+\item [Importation des photos plus complète :] les photos s'ajoutent une à une, car l'utilisateur doit renseigner l'heure de prise de la photo en plus des informations sur la soirée afin qu'elle soit immédiatement jointe à la Timeline. Le posteur peut aussi mettre un commentaire sur cette photo.
 
 \item [Timeline :] amélioration de la consultation des photos. Celle-ci se fera toujours par soirée (identifié par une année et un thème), mais l'utilisateur pourra naviguer le long de la Timeline et associer à chaque photo une heure dans la soirée. L'application fournit ainsi une version temporalisée de la consultation existante. La Timeline présente donc toutes les photos d'une soirée, indépendamment du photographe.
 
 \item [Contact  :]pour toute question, information ou réclamation, l'utilisateur peut contacter l'administrateur en lui envoyant un mail.
 
-\item [Afficher les commentaires :]chaque utilisateur peut lire les commentaires postées sur une photo en cliquant sur celle-ci.
+\item [Afficher les commentaires :]chaque utilisateur peut lire les commentaires postés sur une photo en cliquant sur celle-ci.
 
 \item [Partie utilisateur personnalisée:] sur la partie gauche de l'écran, l'utilisateur a accès à une barre de navigation qui lui est propre. Il peut ainsi modifier ses informations personnelles (quote, avatar, surnom ou mot de passe), mais aussi avoir accès à toutes les photos qu'il a postées (notamment celles ayant remporté un concours) et celles où il est identifié.
 
 \item [Affichage des photos hors timeline :] les photos peuvent être consultées en dehors de la timeline sous forme de carousel (slide de la précédente à la suivante possible) et l'utilisateur peut agrandir la photo en cliquant sur celle-ci pour afficher des informations supplémentaires.
 
-\item [Mise en avant des dernières photos postées :] sur la page acceuil, carousel présentant les 10 dernières photos postées.
+\item [Mise en avant des dernières photos postées :] sur la page accueil, carousel présentant les 10 dernières photos postées.
 
 \item [Consultation de profil :] un utilisateur peut afficher le profil d'un autre en cliquant sur son surnom ou son avatar, il a alors accès à ses informations personnelles (surnom, quote, avatar) mais aussi ses posts, ses wins et ses identifications.
 
@@ -123,7 +123,7 @@ Nous avons choisi de ne pas permettre l'ajout multiple de photos à partir d'un f
 
 \textcolor{para}{\subsubsection*{Features incomplètes}}
 
-Dans cette partie, nous allons vous présenter les features prévues initialement, commencées mais qui ne sont pas encore implémentées par manque de temps.
+Dans cette partie, nous allons vous présenter les features prévues initialement, commencées, mais qui ne sont pas encore implémentées par manque de temps.
 
 \begin{description}
 
@@ -147,13 +147,13 @@ Le projet est divisé en deux parties: la partie utilisateur et la partie adminis
 Sur Timeline, on trouve deux types de structure de pages :
 
 \begin{itemize}
-\item les pages de timeline photos qui sont composées d'une barre de navigation horizontale en haut de l'écran pour accèder aux différentes rubriques du site et l'affichage de la Timeline sur toute la largeur de l'écran. 
+\item les pages de timeline photos qui sont composées d'une barre de navigation horizontale en haut de l'écran pour accéder aux différentes rubriques du site et l'affichage de la Timeline sur toute la largeur de l'écran. 
 \item les autres pages suivent un autre modèle : la même barre de navigation horizontale en haut de l'écran, mais aussi un menu vertical personnel à gauche de l'écran. Le contenu prend la place restante. Ces barres de navigation sont incluses dans chaque page grâce à \texttt{menu.php}.
 \end {itemize}
 
 \textcolor{para}{\subsubsection*{Base de données}}
 
-Pour répondre aux exigences fonctionnelles du site, nous avons utilisé la base de données représentée ci-dessous. Celle-ci a du être modifiée à de nombreuses reprises au cours du codage pour faciliter ce dernier (exemple du stockage de l'extension de la photo de profil dans avatar).
+Pour répondre aux exigences fonctionnelles du site, nous avons utilisé la base de données représentée ci-dessous. Celle-ci a dû être modifiée à de nombreuses reprises au cours du codage pour faciliter ce dernier (exemple du stockage de l'extension de la photo de profil dans avatar).
 
 \includegraphics[scale=0.5]{DiagUML.jpeg}
 
@@ -163,16 +163,16 @@ Pour répondre aux exigences fonctionnelles du site, nous avons utilisé la base d
 
 La contrainte de temps du projet était forte : nous avons eu un peu plus d'un mois et demi pour réaliser beaucoup de choses et nous n'avions pas forcément les compétences nécessaires au préalable. Il a fallu faire beaucoup de recherche, découvrir des fonctionnalités et apprendre par soi-même. Certaines parties du travail prévues comme rapide ont au final pris plus de temps que prévu. Voici les différentes étapes de notre travail :\\
 \begin{description}
-\item[29 Mars - 12 Avril :] élaboration de la base de données, de la liste des features (minimales, envisagées, prévues) et de la maquette du site avec Balsamiq. Cette étape a été couteuse en temps mais nous a permis d'avoir un aperçu global du site et de faciliter les requêtes SQL et la mise en page CSS. Le bilan avec le chargé de groupe a permis de faire évoluer la base de donnée, de mieux comprendre les technologies derrière chaque fonctionnalité, d'appréhender les difficultés et de trier les fonctionnalités à implémenter par ordre de priorité.
-\item[12 Avril - 24 Avril :] choix des technologies, découverte de GitLab et Bootstrap, consultation de \\ \emph{http://www.phptherightway.com/}. Après avoir identifié les modules et les tâches à accomplir pour chacun, nous commencons le développement des features minimales.
+\item[29 Mars - 12 Avril :] élaboration de la base de données, de la liste des features (minimales, envisagées, prévues) et de la maquette du site avec Balsamiq. Cette étape a été couteuse en temps, mais nous a permis d'avoir un aperçu global du site et de faciliter les requêtes SQL et la mise en page CSS. Le bilan avec le chargé de groupe a permis de faire évoluer la base de données, de mieux comprendre les technologies derrière chaque fonctionnalité, d'appréhender les difficultés et de trier les fonctionnalités à implémenter par ordre de priorité.
+\item[12 Avril - 24 Avril :] choix des technologies, découverte de GitLab et Bootstrap, consultation de \\ \emph{http://www.phptherightway.com/}. Après avoir identifié les modules et les tâches à accomplir pour chacun, nous commençons le développement des features minimales.
 \item[24 Avril - 10 Mai :] intégration des différentes fonctionnalités, développement des features ajoutées, période de test (navigateurs, appareils, tests unitaires et fonctionnels, sécurité).
 \end{description}
 
 \textcolor{sec}{\subsection{Répartition du travail}}
 
-Au début du projet, nous avions décidé de nous répartir les tâches en fonctions des langages utilisés (PHP, Javascript, HTML et CSS). Nous avons remis en question ce découpage puisque celui-ci était impossible à mettre en oeuvre efficacement et inintéressant d'un point de vue individuel. Par conséquent, nous nous sommes mis d'accord sur l'arborescence du projet et ses modules et nous avons développé conjointement ou par équipe de 2 en utilisant GitLab. La maquette étant établie au préalable, celle-ci nous servait de charte graphique à respecter. \\
+Au début du projet, nous avions décidé de nous répartir les tâches en fonctions des langages utilisés (PHP, JavaScript, HTML et CSS). Nous avons remis en question ce découpage puisque celui-ci était impossible à mettre en oeuvre efficacement et inintéressant d'un point de vue individuel. Par conséquent, nous nous sommes mis d'accord sur l'arborescence du projet et ses modules et nous avons développé conjointement ou par équipe de 2 en utilisant GitLab. La maquette étant établie au préalable, celle-ci nous servait de charte graphique à respecter. \\
 
-A tour de rôle, un membre du groupe était chargé de l'intégration des fichiers et fonctions et de la réalisation des différents tests : le fichier n'était intégré au reste du travail que si celui-ci était valide d'un point de vue technique et graphique.\\
+À tour de rôle, un membre du groupe était chargé de l'intégration des fichiers et fonctions et de la réalisation des différents tests : le fichier n'était intégré au reste du travail que si celui-ci était valide d'un point de vue technique et graphique.\\
 
 \textcolor{sec}{\section {Réalisation technique}}
 
@@ -181,24 +181,24 @@ A tour de rôle, un membre du groupe était chargé de l'intégration des fichiers e
 \textcolor{para}{\subsubsection*{Nos choix}}
 
 \begin{description}
-\item[Bootstrap :] nous avons choisi d'utiliser Bootstrap, même si aucun de nous n'était familier avec ce framework, pour son approche du responsive design et la facilité de mise en page que son utilisation apporte. Bootstrap est livré avec des fichiers CSS et JS qui ont été très utile pour l'affichage du carousel ou du pop-up lors du click sur une photo.
-\item[Javascript :] nous avons utilisé JavaScript pour presque tous les formulaires, cela permettant de vérifier l'input de l'utilisateur rapidement du côté client et d'augmenter la sécurité de la base de donnée. Nous avons aussi réaliser certaines animations pour rendre l'expérience utilisateur plus fluide. Une partie du code javaScript a été réalisé avec jQuery par facilité, nous espérons cependant en avoir fait une utilisation correcte. Enfin, le code javaScript est souvent relié à des requêtes AJAX pour le lier aux scripts PHP.
-\item[PHP :] utilisé pour toute interaction avec le serveur. Nous avons choisi de faire nos requêtes SQL en PDO et en préparant celles-ci pour éviter les injections. Le hashage du mot de passe se fait également grâce à l'API native de gestion de mot de passe.
-\item[sendmail.tar :] utilisation d'un executable pour gérer l'envoi d'emails aux administrateurs. 
-\item[GitLab :] choix imposé mais très utile pour permettre le travail de groupe et le versioning.
+\item[Bootstrap :] nous avons choisi d'utiliser Bootstrap, même si aucun de nous n'était familier avec ce framework, pour son approche du responsive design et la facilité de mise en page que son utilisation apporte. Bootstrap est livré avec des fichiers CSS et JS qui ont été très utiles pour l'affichage du carousel ou du pop-up lors du click sur une photo.
+\item[JavaScript :] nous avons utilisé JavaScript pour presque tous les formulaires, cela permettant de vérifier l'input de l'utilisateur rapidement du côté client et d'augmenter la sécurité de la base de données. Nous avons aussi réalisé certaines animations pour rendre l'expérience utilisateur plus fluide. Une partie du code JavaScript a été réalisé avec jQuery par facilité, nous espérons cependant en avoir fait une utilisation correcte. Enfin, le code JavaScript est souvent relié à des requêtes AJAX pour le lier aux scripts PHP.
+\item[PHP :] utilisé pour toute interaction avec le serveur. Nous avons choisi de faire nos requêtes SQL en PDO et en préparant celles-ci pour éviter les injections. Le hachage du mot de passe se fait également grâce à l'API native de gestion de mot de passe.
+\item[sendmail.tar :] utilisation d'un exécutable pour gérer l'envoi d'emails aux administrateurs. 
+\item[GitLab :] choix imposé, mais très utile pour permettre le travail de groupe et le versioning.
 \item[Phppgadmin :] maintenance de la base de données facilitée.
 \end{description}
 
 \textcolor{para}{\subsubsection*{Choix écartés}}
 
 \begin{description}
-\item[Framework MVC :] aucun des membres n'étant familier avec ceux-ci, nous avons fait le choix de s'en passer car notre projet était de petite envergure. Nous n'aurions peut être pas du car les fichiers se sont vite multipliés et l'organisation est devenue un peu problématique.
-\item[ElasticSearch :] utilisation prévue mais non effectué à cause d'un manque de temps.
+\item[Framework MVC :] aucun des membres n'étant familier avec ceux-ci, nous avons fait le choix de s'en passer, car notre projet était de petite envergure. Nous n'aurions peut être pas dû car les fichiers se sont vite multipliés et l'organisation est devenue un peu problématique.
+\item[ElasticSearch :] utilisation prévue, mais non effectuée à cause d'un manque de temps.
 \end{description}
 
 \textcolor{secp}{\subsection {Charte graphique}}
 
-L'ergonomie d'un site est un point très important. Notre objectif principal était donc de faciliter l'utilisation du site pour les utilisateurs et de définir une identitié graphique. Pour cela, nous avons défini certaines contraintes : \\
+L'ergonomie d'un site est un point très important. Notre objectif principal était donc de faciliter l'utilisation du site pour les utilisateurs et de définir une identité graphique. Pour cela, nous avons défini certaines contraintes : \\
 
 \begin{description}
 \item [Accessibilité des navigateurs :] l'application doit être fonctionnelle sous les principaux navigateurs (Chrome, Firefox, Internet Explorer). Les différentes fonctionnalités ont donc été testées sur ces trois navigateurs.
@@ -208,34 +208,28 @@ L'ergonomie d'un site est un point très important. Notre objectif principal étai
 \item [Le système de navigation :] la navigation doit être simple, même pour les utilisateurs débutants. Il est donc indispensable que l'apprentissage du site ne demande pas d' efforts à l'utilisateur. L'utilisation de menus qui répertorient les principales fonctionnalités permet à l'utilisateur de minimiser son effort mental et de trouver son chemin sans effort.\\
 La \textbf{barre de navigation}, qui est un menu horizontal fixé en haut de chaque page est donc composée de :
 	\begin{itemize}
-	\item acceuil : page d'acceuil présentant les 10 dernières photos postées
-	\item soirées : permet d'accèder à la timeline de chaque soirée
+	\item accueil : page d'accueil présentant les 10 dernières photos postées
+	\item soirées : permet d'accéder à la timeline de chaque soirée
 	\item ajout : permet d'ajouter une photo à une soirée
 	\item contact : contacter l'administrateur
 	\item concours : consulter les concours actuels et passés, voter pour une photo et voir celles qui sont déjà nominées
 	\end{itemize}
-La \textbf{barre personnelle} est un menu vertical situé à gauche de l'écran et permet d'accèder à : mon profil, mes posts , mes identifications et mes wins. Il permet aussi de se déconnecter.
+La \textbf{barre personnelle} est un menu vertical situé à gauche de l'écran et permet d'accéder à : mon profil, mes posts , mes identifications et mes wins. Il permet aussi de se déconnecter.
 \end{description}
 
 \textcolor{secp}{\subsection {Problèmes rencontrés}}
 
-Les principales difficultés rencontrées sont du à un manque de temps et d'expérience.\\
-\begin{description}
-\item [Upload de fichiers :] validation de l'uplaod problématique (essai avec requête AJAX infructeux), stockage des photos et des avatars mal pensé au départ, il nous a fallu modifier la base de données.
-\item [Mise en page de la Timeline :] difficile à mettre en place de façon responsive et complète, nous avons fait le choix de cacher certains fonctionnalités selon l'affichage.
-\item [Gestion des heures avec PHP :] problème entre le formatage et les conditions.
-\item [Requête AJAX simultanées avec javaScript :] résolu en réalisant une seule requête et format de données JSON.
-\end{description}
+Les principales difficultés rencontrées sont du à un manque de temps et d'expérience.\\ \begin{description} \item [Upload de fichiers :] validation de l'uplaod problématique (essai avec requête AJAX infructueux), stockage des photos et des avatars mal pensé au départ, il nous a fallu modifier la base de données. \item [Mise en page de la Timeline :] difficile à mettre en place de façon responsive et complète, nous avons fait le choix de cacher certaines fonctionnalités selon l'affichage. \item [Gestion des heures avec PHP :] problème entre le formatage et les conditions. \item [Requêtes AJAX simultanées avec JavaScript :] résolu en réalisant une seule requête et avec le format de données JSON. \end{description}
 
 \textcolor{sec}{\section {Conclusion}}
 
-Les exigences fonctionnelles fixées dès le début par notre cahier des charges ont presque été menées à bien. En effet, les features minimales ont été développées et les principales fonctionnalitées caractérisant un réseau social ont été commencées.\\
+Les exigences fonctionnelles fixées dès le début par notre cahier des charges ont presque été menées à bien. En effet, les features minimales ont été développées et les principales fonctionnalités caractérisant un réseau social ont été commencées.\\
 
 L'ergonomie du site est satisfaisante pour les utilisateurs d'après les tests d'utilisabilité, sur différents navigateurs (Chrome, Firefox, Explorer) et sur différents appareils (smartphone, tablette). Il reste toutefois des améliorations graphiques à effectuer.\\
 
-D'un point de vue sécurité, le site propose une protection contre les injections SQL basique et un hashage du mot de passe. L'affichage des informations stockée dans la base de donnée et entrées par l'utilisateur sur le site n'est cependant pas sécurisé. \\
+D'un point de vue sécurité, le site propose une protection contre les injections SQL basique et un hachage du mot de passe. L'affichage des informations stockées dans la base de données et entrées par l'utilisateur sur le site n'est cependant pas sécurisé. \\
 
-Certains points (présentés dans la partie features incomplètes) n'ont pas pu être développée faute de temps mais leur intégration serait facilement envisageable.\\
+Certains points (présentés dans la partie features incomplètes) n'ont pas pu être développés faute de temps mais leur intégration serait facilement envisageable.\\
 
 Si nous étions amenés à approfondir le développement de cette application, nous pourrions envisager une spatialisation de la Timeline. En projetant celle-ci sur un plan de l'école, il serait possible de situer les photos dans l'espace et dans le temps et de fournir un mode de navigation innovant et encore plus convivial.\\
 
