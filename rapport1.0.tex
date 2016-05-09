@@ -89,11 +89,9 @@ Lors de cette inscription, il saisit ses informations personnelles (nom , préno
 
 \item \textbf{Compte administrateur :}Compte ayant accès à certaines fonctionnalités permettant notamment l’ajout ou la suppression de soirée et de concours. Ce compte est aussi responsable de la maintenance de l’application.
 
-\item \textbf{Profil utilisateur éditable :}Un membre a des droits sur ses informations personnelles. Il peut donc modifier à tout moment ses données telles que son pseudo, son mot de passe , surnom, mais aussi son image personnelle (avatar). 
+\item \textbf{Importation des photos :}Chaque utilisateur à la possibilité d’importer des photos sur le site. Lors de l’importation, l’utilisateur dois renseigner une soirée puis attendre une validation d'un administrateur.
 
-\item \textbf{Importation des photos :}Chaque utilisateur à la possibilité d’importer des photos sur le site. Lors de l’importation, l’utilisateur dois renseigner l’heure de prise de la photo, la date, et l’affilier a une soirée afin qu’elle soit immédiatement jointe a la Timeline.
-
-\item \textbf{Consultation des photos:}Chaque utilisateur peut avoir accès aux photos postées sur le site. Pour cela, il doit choisir une année et une soirée, il aura alors accès à la Timeline de la soirée en question.
+\item \textbf{Consultation des photos:}Chaque utilisateur peut avoir accès aux photos postées sur le site. Pour cela, il doit choisir une année et une soirée, il aura alors accès à une liste de photos.
 
 \end{itemize}
 
@@ -102,11 +100,16 @@ Lors de cette inscription, il saisit ses informations personnelles (nom , préno
 
 \subsection{Nos Features :}
  \begin{itemize}
-\item \textbf{Profil Utilisateur :}Sur la partie gauche de l’écran, l’utilisateur a accès à une partie qui lui est réservé. Il peut modifier ses informations personnelles, avoir accès à toutes les photos qu’il a posté, avoir accès a toutes les photos sur lesquelles il est identifié, et avoir accès à toutes les photos ayant gagné un concours et sur lesquelles il apparaît. 
+ 
+\item \textbf{Timeline :} Amélioration de la consultation des photos. Celle-ci se fera toujours par soirée mais l'utilisateur pourra naviguer le long de la timeline et associer à chaque photo une heure dans la soirée. L'application fournit ainsi une version temporalisée de la consultation existante.
+
+
+\item \textbf{Profil Utilisateur éditable:}Sur la partie gauche de l’écran, l’utilisateur a accès à une partie qui lui est réservé. Il peut modifier ses informations personnelles, son avatar, avoir accès à toutes les photos qu’il a posté, avoir accès a toutes les photos sur lesquelles il est identifié, et avoir accès à toutes les photos ayant gagné un concours et sur lesquelles il apparaît. 
 
 \item \textbf{Identification des personnes présentes sur une photo :}Lors du post d’une photo, l’utilisateur peut identifier les personnes présentes sur la photo. Les personnes identifiées voient alors ces photos apparaître dans la partie Mes Identifications de leur profile.
 Chaque utilisateur peut ajouter une identification à une photo après que celle-ci soit postée.
 
+\item \textbf{Importation des photos plus complète :}Chaque utilisateur à la possibilité d’importer des photos sur le site. Lors de l’importation, l’utilisateur dois renseigner l’heure de prise de la photo, la date, et l’affilier a une soirée afin qu’elle soit immédiatement jointe a la Timeline.
 
 
 \item \textbf{Commentaire :}Chaque utilisateur peut ajouter un commentaire à une photo, qu’il l’ai postée ou non. Les commentaires sont visibles par tous.
@@ -117,7 +120,16 @@ Chaque utilisateur peut ajouter une identification à une photo après que celle
 \item \textbf{Concours :}Pour chaque soirée, une liste de concours est proposée, chaque utilisateur peut voter une fois par concours par soirée pour la photo qu’il juge correspondre le mieux au sujet. 
 \end{itemize}
 
-% Structure projet
+\subsection{Structure}
+
+\subsubsection{Structure du Projet}Le projet est divisé en deux partie, la partie utilisateur, et la partie administrateur. Les administrateur auront accès des fonctionnalité supplémentaires.
+\subsubsection{Structure des pages}
+Il y a deux types de structure de pages :
+\begin{itemize}
+\item les pages suivant un modèle composé d’un menu horizontal en haut de l’écran, d’un menu vertical a gauche de l’écran, et des informations au milieu de l’écran. (Acceuil)
+\item la page Timeline qui ne comprend que le menu horizontal en haut de l’écran et l’affichage de la Timeline sur le reste de l’écran. 
+\end {itemize}
+
 
 
 \section {Réalisation technique}
@@ -126,16 +138,16 @@ Chaque utilisateur peut ajouter une identification à une photo après que celle
 L’ergonomie est un point important. Son objectif principal est de faciliter l’utilisation du site par les utilisateurs. Pour cela, nous nous imposerons certaines contraintes :
 
 \begin{itemize}
-\item \textbf {Accessibilité des navigateurs :}Le site Community doit être fonctionnel sous les navigateurs les plus utilisés, c’est-à-dire : Firefox et Internet Explorer. Les différentes fonctionnalités développées devront donc être testées sur les deux navigateurs.
+\item \textbf {Accessibilité des navigateurs :}L'application doit être fonctionnel sous les navigateurs les plus utilisés, c’est-à-dire : Firefox et Internet Explorer. Les différentes fonctionnalités développées devront donc être testées sur les deux navigateurs.
 
 \item \textbf{Le système de navigation :}La navigation doit être simple, même pour les usagers débutants. Il est donc indispensable que l’apprentissage du site ne demande pas des efforts à l’utilisateur. L’utilisation de menu qui répertorie les principales fonctionnalités permet à l‘utilisateur de minimiser son effort mental.\\
 La \textbf{barre de navigation}, qui est un menu horizontal statique est donc composé de :
 	\begin{itemize}
 	\item acceuil : la page d’accueil
 	\item soirées : accéder à la Timeline de chaque soirée
-	\item concours : participer à un concours ou consulter les derniers résultats
 	\item ajout : ajouter une photo à une Timeline
 	\item contact : contacter l’administrateur
+	\item concours : participer à un concours ou consulter les derniers résultats
 	\end{itemize}
 La \textbf{barre personnelle} qui est un menu vertical dynamique est donc composé de : mon profil , mes posts , identif et mes wins , deconnexion.
 \end{itemize}
@@ -199,6 +211,8 @@ difficulté.
 \end{itemize}
 
 Bien que nous aurions pu développer ces modules, nous avons préféré vérifier et améliorer les performances et la qualité de l’application, notamment grâce aux différents tests. Cette solution a été envisagée lorsque nous nous sommes rendu compte que le temps était insuffisant, nous avons donc réfléchi afin de mener à bien notre projet de la meilleure façon possible. C'est pourquoi nous avons décidé de recarder notre sujet en ne gardant que les modules les plus important et en contrepartie nous avons décidé d'améliorer la qualité et la performance de notre application.\\
+\\
+Si nous étions amenés à approfondir le développement de cette application, nous pourrions envisager une spatialisation de la Timeline. En projetant celle ci sur un plan de l'école, il serait possible de situer les photos dans l'espace et dans le temps et de fournir un mode de navigation innovant et encore plus convivial.
 
 \section{Conclusion}
 L'application finale n'intègre pas tous les modules envisagés dans notre cahier des charges. Néanmoins elle est conforme à nos objectifs qui étaient d'intégrer les modules de bases caractérisant la TIMELINE. De plus l'application a été améliorée en termes de sécurité (hashage du mot de passe), performance et qualité qui rend son utilisation beaucoup plus rassurante, rapide, facile et agréable. 
