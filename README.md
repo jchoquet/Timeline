@@ -1,17 +1,28 @@
 # Projet Web
 # Groupe H
 
-# Sujet : plateforme de timeline photo pour soirée et évènement
+## Composition de l'équipe
 
-Note sur contact :
+| Nom                     | Prénom                   |
+| -------------           |-------------             |
+| *Choquet*                   | *Julie*              |
+| *Naty-Daufin*                   | *Julien*               |
+| *Gamelin*                   | *Guillaume*             |
+| *Mahrous*                   | *Anouar (Mohammed)*  |
 
-Permet d'envoyer un message à l'administrateur (email :adm.timeline@gmail.com et mdp : motdepassetimeline).
+## Sujet : plateforme de timeline photo pour soirée et évènement
 
-Installation :
+Aujourd’hui, la gestion des photos d’évènements et soirées à l’ENSIIE est encore très basique. Une fois
+connecté sur iiens.net, l’upload des photos se fait par dossiers, tout comme la consultation. Bien que le site
+soit tout à fait fonctionnel, son interface nécessiterait d’être mise à jour et son ergonomie repensée pour mieux
+combler les attentes actuelles des utilisateurs. Notre but est donc de proposer des fonctionnalités innovantes, en
+plus des anciennes fonctionnalités du site, avec une nouvelle interface sous la forme d’une application web (qui
+pourrait plus tard être intégrée à iiens.net).
 
-1- si vous utilisez xampp , 
-  a- coller le fichier sendmail à la racine
-  b- modifier votre fichier php.ini : sendmail_path="****\sendmail\sendmail.exe" , ***=adresse de sendmail.exe
-2- si vous utilisez bitnami : 
-   a- coller le fichier sendmail dans le dossier dans apache2
-   b- modifier votre fichier php.ini : sendmail_path="****\sendmail\sendmail.exe" , les *** c'est l'adresse ou se trouve votre sendmail.exe 
+Notre objectif est de produire un site au design moderne, qui s’adapte aux appareils mobiles et qui permet une
+personnalisation de l’expérience utilisateur (profil modifiable, barre de navigation personnelle). L’affichage des
+photos sera totalement revu : il se fera sous forme de timeline avec la possibilité de zoomer sur une certaine
+période. Cela permettra d’avoir à la fois un aperçu global de l’avancement de la soirée et de pouvoir se focaliser
+sur une partie de la soirée. Enfin, notre site aura une dimension sociale : possibilité de liker une photo, de
+commenter, de consulter le profil des autres utilisateurs et d’identifier ceux-ci, mais aussi d’élire une photo lors
+de concours réguliers.
